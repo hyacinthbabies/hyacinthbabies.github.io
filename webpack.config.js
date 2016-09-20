@@ -36,7 +36,6 @@ module.exports = {
         }, {
             test: /\.jsx?$/,
             loader: 'babel',
-            include: APP_PATH,
             query: {
                 presets: ['es2015']
             }
