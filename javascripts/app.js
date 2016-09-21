@@ -9,6 +9,10 @@ routeApp.config(['$routeProvider',function($routeProvider){
 		templateUrl:'button.html',
 		controller:'RouteListCtl'
 	})
+	.when('/grid',{
+		templateUrl:'grid.html',
+		controller:'RouteGridCtl'
+	})
 	.otherwise({
 		redirectTo:'/'
 	});

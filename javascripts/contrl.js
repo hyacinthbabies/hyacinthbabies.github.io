@@ -28,11 +28,12 @@ routeApp.controller('RouteListCtl', function($scope) {
         type: 'btn-link',
         name: 'Link'
     }];
-    $scope.listTable=[
-    {id:'one',type:'基本',name:''},
-    {id:'two',type:'条纹',name:'table-striped'},
-    {id:'three',type:'边框',name:'table-bordered'},
-    {id:'four',type:'悬停',name:'table-hover'},
-    {id:'five',type:'精简',name:'table-condensed'}
+    $scope.listTable = [
+        { id: 'one', type: '基本', name: '' },
+        { id: 'two', type: '条纹', name: 'table-striped' },
+        { id: 'three', type: '边框', name: 'table-bordered' },
+        { id: 'four', type: '悬停', name: 'table-hover' },
+        { id: 'five', type: '精简', name: 'table-condensed' }
     ]
 });
+routeApp.controller('RouteGridCtl', function($scope) {});

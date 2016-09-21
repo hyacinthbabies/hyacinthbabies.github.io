@@ -3,9 +3,9 @@
         <h4>Table</h4>
         <div ng-repeat="list in listTable">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{list.type}}表格布局
-                    <button type="button" class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapse{{list.id}}">代码</button>
+                <div class="panel-heading clearfix">
+                    <span style="line-height:30px;height:30px;">{{list.type}}表格布局</span>
+                    <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapse{{list.id}}">代码</button>
                 </div>
                 <div class="panel-body">
                     <table class="table {{list.name}}">
