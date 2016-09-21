@@ -15,7 +15,7 @@ module.exports = {
     //输出的文件名 合并以后的js会命名为bundle.js
     output: {
         path: BUILD_PATH,
-        filename: './[name].[hash].js'
+        filename: './[name].bundle.js'
     },
     //新建一个开发服务器，可以serve我们pack以后的代码，并且当代码更新的时候自动刷新浏览器。
     devServer: {

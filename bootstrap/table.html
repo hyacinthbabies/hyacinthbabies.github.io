@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="col-sm-10 col-md-6 col-lg-8" style="box-shadow: inset 1px-1px 1px #444, inset -1px 1px 1px #444;">
+        <h4>Table</h4>
+        <div ng-repeat="list in listTable">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{list.type}}表格布局
+                    <button type="button" class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapse{{list.id}}">代码</button>
+                </div>
+                <div class="panel-body">
+                    <table class="table {{list.name}}">
+                        <!-- <caption>基本的表格布局</caption> -->
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>城市</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tanmay</td>
+                                <td>Bangalore</td>
+                            </tr>
+                            <tr>
+                                <td>Sachin</td>
+                                <td>Mumbai</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="collapse{{list.id}}" class="panel-collapse collapse" style="border-top: 1px solid #E0D8D8;">
+                    <pre style="margin-bottom: 0">&lt;table class="<code style="color: #c7254e;background-color: #f9f2f4;">table {{list.name}}</code>"&gt;                  
+      &lt;thead&gt;
+          &lt;tr&gt;
+              &lt;th>名称&lt;/th&gt;
+              &lt;th>城市&lt;/th&gt;
+          &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+          &lt;tr&gt;
+              &lt;td>Tanmay&lt;/td&gt;
+              &lt;td>Bangalore&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+              &lt;td>Sachin&lt;/td>
+              &lt;td>Mumbai&lt;/td&gt;
+          &lt;/tr&gt;
+      &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                上下文表格布局
+                <button type="button" class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">代码</button>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>产品</th>
+                            <th>付款日期</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                            <td>产品1</td>
+                            <td>23/11/2013</td>
+                            <td>待发货</td>
+                        </tr>
+                        <tr class="success">
+                            <td>产品2</td>
+                            <td>10/11/2013</td>
+                            <td>发货中</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>产品3</td>
+                            <td>20/10/2013</td>
+                            <td>待确认</td>
+                        </tr>
+                        <tr class="danger">
+                            <td>产品4</td>
+                            <td>20/10/2013</td>
+                            <td>已退货</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse" style="border-top: 1px solid #E0D8D8;">
+                <pre style="margin-bottom: 0">&lt;table class="<code style="color: #c7254e;background-color: #f9f2f4;">table</code>"&gt;                  
+      &lt;thead&gt;
+          &lt;tr&gt;
+              &lt;th>名称&lt;/th&gt;
+              &lt;th>城市&lt;/th&gt;
+              &lt;th>区域&lt;/th&gt;
+              &lt;th>餐厅&lt;/th&gt;
+          &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+          &lt;tr class="active"&gt;
+              &lt;td>Tanmay&lt;/td&gt;
+              &lt;td>Bangalore&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr class="success"&gt;
+              &lt;td>Sachin&lt;/td>
+              &lt;td>Mumbai&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr class="warning"&gt;
+              &lt;td>Tanmay&lt;/td&gt;
+              &lt;td>Bangalore&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr class="danger"&gt;
+              &lt;td>Sachin&lt;/td>
+              &lt;td>Mumbai&lt;/td&gt;
+          &lt;/tr&gt;
+      &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<!--button-->
+<div class="container">
+    <div class="col-sm-10 col-md-6 col-lg-8" style="box-shadow: inset 1px-1px 1px #444, inset -1px 1px 1px #444;">
+        <!-- Standard button -->
+        <h4>Button</h4>
+        <div ng-repeat="list in listBtn">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    A {{list.name | lowercase}} button
+                </div>
+                <div class="panel-body">
+                    <button type="button" class="btn {{list.type}}" data-toggle="collapse" data-parent="#accordion" href="#collapse{{list.id}}">{{list.name}}</button>
+                </div>
+                <div id="collapse{{list.id}}" class="panel-collapse collapse"  style="border-top: 1px solid #E0D8D8;">
+                    <pre style="margin-bottom: 0">&lt;button type="button" class="<code style="color: #c7254e;background-color: #f9f2f4;">btn {{list.type}}</code>">Default&lt;/button&gt;</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
