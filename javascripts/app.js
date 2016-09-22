@@ -9,9 +9,18 @@ routeApp.config(['$routeProvider',function($routeProvider){
 		templateUrl:'button.html',
 		controller:'RouteListCtl'
 	})
-	.when('/grid',{
-		templateUrl:'grid.html',
-		controller:'RouteGridCtl'
+	.when('/dropdown',{
+		templateUrl:'dropdown.html',
+		controller:'RouteDropdownCtl'
+	})
+	.when('/form',{
+		templateUrl:'form.html'
+	})
+	.when('/font',{
+		templateUrl:'font.html'
+	})
+	.when('/label',{
+		templateUrl:'label.html'
 	})
 	.otherwise({
 		redirectTo:'/'

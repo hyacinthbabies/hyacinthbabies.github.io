@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="col-sm-10 col-md-6 col-lg-8" style="box-shadow: inset 1px-1px 1px #444, inset -1px 1px 1px #444;">
+        <h4>Label</h4>
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <span style="line-height:30px;height:30px;">标签</span>
+                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">代码</button>
+            </div>
+            <div class="panel-body">
+                <span class="label label-default">默认标签</span>
+                <span class="label label-primary">主要标签</span>
+                <span class="label label-success">成功标签</span>
+                <span class="label label-info">信息标签</span>
+                <span class="label label-warning">警告标签</span>
+                <span class="label label-danger">危险标签</span>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" style="border-top: 1px solid #E0D8D8;">
+                <pre style="margin-bottom: 0">
+&lt;span class="<code style="color: #c7254e;background-color: #f9f2f4;">label label-default</code>"&gt;默认标签&lt;/span&gt;
+&lt;span class="<code style="color: #c7254e;background-color: #f9f2f4;">label label-primary</code>"&gt;主要标签&lt;/span&gt;
+&lt;span class="<code style="color: #c7254e;background-color: #f9f2f4;">label label-success</code>"&gt;成功标签&lt;/span&gt;
+&lt;span class="<code style="color: #c7254e;background-color: #f9f2f4;">label label-info</code>"&gt;信息标签&lt;span&gt;
+&lt;span class="<code style="color: #c7254e;background-color: #f9f2f4;">label label-warning</code>"&gt;警告标签&lt;/span&gt;
+&lt;span class="<code style="color: #c7254e;background-color: #f9f2f4;">label label-danger</code>"&gt;危险标签&lt;/span&gt;</pre>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <span style="line-height:30px;height:30px;">如果标签数量很多怎么办？</span>
+            </div>
+            <div class="panel-body">
+                如果你有大量的设置为 inline 属性的标签全部放在一个较窄的容器元素内，在页面上展示这些标签就会出现问题，每个标签就会有自己的一个 inline-block 元素（就像图标一样）。解决的办法是为每个标签都设置为 display: inline-block; 属性
+            </div>
+        </div>
+    </div>
+</div>

@@ -36,4 +36,4 @@ routeApp.controller('RouteListCtl', function($scope) {
         { id: 'five', type: '精简', name: 'table-condensed' }
     ]
 });
-routeApp.controller('RouteGridCtl', function($scope) {});
+routeApp.controller('RouteDropdownCtl', function($scope) {});
