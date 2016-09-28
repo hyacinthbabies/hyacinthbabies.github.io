@@ -1,11 +1,14 @@
 var routeApp = angular.module('routeApp',['ngRoute']);
 routeApp.config(['$routeProvider',function($routeProvider){
 	$routeProvider
+	.when('/column',{
+		templateUrl:'column.html'
+	})
 	.when('/table',{
 		templateUrl:'table.html',
 		controller:'RouteListCtl'
 	})
-	.when('/',{
+	.when('/button',{
 		templateUrl:'button.html',
 		controller:'RouteListCtl'
 	})
