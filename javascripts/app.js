@@ -20,7 +20,8 @@ routeApp.config(['$routeProvider',function($routeProvider){
 		templateUrl:'form.html'
 	})
 	.when('/font',{
-		templateUrl:'font.html'
+		templateUrl:'font.html',
+		controller:'RouteFontCtrl'
 	})
 	.when('/label',{
 		templateUrl:'label.html'
