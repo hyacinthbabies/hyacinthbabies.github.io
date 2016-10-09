@@ -53,20 +53,21 @@ routeApp.controller('RouteFontCtrl', function($scope) {
         'gift', 'leaf', 'fire', 'eye-open', 'eye-close', 'warning-sign', 'plane', 'calendar', 'random', 'comment',
         'magnet', 'chevron-up', 'chevron-down', 'retweet', 'shopping-cart', 'folder-close', 'folder-open'
     ]
-    $scope.font = ['resize-vertical', 'resize-horizontal', 'hdd', 'bullhorn', 'bell', 'certificate', 'thumbs-up', 'thumbs-down',
+    $scope.font2 = ['resize-vertical', 'resize-horizontal', 'hdd', 'bullhorn', 'bell', 'certificate', 'thumbs-up', 'thumbs-down',
         'hand-right', 'hand-left', 'hand-up', 'hand-down', 'circle-arrow-right', 'circle-arrow-left', 'circle-arrow-up',
         'circle-arrow-down', 'globe', 'wrench', 'tasks', 'filter', 'briefcase', 'fullscreen', 'dashboard', 'paperclip',
         'heart-empty', 'link', 'phone', 'pushpin', 'usd', 'gbp', 'sort', 'sort-by-alphabet', 'sort-by-alphabet-alt',
-        'sort-by-order', 'sort-by-order-alt', 'sort-by-attributes', 'sort-by-attributes-alt', 'unchecked', 'expand',
-        'collapse-down', 'collapse-up', 'log-in', 'flash', 'log-out', 'new-window', 'record', 'save', 'open',
-        'saved', 'import', 'export', 'send', 'disk', 'saved', 'floppy-remove', 'floppy-save', 'floppy-open',
+        'sort-by-order','sort-by-order-alt', 'sort-by-attributes','sort-by-attributes-alt', 'unchecked', 'expand',
+        'collapse-down', 'collapse-up', 'log-in','flash', 'log-out', 'new-window', 'record', 'save', 'open'
+    ];
+    $scope.font3 = ['saved', 'import', 'export', 'send', 'disk', 'saved', 'floppy-remove', 'floppy-save', 'floppy-open',
         'credit-card', 'transfer', 'cutlery', 'header', 'compressed', 'earphone', 'phone-alt', 'tower', 'stats',
         'sd-video', 'hd-video', 'subtitles', 'sound-stereo', 'sound-dolby', 'sound-5-1', 'sound-6-1', 'sound-7-1',
         'copyright-mark', 'registration-mark', 'cloud-download', 'cloud-upload', 'tree-conifer', 'tree-deciduous'
     ];
     $scope.sizeChange = { fontSize: '20px', marginBottom: '12px' };
     $scope.changeshow = false;
-    $scope.change = function(content){
+    $scope.change = function(content) {
         // var code = document.getElementsByName("code");
         // // console.log(code);
         // for (var i = 0; i < code.length; i++) {

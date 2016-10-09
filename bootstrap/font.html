@@ -1,5 +1,5 @@
 <div class="container" ng-controller="RouteFontCtrl">
-    <div class="col-sm-12 col-md-6 col-lg-8" style="box-shadow: inset 1px-1px 1px #444, inset -1px 1px 1px #444;">
+    <div class="col-sm-12 col-md-7 col-lg-9" style="box-shadow: inset 1px-1px 1px #444, inset -1px 1px 1px #444;">
         <h4>Font</h4>
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
@@ -15,6 +15,16 @@
                     </div>
                     <div name="code" ng-click="change(list)">{{list}}</div>
                 </div>
+                <div class="col-xs-6 col-md-2" ng-repeat="list in font2" style="padding-right: 0;padding-left: 8px;text-align: center;">
+                    <div ng-style={{sizeChange}} class="glyphicon glyphicon-{{list}}">
+                    </div>
+                    <div name="code" ng-click="change(list)">{{list}}</div>
+                </div>
+                <!-- <div class="col-xs-6 col-md-2" ng-repeat="list in font3" style="padding-right: 0;padding-left: 8px;text-align: center;">
+                    <div ng-style={{sizeChange}} class="glyphicon glyphicon-{{list}}">
+                    </div>
+                    <div name="code" ng-click="change(list)">{{list}}</div>
+                </div> -->
             </div>
         </div>
         <!-- <div class="panel panel-default">
