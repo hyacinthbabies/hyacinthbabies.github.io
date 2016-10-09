@@ -4,13 +4,42 @@
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
                 <span style="line-height:30px;height:30px;">字体</span>
+                <span ng-show="changeshow">&lt;span class="<code>glyphicon glyphicon-{{mast}}</code>"&gt;&lt;/span&gt;</span>
+                <button type="button" class="btn btn-default pull-right" id="codecode">复制</button>
+            </div>
+            <div class="row panel-body">
+                <div class="col-md-2" ng-repeat="list in listFont" style="padding-right: 0;padding-left: 8px;text-align: center;">
+                    <div ng-style={{sizeChange}} class="glyphicon glyphicon-{{list}}">
+                    </div>
+                    <div name="code" ng-click="change(list)">{{list}}</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <span style="line-height:30px;height:30px;">不同大小字体</span>
                 <button type="button" class="btn btn-default pull-right" ng-click="showGlyph()">代码</button>
             </div>
             <div class="row panel-body">
                 <div class="col-md-2" ng-repeat="list in listFont" style="padding-right: 0;padding-left: 8px;text-align: center;">
-                    <div ng-style={{sizeChange}} class="glyphicon glyphicon-{{list}}">    
+                    <div ng-style={{sizeChange}} class="glyphicon glyphicon-{{list}}">
                     </div>
-                    <div id="glyphionId">.glyphicon .glyphicon-{{list}}</div>
+                    <div>.glyphicon .glyphicon-{{list}}</div>
                 </div>
             </div>
         </div>
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <span style="line-height:30px;height:30px;">不同颜色字体</span>
+                <button type="button" class="btn btn-default pull-right" ng-click="showGlyph()">代码</button>
+            </div>
+            <div class="row panel-body">
+                <div class="col-md-2" ng-repeat="list in listFont" style="padding-right: 0;padding-left: 8px;text-align: center;">
+                    <div ng-style={{sizeChange}} class="glyphicon glyphicon-{{list}}">
+                    </div>
+                    <div>.glyphicon .glyphicon-{{list}}</div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
