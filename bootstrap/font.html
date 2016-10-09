@@ -1,14 +1,14 @@
 <div class="container" ng-controller="RouteFontCtrl">
-    <div class="col-sm-10 col-md-6 col-lg-8" style="box-shadow: inset 1px-1px 1px #444, inset -1px 1px 1px #444;">
+    <div class="col-sm-12 col-md-6 col-lg-8" style="box-shadow: inset 1px-1px 1px #444, inset -1px 1px 1px #444;">
         <h4>Font</h4>
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
-                <span style="line-height:30px;height:30px;">字体</span>
+                <span style="line-height:30px;height:30px;">字体(点击图标名称)</span>
                 <span ng-show="changeshow">&lt;span class="<code>glyphicon glyphicon-{{mast}}</code>"&gt;&lt;/span&gt;</span>
                 <button type="button" class="btn btn-default pull-right" id="codecode">复制</button>
             </div>
             <div class="row panel-body">
-                <div class="col-md-2" ng-repeat="list in listFont" style="padding-right: 0;padding-left: 8px;text-align: center;">
+                <div class="col-xs-4 col-md-2" ng-repeat="list in listFont" style="padding-right: 0;padding-left: 8px;text-align: center;">
                     <div ng-style={{sizeChange}} class="glyphicon glyphicon-{{list}}">
                     </div>
                     <div name="code" ng-click="change(list)">{{list}}</div>

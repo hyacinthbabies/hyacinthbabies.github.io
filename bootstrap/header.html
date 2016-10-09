@@ -13,13 +13,20 @@
     <script src="../javascripts/contrl.js"></script>
     <style rel="stylesheet" type="text/css" href="../stylesheets/style.css"></style>
 </head>
+
 <body>
     <nav class="navbar navbar-default navbar-inverse" role="navigation" style="margin-bottom:0;">
         <div class="container-fluid">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="#/">个人bootstrap文档</a>
             </div>
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav navbar-nav" id="navTab">
                     <li class="active"><a href="#/column">column</a></li>
                     <li><a href="#/button">button</a></li>
