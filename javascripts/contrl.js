@@ -66,7 +66,7 @@ routeApp.controller('RouteFontCtrl', function($scope) {
     ];
     $scope.sizeChange = { fontSize: '20px', marginBottom: '12px' };
     $scope.changeshow = false;
-    $scope.change = ((content)=>{
+    $scope.change = function(content){
         // var code = document.getElementsByName("code");
         // // console.log(code);
         // for (var i = 0; i < code.length; i++) {
@@ -77,5 +77,5 @@ routeApp.controller('RouteFontCtrl', function($scope) {
         // }
         $scope.changeshow = true;
         $scope.mast = angular.copy(content);
-    });
+    }
 });
