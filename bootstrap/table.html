@@ -52,10 +52,11 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
-                上下文表格布局
-                <button type="button" class="btn btn-default" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">代码</button>
+                <span style="line-height:30px;height:30px;">上下文表格布局+小屏幕表格水平滚动(.table-responsive包裹table)</span>
+                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">代码</button>
             </div>
             <div class="panel-body">
+            <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
@@ -87,9 +88,11 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
             <div id="collapseSix" class="panel-collapse collapse" style="border-top: 1px solid #E0D8D8;">
-                <pre style="margin-bottom: 0">&lt;table class="<code style="color: #c7254e;background-color: #f9f2f4;">table</code>"&gt;                  
+                <pre style="margin-bottom: 0"> &lt;div class="<code style="color: #c7254e;background-color: #f9f2f4;">table-responsive</code>"&gt;
+    &lt;table class="<code style="color: #c7254e;background-color: #f9f2f4;">table</code>"&gt;                  
       &lt;thead&gt;
           &lt;tr&gt;
               &lt;th>名称&lt;/th&gt;
@@ -116,7 +119,8 @@
               &lt;td>Mumbai&lt;/td&gt;
           &lt;/tr&gt;
       &lt;/tbody&gt;
-&lt;/table&gt;</pre>
+  &lt;/table&gt;
+&lt;/div&gt;</pre>
             </div>
         </div>
     </div>

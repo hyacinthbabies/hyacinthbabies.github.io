@@ -1,8 +1,9 @@
-var routeApp = angular.module('routeApp',['ngRoute']);
+var routeApp = angular.module('routeApp',['ngRoute','angularCSS']);
 routeApp.config(['$routeProvider',function($routeProvider){
 	$routeProvider
 	.when('/column',{
-		templateUrl:'column.html'
+		templateUrl:'column.html',
+		css:'column.css'
 	})
 	.when('/table',{
 		templateUrl:'table.html',

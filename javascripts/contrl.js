@@ -57,8 +57,8 @@ routeApp.controller('RouteFontCtrl', function($scope) {
         'hand-right', 'hand-left', 'hand-up', 'hand-down', 'circle-arrow-right', 'circle-arrow-left', 'circle-arrow-up',
         'circle-arrow-down', 'globe', 'wrench', 'tasks', 'filter', 'briefcase', 'fullscreen', 'dashboard', 'paperclip',
         'heart-empty', 'link', 'phone', 'pushpin', 'usd', 'gbp', 'sort', 'sort-by-alphabet', 'sort-by-alphabet-alt',
-        'sort-by-order','sort-by-order-alt', 'sort-by-attributes','sort-by-attributes-alt', 'unchecked', 'expand',
-        'collapse-down', 'collapse-up', 'log-in','flash', 'log-out', 'new-window', 'record', 'save', 'open'
+        'sort-by-order', 'sort-by-order-alt', 'sort-by-attributes', 'sort-by-attributes-alt', 'unchecked', 'expand',
+        'collapse-down', 'collapse-up', 'log-in', 'flash', 'log-out', 'new-window', 'record', 'save', 'open'
     ];
     $scope.font3 = ['saved', 'import', 'export', 'send', 'disk', 'saved', 'floppy-remove', 'floppy-save', 'floppy-open',
         'credit-card', 'transfer', 'cutlery', 'header', 'compressed', 'earphone', 'phone-alt', 'tower', 'stats',
@@ -79,4 +79,5 @@ routeApp.controller('RouteFontCtrl', function($scope) {
         $scope.changeshow = true;
         $scope.mast = angular.copy(content);
     }
+    
 });
