@@ -13,7 +13,7 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>超小屏幕 <small class="text-muted">手机 ( &lt;768px) </small></th>
+                                <th>超小屏幕 <small class="text-muted">手机 (&lt;768px) </small></th>
                                 <th>小屏幕 <small class="text-muted">平板 (≥768px)</small></th>
                                 <th>中等屏幕 <small class="text-muted">桌面显示器 (≥992px)</small></th>
                                 <th>大屏幕 <small class="text-muted">大桌面显示器 (≥1200px)</small></th>
@@ -22,70 +22,54 @@
                         <tbody>
                             <tr>
                                 <td><b>栅格系统行为</b></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>总是水平排列</td>
+                                <td colspan="3">开始是堆叠在一起的，当大于这些阈值时将变为水平排列C</td>
                             </tr>
                             <tr>
                                 <td><b><code>.container</code> 最大宽度 </b></td>
-                                <td>Mumbai</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>None （自动）</td>
+                                <td>750px</td>
+                                <td>970px</td>
+                                <td>1170px</td>
                             </tr>
                             <tr>
                                 <td><b>类前缀</b></td>
-                                <td>Mumbai</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><code>.col-xs-</code></td>
+                                <td><code>.col-sm-</code></td>
+                                <td><code>.col-md-</code></td>
+                                <td><code>.col-lg-</code></td>
                             </tr>
                             <tr>
                                 <td><b>列（column）数</b></td>
-                                <td>Mumbai</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td colspan="4">12</td>
                             </tr>
                             <tr>
                                 <td><b>最大列（column）宽</b></td>
-                                <td>Mumbai</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>自动</td>
+                                <td>~62px</td>
+                                <td>~81px</td>
+                                <td>~97px</td>
                             </tr>
                             <tr>
                                 <td><b>槽（gutter）宽</b></td>
-                                <td>Mumbai</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td colspan="4">30px （每列左右均有 15px）</td>
                             </tr>
                             <tr>
                                 <td><b>可嵌套</b></td>
-                                <td>Mumbai</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td colspan="4">是</td>
                             </tr>
                             <tr>
                                 <td><b>偏移（Offsets）</b></td>
-                                <td>Mumbai</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td colspan="4">是</td>
                             </tr>
                             <tr>
                                 <td><b>列排序</b></td>
-                                <td>Mumbai</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td colspan="4">是</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <div>从堆叠变水平：要用<code>.row</code>包裹</div>
             </div>
         </div>
     </div>
