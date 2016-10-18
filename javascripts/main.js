@@ -1,5 +1,3 @@
-import test from './app.js';
-var change = ((id)=>{
-   
-})
-document.write('songhuaqian');
+import Study from './test.js';
+let te = new Study("ss", 23);
+document.write(te.say());
