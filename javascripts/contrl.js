@@ -1,4 +1,23 @@
-routeApp.controller('RouteListCtl', function($scope) {
+myApp.controller('RouteCtl', function($scope, $rootScope, $location) {
+    $scope.$on('$stateChangeSuccess', function() {
+        //https://my.oschina.net/jack088/blog/479466
+        //刷新浏览器，菜单栏也能切换。不要用location.hash或者其他，它是获取当前url而不是改变了的url
+        // console.log($location.path());
+        if ($location.path()) {
+            var str = $location.path();
+            var loc = new Array();
+            loc = str.split('/');
+            var name = loc[loc.length - 1];
+            var flags = $('[ui-sref$=' + name + ']').find('a').hasClass('active');
+            if (!flags) {
+                $('[ui-sref$=' + name + ']').find('a').addClass('active');
+                $('[ui-sref$=' + name + ']').siblings('div').find('a').removeClass('active');
+            }
+        }
+
+    })
+});
+myApp.controller('RouteListCtl', function($scope) {
     $scope.listBtn = [{
         id: 'one',
         type: 'btn-default',
@@ -36,8 +55,7 @@ routeApp.controller('RouteListCtl', function($scope) {
         { id: 'five', type: '精简', name: 'table-condensed' }
     ]
 });
-routeApp.controller('RouteDropdownCtl', function($scope) {});
-routeApp.controller('RouteFontCtrl', function($scope) {
+myApp.controller('RouteFontCtrl', function($scope) {
     //字体
     $scope.listFont = ['asterisk', 'plus', 'euro', 'minus', 'cloud', 'envelope', 'pencil', 'glass', 'music',
         'search', 'heart', 'star', 'star-empty', 'user', 'film', 'th-large', 'th', 'th-list', 'ok', 'remove', 'zoom-in',
@@ -79,5 +97,5 @@ routeApp.controller('RouteFontCtrl', function($scope) {
         $scope.changeshow = true;
         $scope.mast = angular.copy(content);
     }
-    
+
 });

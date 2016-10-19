@@ -1268,3 +1268,15 @@ textarea.form-control {
         font-size: 18px;
     }
 }
+
+@media (max-width: 375px) {
+    .sidebar.sidebar-right {
+        padding-left: 0;
+        width:220px !important;
+        left: inherit;
+    }
+}
+
+pre code {
+    display: inline;
+}

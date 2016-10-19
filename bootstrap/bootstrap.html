@@ -1,0 +1,39 @@
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="margin-bottom:0;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand">个人bootstrap文档</span>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav" id="navTab">
+                <li class="active" ui-sref=".column"><a href="">column</a></li>
+                <li ui-sref=".button"><a href="">button</a></li>
+                <li ui-sref=".table"><a href="">table</a></li>
+                <li ui-sref=".dropdown"><a href="">dropdown</a></li>
+                <li ui-sref=".form"><a href="">form</a></li>
+                <li ui-sref=".font"><a href="">font</a></li>
+                <li ui-sref=".label"><a href="">label</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div ui-view></div>
+<!--菜单切换-->
+<script type="text/javascript">
+$('#navTab li').click(function(e) {
+    $(this).tab('show');
+});
+//刷新浏览器，菜单栏也能切换
+if (location.hash) {
+    var str = location.hash;
+    var loc = new Array();
+    loc = str.split('/');
+    var name = loc[loc.length - 1];
+    $('[ui-sref$=' + name + ']').tab('show');
+}
+</script>

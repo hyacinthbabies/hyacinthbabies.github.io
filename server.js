@@ -45,18 +45,18 @@ app.use(express.static('javascripts'));
 app.get('/', function(req, res) {
     res.sendfile('index.html', { root: path.join(__dirname)});
 });
-app.get('/study/study.html', function(req, res) {
-    res.sendfile('study/study.html');
-});
-app.get('/study/webpackstudy.html', function(req, res) {
-    res.sendfile('study/webpackstudy.html');
-});
-app.get('/header.html', function(req, res) {
-    res.sendfile('bootstrap/header.html');
-});
-app.get('/button.html',function(req,res){
-	res.sendfile('bootstrap/button.html');
-})
+// app.get('/study/study.html', function(req, res) {
+//     res.sendfile('study/study.html');
+// });
+// app.get('/study/webpackstudy.html', function(req, res) {
+//     res.sendfile('study/webpackstudy.html');
+// });
+// app.get('/header.html', function(req, res) {
+//     res.sendfile('bootstrap/header.html');
+// });
+// app.get('/button.html',function(req,res){
+// 	res.sendfile('bootstrap/button.html');
+// })
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

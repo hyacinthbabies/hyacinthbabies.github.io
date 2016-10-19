@@ -1,0 +1,33 @@
+<div class="container">
+    当webpack编译完成的时候会触发 done` 事件，事件的回调函数有一个参数 stats, stats可以访问到当前编译的 hash。根据这些我们可以在webpack的配置文件中的 plugins 配置项写入。另外我们需要修改html文件中的script标签内容，为了方便使用 cheerio
+</div>
+<div>
+    <ul>
+        <li><a href="https://segmentfault.com/a/1190000004457636">webpack支持es6参考文章</a></li>
+        <li>
+            <a href="https://zhuanlan.zhihu.com/p/20367175">webpack傻瓜式教程</a>
+            <div>实战说明：
+                <ol>
+                    <li>使用此插件“html-webpack-plugin”虽然可以直接生成带有编译后路径，但是在自动生成的index中写入其他东西麻烦。</li>
+                    <li>所以采取下载“cheerio”，在配置中plugin里面写入：
+                        <code>this.plugin('done', function(stats){
+                // 读取 首页 html
+                fs.readFile(INDEX_FILE, function(err, data){
+                    // 获得 html 文本
+                    var $ = cheerio.load(data.toString());
+                    // 替换 bundle.hash.js 文本
+                    $('script[src*=javascripts]').attr('src', 'javascripts/main.' + stats.hash + '.js');
+                    // 将新值，重写入首页
+                    fs.writeFile(INDEX_FILE, $.html(), function(err) {
+                        !err && console.log('Set has success: ' + stats.hash);
+                    })
+                })
+            })</code></li>
+                    <li>注意</li>
+                </ol>
+            </div>
+        </li>
+        <li>输入命令webpack是将编译后的文件输入到指定文件夹；命令npm start是会运行webpack配置文件，output的路径需要和上述plugin中替换路径一样</li>
+        <li>【后期会改进页面设计、描述，更细致】</li>
+    </ul>
+</div>

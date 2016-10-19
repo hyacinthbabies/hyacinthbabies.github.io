@@ -4,7 +4,7 @@
   "description": "我的个人网站-暂定为博客",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack-dev-server --hot --inline",
     "build": "webpack --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
