@@ -7,8 +7,8 @@ var cheerio = require('cheerio');
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
-var INDEX_FILE = './index.html';
-var MAIN_PATH = path.join(__dirname, 'main.js');
+var INDEX_FILE = './src/index.html';
+var MAIN_PATH = path.join(__dirname, './src/main.js');
 
 module.exports = {
     //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字

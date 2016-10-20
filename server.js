@@ -18,45 +18,17 @@ app.use(webpackMiddleware(compiler, {
     }
 }));
 app.use(webpackHotMiddleware(compiler));
-
-
-var mongoose = require('mongoose');
-var dbName = 'shqTest';
-var url = 'mongodb://localhost:27017/' + dbName;
-var mongoOptions = {
-    server: {
-        socketOptions: {
-            keepAlive: 1
-        }
-    }
-};
-
-mongoose.connect(url, mongoOptions);
-mongoose.connection.on('error', function(err) {
-    console.log('Mongo Error:' + err);
-}).on('open', function() {
-    console.log('Connection opened');
-});
+//运行时向数据库user插入一条数据（实验）
+var tes = require('./src/test.js');
+tes.insert();
 
 // rewrite to load static resources
-app.use(express.static('stylesheets'));
-app.use(express.static('javascripts'));
+app.use(express.static('src/'));
 // static views
-app.get('/', function(req, res) {
-    res.sendfile('index.html', { root: path.join(__dirname)});
+app.get('/*', function(req, res) {
+    res.sendfile('index.html', { root: path.join(__dirname,'src')});
 });
-// app.get('/study/study.html', function(req, res) {
-//     res.sendfile('study/study.html');
-// });
-// app.get('/study/webpackstudy.html', function(req, res) {
-//     res.sendfile('study/webpackstudy.html');
-// });
-// app.get('/header.html', function(req, res) {
-//     res.sendfile('bootstrap/header.html');
-// });
-// app.get('/button.html',function(req,res){
-// 	res.sendfile('bootstrap/button.html');
-// })
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
