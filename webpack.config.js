@@ -8,7 +8,7 @@ var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 var INDEX_FILE = './index.html';
-var MAIN_PATH = path.join(__dirname, 'javascripts/main.js');
+var MAIN_PATH = path.join(__dirname, 'main.js');
 
 module.exports = {
     //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
@@ -16,7 +16,7 @@ module.exports = {
     //输出的文件名 合并以后的js会命名为bundle.js
     output: {
         path: BUILD_PATH,
-        filename: 'javascripts/[name].[hash].js'
+        filename: '[name].[hash].js'
     },
     //新建一个开发服务器，可以serve我们pack以后的代码，并且当代码更新的时候自动刷新浏览器。
     devServer: {
@@ -75,7 +75,7 @@ module.exports = {
                     // 获得 html 文本
                     var $ = cheerio.load(data.toString());
                     // 替换 bundle.hash.js 文本
-                    $('script[src*=javascripts]').attr('src', 'javascripts/main.' + stats.hash + '.js');
+                    $('script[src*=main]').attr('src', 'main.' + stats.hash + '.js');
                     // 将新值，重写入首页
                     fs.writeFile(INDEX_FILE, $.html(), function(err) {
                         !err && console.log('Set has success: ' + stats.hash);

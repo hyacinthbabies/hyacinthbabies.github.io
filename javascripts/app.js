@@ -40,7 +40,8 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state("bootstrap", {
             url: "/bootstrap",
             templateUrl: "bootstrap/bootstrap.html",
-            controller:'RouteListCtl'
+            controller:'RouteListCtl',
+            css:'bootstrap/bootstrap.css'
         })
         .state("mongodb", {
             url: "/mongodb",

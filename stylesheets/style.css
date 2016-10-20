@@ -1268,7 +1268,7 @@ textarea.form-control {
         font-size: 18px;
     }
 }
-
+/*shq*/
 @media (max-width: 375px) {
     .sidebar.sidebar-right {
         padding-left: 0;
@@ -1279,4 +1279,28 @@ textarea.form-control {
 
 pre code {
     display: inline;
+}
+/*参考http://www.webhek.com/scrollbar实例*/
+/*参考http://www.lyblog.net/detail/314.html说明*/
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 4px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(104,176,221,0.4); 
 }

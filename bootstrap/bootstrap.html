@@ -36,4 +36,27 @@ if (location.hash) {
     var name = loc[loc.length - 1];
     $('[ui-sref$=' + name + ']').tab('show');
 }
+//导航栏固定
+//参考http://www.cnblogs.com/zhouyangla/p/5829869.html
+$(function() {
+    var navHg = $(".navbar").offset().top; //得到导航对象
+    $(window).scroll(function() {
+        var scroH = $(this).scrollTop();
+        //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
+        if (scroH >= navHg) {
+            $(".navbar").css({
+                "position": "fixed",
+                "z-index": '1',
+                "width": "100%",
+                "top": "0"
+            });
+            // $(".navbar").addClass('fixednav');
+        } else if (scroH < navHg) {
+            $(".navbar").css({
+                "position": "relative"
+            });
+            // $(".navbar").removeClass('fixednav');
+        }
+    })
+})
 </script>

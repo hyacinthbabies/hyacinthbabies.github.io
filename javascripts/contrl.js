@@ -83,7 +83,7 @@ myApp.controller('RouteFontCtrl', function($scope) {
         'sd-video', 'hd-video', 'subtitles', 'sound-stereo', 'sound-dolby', 'sound-5-1', 'sound-6-1', 'sound-7-1',
         'copyright-mark', 'registration-mark', 'cloud-download', 'cloud-upload', 'tree-conifer', 'tree-deciduous'
     ];
-    $scope.sizeChange = { fontSize: '20px', marginBottom: '12px' };
+    $scope.sizeChange = { fontSize: '20px', marginBottom: '16px' };
     $scope.changeshow = false;
     $scope.change = function(content) {
         // var code = document.getElementsByName("code");
