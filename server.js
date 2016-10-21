@@ -23,10 +23,10 @@ var tes = require('./src/test.js');
 tes.insert();
 
 // rewrite to load static resources
-app.use(express.static('src/'));
+app.use(express.static(path.join(__dirname)));
 // static views
 app.get('/*', function(req, res) {
-    res.sendfile('index.html', { root: path.join(__dirname,'src')});
+    res.sendfile('index.html', { root: path.join(__dirname)});
 });
 
 app.use(bodyParser.json());

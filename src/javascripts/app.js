@@ -39,52 +39,52 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state("bootstrap", {
             url: "/bootstrap",
-            templateUrl: "bootstrap/bootstrap.html",
+            templateUrl: "/src/bootstrap/bootstrap.html",
             controller:'RouteListCtl',
-            css:'bootstrap/bootstrap.css'
+            css:'/src/bootstrap/bootstrap.css'
         })
         .state("mongodb", {
             url: "/mongodb",
-            templateUrl: "study/mongodb.html"
+            templateUrl: "/src/study/mongodb.html"
         })
         .state("webpack", {
             url: "/webpack",
-            templateUrl: "study/webpack.html"
+            templateUrl: "/src/study/webpack.html"
         })
         .state("angular", {
             url: "/angular",
-            templateUrl: "study/angular.html"
+            templateUrl: "/src/study/angular.html"
         })
         .state("bootstrap.button", {
             url: "/button",
-            templateUrl: "bootstrap/button.html"
+            templateUrl: "/src/bootstrap/button.html"
         })
         .state("bootstrap.column", {
             url: "/column",
-            templateUrl: "bootstrap/column.html",
-            css:'bootstrap/column.css'
+            templateUrl: "/src/bootstrap/column.html",
+            css:'/src/bootstrap/column.css'
         })
         .state("bootstrap.table", {
             url: "/table",
-            templateUrl: "bootstrap/table.html"
+            templateUrl: "/src/bootstrap/table.html"
         })
         .state("bootstrap.dropdown", {
             url: "/dropdown",
-            templateUrl: "bootstrap/dropdown.html",
+            templateUrl: "/src/bootstrap/dropdown.html",
             controller:'RouteDropdownCtl'
         })
         .state("bootstrap.form", {
             url: "/form",
-            templateUrl: "bootstrap/form.html"
+            templateUrl: "/src/bootstrap/form.html"
         })
         .state("bootstrap.font", {
             url: "/font",
-            templateUrl: "bootstrap/font.html",
+            templateUrl: "/src/bootstrap/font.html",
             controller:'RouteFontCtrl'
         })
         .state("bootstrap.label", {
             url: "/label",
-            templateUrl: "bootstrap/label.html"
+            templateUrl: "/src/bootstrap/label.html"
         })
 });
 

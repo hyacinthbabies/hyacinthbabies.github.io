@@ -7,7 +7,7 @@ var cheerio = require('cheerio');
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
-var INDEX_FILE = './src/index.html';
+var INDEX_FILE = './index.html';
 var MAIN_PATH = path.join(__dirname, './src/main.js');
 
 module.exports = {
@@ -75,7 +75,7 @@ module.exports = {
                     // 获得 html 文本
                     var $ = cheerio.load(data.toString());
                     // 替换 bundle.hash.js 文本
-                    $('script[src*=main]').attr('src', 'main.' + stats.hash + '.js');
+                    $('script[src*=main]').attr('src', 'build/main.' + stats.hash + '.js');
                     // 将新值，重写入首页
                     fs.writeFile(INDEX_FILE, $.html(), function(err) {
                         !err && console.log('Set has success: ' + stats.hash);

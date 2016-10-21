@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _test = __webpack_require__(1);
 
@@ -52,20 +52,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// class mainTest {
-	// change = ((id) => {
-
-	// })
-	// document.write('songhuaqian');
-	function change() {
-	    document.getElementById('song').innerHTML = "name";
-	}
-
-	// var name = 'sdss';
-
-
-	// }
-	// export module new mainTest()
+	var te = new _test2.default("ss", 1);
+	document.write(te.say());
 
 /***/ },
 /* 1 */
@@ -74,28 +62,32 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var ts = exports.ts = function () {
-		function ts() {
-			_classCallCheck(this, ts);
-		}
+	var Study = function () {
+	    function Study(name, age) {
+	        _classCallCheck(this, Study);
 
-		_createClass(ts, [{
-			key: "study",
-			value: function study() {
-				var content = "d";
-				document.write(content);
-			}
-		}]);
+	        this.name = name;
+	        this.age = age;
+	    }
 
-		return ts;
+	    _createClass(Study, [{
+	        key: "say",
+	        value: function say() {
+	            return "我是" + this.name + ",这是es6的实验" + this.age + "，以及webpack的自动刷新";
+	        }
+	    }]);
+
+	    return Study;
 	}();
+
+	exports.default = Study;
 
 /***/ }
 /******/ ]);
