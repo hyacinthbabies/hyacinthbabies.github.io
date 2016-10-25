@@ -32,6 +32,7 @@
 // 	});
 // }]);
 var myApp = angular.module("routeApp", ['ui.router','angularCSS']);
+Mock.mockjax(myApp);
 myApp.config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when("", "/bootstrap/column");
@@ -45,7 +46,8 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         })
         .state("mongodb", {
             url: "/mongodb",
-            templateUrl: "/src/study/mongodb.html"
+            templateUrl: "/src/study/mongodb.html",
+            css:'/src/study/mongodb.css'
         })
         .state("webpack", {
             url: "/webpack",
@@ -53,7 +55,8 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         })
         .state("angular", {
             url: "/angular",
-            templateUrl: "/src/study/angular.html"
+            templateUrl: "/src/study/angular.html",
+            css:'/src/study/angular.css'
         })
         .state("bootstrap.button", {
             url: "/button",
@@ -87,7 +90,3 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "/src/bootstrap/label.html"
         })
 });
-
-myApp.run(['$rootScope',  function($rootScope, $state){
-//监听路由事件
-}]);

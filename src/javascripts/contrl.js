@@ -1,4 +1,4 @@
-myApp.controller('RouteCtl', function($scope, $rootScope, $location) {
+myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
     $scope.$on('$stateChangeSuccess', function() {
         //https://my.oschina.net/jack088/blog/479466
         //刷新浏览器，菜单栏也能切换。不要用location.hash或者其他，它是获取当前url而不是改变了的url
@@ -15,7 +15,7 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location) {
             }
         }
 
-    })
+    });
 });
 myApp.controller('RouteListCtl', function($scope) {
     $scope.listBtn = [{

@@ -1,0 +1,31 @@
+ol li {
+    font-family: 'myNewFont';
+    font-size: 20px;
+}
+.container-mongo{
+    background-color: #f6f4ec;
+    white-space: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+    width:50%;
+    padding:20px;
+    box-shadow: 6px 6px 8px #7B7979;
+}
+
+
+/*.glyphicon-star:before {
+    color: red;
+    text-shadow: 2px 1px 1px #000;
+}
+
+.glyphicon {
+    transform: rotate(-9deg);
+    -ms-transform: rotate(-9deg);
+     Internet Explorer 
+    -moz-transform: rotate(-9deg);
+    /* Firefox 
+    -webkit-transform: rotate(-9deg);
+    /* Safari 和 Chrome */
+    /*-o-transform: rotate(-9deg);*/
+    /* Opera */
+/*}*/
