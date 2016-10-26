@@ -121,3 +121,14 @@ myApp.directive('srow', function() {
         }
     }
 });
+// myApp.directive('brush', function() {
+//     return {
+//         restrict: 'E',
+//         replace: true,
+//         scope: {},
+//         template: '<div style="display:inline-block;width:50%;background:#fff;padding:10px;">'+'<pre id="preId" class="brush: javascript;"> ' + '</pre>'+'</div>',
+//         link: function(scope, element, attrs) {
+//              document.getElementById('preId').innerHTML = element.context.innerHTML;
+//         }
+//     }
+// })

@@ -1,0 +1,53 @@
+<p>
+    1.angular中$scope：最好不要把所有变量都绑在$scope上，属于同一块的，最好用一个对象，属性都写在对象中。</p>
+<pre class="brush: javascript;">
+    $scope.obj={
+        'code':'',//编号
+        'name':'',//姓名
+    }
+    //调用
+    $scope.obj.code = '123';
+    $scope.obj.name = 'shq';
+</pre>
+</div>
+<!-- <pre name="code" class="brush: xml xhtml xslt html;">
+    <div class="cku">
+        <ul>
+            <li>sss</li>
+            <li>sss</li>
+        </ul>
+    </div>
+</pre> -->
+<!-- <pre class="brush:xml xhtml xslt html;"><div>xx</div></pre> -->
+<p>2.angular自身的路由已经提取出来，需要另外下载angular-route</p>
+<pre class="brush: javascript">
+   var routeApp = angular.module('routeApp',['ngRoute']);
+   routeApp.config(['$routeProvider',function($routeProvider){
+$routeProvider
+.when('/column',{
+    templateUrl:'column.html',
+    css:'column.css'
+})
+.when('/table',{
+    templateUrl:'table.html',
+    controller:'RouteListCtl'
+})
+.otherwise({
+     redirectTo:'/'
+ });
+}]);
+</pre>
+<p>2.为了更好使用单页面路由，使用angular-ui-router</p>
+<pre name="codes" class="brush: javascript">
+  var myApp = angular.module("routeApp", ['ui.router']);
+myApp.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.when("", "/bootstrap/column");
+    $stateProvider
+        .state("bootstrap", {
+            url: "/bootstrap",
+            templateUrl: "/src/bootstrap/bootstrap.html",
+            controller:'RouteListCtl',
+            css:'/src/bootstrap/bootstrap.css'
+        })
+});
+</pre>

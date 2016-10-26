@@ -14,7 +14,20 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
                 $('[ui-sref$=' + name + ']').siblings('div').find('a').removeClass('active');
             }
         }
-
+        SyntaxHighlighter.defaults['gutter'] = 'false';
+        SyntaxHighlighter.defaults['toolbar'] = 'false';
+        SyntaxHighlighter.highlight('codes');
+    });
+    //监听angularjs 渲染完成后
+    $scope.$on('$viewContentLoaded', function(ngRepeatFinishedEvent) {
+        //下面是在table render完成后执行的js
+        // console.log($("#uiContent").html());
+        //代码参考http://www.cnblogs.com/rubylouvre/archive/2010/02/20/1669541.html实例
+        //参考http://www.cnblogs.com/heyuquan/archive/2012/09/28/2707632.html参数设置
+        //SyntaxHighlighter此插件必须在渲染成功后执行，插件执行前还未渲染完就无法起作用了。
+        SyntaxHighlighter.defaults['gutter'] = 'false';
+        SyntaxHighlighter.defaults['toolbar'] = 'false';
+        SyntaxHighlighter.highlight('codes');
     });
 });
 myApp.controller('RouteListCtl', function($scope) {

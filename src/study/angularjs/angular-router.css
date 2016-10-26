@@ -1,0 +1,8 @@
+.syntaxhighlighter.nogutter{
+    overflow: visible !important;
+    padding:20px;
+    width:60% !important;
+    white-space: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+}

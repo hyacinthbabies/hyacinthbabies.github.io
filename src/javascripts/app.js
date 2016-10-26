@@ -46,17 +46,26 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         })
         .state("mongodb", {
             url: "/mongodb",
-            templateUrl: "/src/study/mongodb.html",
-            css:'/src/study/mongodb.css'
+            templateUrl: "/src/study/mongodb/mongodb.html",
+            css:'/src/study/mongodb/mongodb.css'
         })
         .state("webpack", {
             url: "/webpack",
-            templateUrl: "/src/study/webpack.html"
+            templateUrl: "/src/study/webpack/webpack.html"
         })
         .state("angular", {
             url: "/angular",
-            templateUrl: "/src/study/angular.html",
-            css:'/src/study/angular.css'
+            templateUrl: "/src/study/angularjs/angular.html",
+            css:'/src/study/angularjs/angular.css'
+        })
+        .state("angular.config", {
+            url: "/config",
+            templateUrl: "/src/study/angularjs/angular-config.html"
+        })
+        .state("angular.router", {
+            url: "/router",
+            templateUrl: "/src/study/angularjs/angular-router.html",
+            css:'/src/study/angularjs/angular-router.css'
         })
         .state("bootstrap.button", {
             url: "/button",
