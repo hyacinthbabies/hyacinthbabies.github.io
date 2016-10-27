@@ -1,0 +1,8 @@
+/*input.ng-invalid{
+	border:1px solid red;
+}
+*/
+.login-form .form-group{
+     margin-bottom: 0;
+     height:80px;
+}

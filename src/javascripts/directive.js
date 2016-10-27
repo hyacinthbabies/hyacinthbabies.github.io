@@ -132,3 +132,99 @@ myApp.directive('srow', function() {
 //         }
 //     }
 // })
+//验证用户名是否存在
+myApp.directive('ensureUnique', function($http) {
+    return {
+        require: 'ngModel',
+        link: function(scope, ele, attrs, c) {
+            scope.$watch(attrs.ngModel, function(n) {
+                if (!n) return;
+                $http({
+                    method: 'POST',
+                    url: 'http://g.cn',
+                    data: {
+                        field: attrs.ensureUnique,
+                        value: scope.ngModel
+                    }
+                }).success(function(data) {
+                    if (data.username == n) {
+                        c.$setValidity('unique', data.isUnique);
+                        console.log('存在此用户名');
+                    }
+
+                }).error(function(data) {
+                    c.$setValidity('unique', false);
+                })
+            })
+        }
+    }
+});
+//失焦后显示验证信息
+myApp.directive('ngFocus', [function() {
+    var FOCUS_CLASS = 'ng-focused';
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ctrl) {
+            ctrl.$focused = false;
+            element.bind('focus', function(evt) {
+                element.addClass(FOCUS_CLASS);
+                scope.$apply(function() {
+                    ctrl.$focused = true;
+                });
+            }).bind('blur', function(evt) {
+                element.removeClass(FOCUS_CLASS);
+                scope.$apply(function() {
+                    ctrl.$focused = false;
+                });
+
+            });
+        }
+    };
+
+}]);
+myApp.directive('errorMessage', ['$compile', function($compile) {
+    return {
+        restrict: 'A',
+        scope: {
+            title: '@'
+        },
+        require: 'ngModel',
+        link: function(scope, element, attr, ngModel) {
+            var parenNode = element.parent();
+            parenNode.addClass("has-feedback");
+
+
+            var subScope = scope.$new(true);
+            subScope.errorsText = {
+                required: "此项为必填",
+                minlength:'最小长度为'+attr.minlength,
+                maxlength:'最大长度为'+attr.maxlength,
+            }
+
+            subScope.hasError = function() {
+                var re = (ngModel.$$parentForm.$submitted || ngModel.$dirty) && ngModel.$invalid;
+                if (re) {
+                    parenNode.addClass("has-error");
+                } else {
+                    parenNode.removeClass("has-error");
+                }
+                return re;
+            }
+
+            subScope.errors = function() {
+                return ngModel.$error;
+            }
+
+
+            var errorElement = $compile(`
+                <span   ng-if="hasError()"  class="glyphicon glyphicon-warning-sign form-control-feedback" ></span>
+                <ul class="help-block" ng-if="hasError()">
+                    <li ng-repeat="(error,wrong) in errors()" ng-bind="errorsText[error]">
+                </ul>
+                `)(subScope);
+
+            element.after(errorElement)
+        }
+    };
+}]);

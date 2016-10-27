@@ -31,7 +31,7 @@
 // 		redirectTo:'/'
 // 	});
 // }]);
-var myApp = angular.module("routeApp", ['ui.router','angularCSS']);
+var myApp = angular.module("routeApp", ['ui.router','angularCSS','ngCookies']);
 Mock.mockjax(myApp);
 myApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -97,5 +97,11 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state("bootstrap.label", {
             url: "/label",
             templateUrl: "/src/bootstrap/label.html"
+        })
+        .state("backend", {
+            url: "/backend",
+            templateUrl: "/src/adminsys/login.html",
+            css:'/src/adminsys/login.css',
+            controller:'loginControl'
         })
 });

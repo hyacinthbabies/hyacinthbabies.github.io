@@ -1,8 +1,21 @@
-.syntaxhighlighter.nogutter{
+.syntaxhighlighter {
     overflow: visible !important;
-    padding:20px;
-    width:60% !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.syntaxhighlighter {
+    width: 60% !important;
     white-space: normal;
     word-break: break-all;
     word-wrap: break-word;
+}
+
+.syntaxhighlighter table td.code .line {
+    line-height: 20px !important;
+}
+
+div.syntaxhighlighter .gutter .line {
+    border-right: 0 !important;
+    line-height: 20px !important;
 }

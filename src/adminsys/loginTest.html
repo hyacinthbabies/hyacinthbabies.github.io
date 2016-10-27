@@ -1,0 +1,47 @@
+<div class="contanier col-lg-5">
+    <form name="login_form" class="form-horizontal" role="form" style="position:relative;margin:0 auto;left:50%;" novalidate>
+        <div class="form-group">
+            <h3 style="text-align: center;">登录界面</h3>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-1 col-lg-2 control-label">登录：</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-class="{error:login_form.username.$dirty && login_form.username.$invalid}" placeholder="请输入名字" required ng-minlength="12" ng-maxlength="16" name="username" ng-model="login.username"  ensure-unique ng-focus>  
+                <div class="error" ng-show="login_form.username.$dirty && login_form.username.$invalid">
+                    <small class="error" ng-show="login_form.username.$error.required && login_form.username.$invalid && !login_form.$focused">
+                        姓名不能为空
+                    </small>
+                    <small class="error" ng-show="login_form.username.$error.minlength && login_form.username.$invalid && !login_form.$focused">
+                        姓名长度不能少于12
+                    </small>
+                    <small class="error" ng-show="login_form.username.$error.maxlength && login_form.username.$invalid && !login_form.$focused">
+                        姓名长度不能大于16
+                    </small>
+                    <small class="error" ng-show="login_form.username.$error.unique && login_form.username.$invalid && !login_form.$focused">
+                        用户名已存在
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-1 col-lg-2 control-label">密码：</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" idplaceholder="请输入密码" required ng-minlength="8" ng-maxlength="16" name='password' ng-model="login.password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-lg-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">请记住我
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-lg-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default col-lg-12" ng-disabled="login_form.$invalid">登录</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,37 @@
+<div class="login-form contanier col-lg-5" ng-hide="hasLogined">
+    <ng-form name="form" class="form-horizontal" role="form" style="position:relative;margin:0 auto;left:50%;" novalidate>
+        <div class="form-group">
+            <h3 style="text-align: center;">登录界面</h3>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-1 col-lg-2 control-label">登录：</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="请输入名字" minlength="12" maxlength="16" required name="username" ng-model="user.username" error-message>  
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-1 col-lg-2 control-label">密码：</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" minlength="8" maxlength="16" placeholder="请输入密码" required name='password' ng-model="user.password" error-message>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-lg-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">请记住我
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-lg-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default col-lg-12" ng-click="submit()" ng-disabled="form.$invalid">登录</button>
+            </div>
+        </div>
+    </ng-form>
+</div>
+<div ng-show="hasLogined">
+    欢迎{{user.username}}
+    <input type="button" name="button" value="退出登录" ng-click="logout()">
+</div>

@@ -1,4 +1,5 @@
 myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
+    //监听路由变换
     $scope.$on('$stateChangeSuccess', function() {
         //https://my.oschina.net/jack088/blog/479466
         //刷新浏览器，菜单栏也能切换。不要用location.hash或者其他，它是获取当前url而不是改变了的url
@@ -14,20 +15,17 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
                 $('[ui-sref$=' + name + ']').siblings('div').find('a').removeClass('active');
             }
         }
-        SyntaxHighlighter.defaults['gutter'] = 'false';
+    });
+    //监听angularjs 渲染完成后
+    $scope.$on('$viewContentLoaded', function() {
+        //SyntaxHighlighter此插件必须在渲染成功后执行，插件执行前还未渲染完就无法起作用了。
+        // SyntaxHighlighter.defaults['gutter'] = 'false';
         SyntaxHighlighter.defaults['toolbar'] = 'false';
         SyntaxHighlighter.highlight('codes');
     });
-    //监听angularjs 渲染完成后
-    $scope.$on('$viewContentLoaded', function(ngRepeatFinishedEvent) {
-        //下面是在table render完成后执行的js
-        // console.log($("#uiContent").html());
-        //代码参考http://www.cnblogs.com/rubylouvre/archive/2010/02/20/1669541.html实例
-        //参考http://www.cnblogs.com/heyuquan/archive/2012/09/28/2707632.html参数设置
-        //SyntaxHighlighter此插件必须在渲染成功后执行，插件执行前还未渲染完就无法起作用了。
-        SyntaxHighlighter.defaults['gutter'] = 'false';
-        SyntaxHighlighter.defaults['toolbar'] = 'false';
-        SyntaxHighlighter.highlight('codes');
+    //给Model添加拦截过滤器,路由增加限制，实现用户登录状态判断
+    $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+
     });
 });
 myApp.controller('RouteListCtl', function($scope) {
@@ -68,6 +66,7 @@ myApp.controller('RouteListCtl', function($scope) {
         { id: 'five', type: '精简', name: 'table-condensed' }
     ]
 });
+//----------------------------bootstrap字体---------------------------------------
 myApp.controller('RouteFontCtrl', function($scope) {
     //字体
     $scope.listFont = ['asterisk', 'plus', 'euro', 'minus', 'cloud', 'envelope', 'pencil', 'glass', 'music',
@@ -111,4 +110,55 @@ myApp.controller('RouteFontCtrl', function($scope) {
         $scope.mast = angular.copy(content);
     }
 
+});
+//------------------------------登录界面------------------------------------------
+myApp.controller('loginControl', function($rootScope, $scope, $state, $http,$cookieStore) {
+    $scope.user = {
+        'username': '',
+        'password': ''
+    };
+    if ($cookieStore.get("person")) {
+        var person = $cookieStore.get("person");
+        $scope.hasLogined = true;
+        // $scope.user.username = $rootScope.username;
+        $scope.user.username = person.name;
+        $scope.user.password = person.pass;
+    }else{
+        $scope.hasLogined = false;
+    }
+    $scope.submit = function() {
+        // if(!$scope.form.$invalid){
+        //     alert("验证通过")
+        // }else{
+        //     $scope.form.$setSubmitted(true);
+        // }
+        $http({
+            method: 'POST',
+            url: 'http://g.cn',
+            data: {
+                username: $scope.user.username,
+                password: $scope.user.password
+            }
+        }).success(function(data) {
+            if (data.username == $scope.user.username && data.password == $scope.user.password) {
+                // $rootScope.username = $scope.user.username;
+                $cookieStore.put("person",{name:$scope.user.username,pass:$scope.user.password});
+                $state.go('angular');
+            } else {
+                console.log('用户名或者密码不对');
+            }
+
+        }).error(function(data) {
+            console.log('登录失败');
+        })
+    };
+    $scope.logout = function() {
+        // $rootScope.username = '';
+        $scope.hasLogined = false;
+        $scope.user = {
+            'username': $scope.user.username,
+            'password': $scope.user.password
+        };
+        $cookieStore.put("person",'');
+    }
 });
