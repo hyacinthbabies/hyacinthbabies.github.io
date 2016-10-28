@@ -1,12 +1,12 @@
-<div class="login-form contanier col-lg-5" ng-hide="hasLogined">
-    <ng-form name="form" class="form-horizontal" role="form" style="position:relative;margin:0 auto;left:50%;" novalidate>
+<div class="login-form contanier col-lg-5">
+    <ng-form ng-hide="hasLogined" name="form" class="form-horizontal" role="form" style="position:relative;margin:0 auto;left:50%;" novalidate>
         <div class="form-group">
             <h3 style="text-align: center;">登录界面</h3>
         </div>
         <div class="form-group">
             <label for="firstname" class="col-sm-1 col-lg-2 control-label">登录：</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="请输入名字" minlength="12" maxlength="16" required name="username" ng-model="user.username" error-message>  
+                <input type="text" class="form-control" placeholder="请输入名字" minlength="12" maxlength="16" required name="username" ng-model="user.username" error-message>
             </div>
         </div>
         <div class="form-group">
@@ -19,7 +19,7 @@
             <div class="col-sm-offset-1 col-lg-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox">请记住我
+                        <input type="checkbox" ng-model="isSelected">请记住我
                     </label>
                 </div>
             </div>
@@ -30,8 +30,9 @@
             </div>
         </div>
     </ng-form>
-</div>
-<div ng-show="hasLogined">
-    欢迎{{user.username}}
-    <input type="button" name="button" value="退出登录" ng-click="logout()">
+    <div ng-show="hasLogined" style="position:relative;margin:0 auto;left:50%;">
+        欢迎{{user.username}}
+        <input type="button" name="button" value="退出登录" ng-click="logout()">
+        <div><img src="src/images/snow.jpg" /></div>
+    </div>
 </div>

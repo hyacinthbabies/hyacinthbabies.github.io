@@ -112,18 +112,22 @@ myApp.controller('RouteFontCtrl', function($scope) {
 
 });
 //------------------------------登录界面------------------------------------------
-myApp.controller('loginControl', function($rootScope, $scope, $state, $http,$cookieStore) {
+myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $cookieStore) {
+    //用户
     $scope.user = {
         'username': '',
         'password': ''
     };
+    //是否选中记住账户
+    $scope.isSelected = false;
     if ($cookieStore.get("person")) {
         var person = $cookieStore.get("person");
         $scope.hasLogined = true;
-        // $scope.user.username = $rootScope.username;
         $scope.user.username = person.name;
         $scope.user.password = person.pass;
-    }else{
+    } else if ($rootScope.username) {
+        $scope.hasLogined = true;
+    } else {
         $scope.hasLogined = false;
     }
     $scope.submit = function() {
@@ -141,9 +145,12 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http,$coo
             }
         }).success(function(data) {
             if (data.username == $scope.user.username && data.password == $scope.user.password) {
-                // $rootScope.username = $scope.user.username;
-                $cookieStore.put("person",{name:$scope.user.username,pass:$scope.user.password});
-                $state.go('angular');
+                $rootScope.username = $scope.user.username;
+                $scope.hasLogined = true;
+                if ($scope.isSelected) {
+                    $cookieStore.put("person", { name: $scope.user.username, pass: $scope.user.password });
+                }
+                $state.go('angular.config');
             } else {
                 console.log('用户名或者密码不对');
             }
@@ -153,12 +160,11 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http,$coo
         })
     };
     $scope.logout = function() {
-        // $rootScope.username = '';
         $scope.hasLogined = false;
         $scope.user = {
             'username': $scope.user.username,
             'password': $scope.user.password
         };
-        $cookieStore.put("person",'');
+        $cookieStore.put("person", '');
     }
 });
