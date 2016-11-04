@@ -19,9 +19,10 @@ app.use(webpackMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 //运行时向数据库user插入一条数据（实验）
-var tes = require('./src/test.js');
-tes.insert();
-
+// var tes = require('./src/test.js');
+// tes.list();
+var user = require('./src/test.js');
+app.use('/api/users',user.list);
 // rewrite to load static resources
 app.use(express.static(path.join(__dirname)));
 // static views

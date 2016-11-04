@@ -124,8 +124,8 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
         var person = $cookieStore.get("person");
         $scope.hasLogined = true;
         $scope.user.username = person.name;
-        $scope.user.password = person.pass;
     } else if ($rootScope.username) {
+        $scope.user.username = $rootScope.username;
         $scope.hasLogined = true;
     } else {
         $scope.hasLogined = false;
@@ -138,13 +138,14 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
         // }
         $http({
             method: 'POST',
-            url: 'http://g.cn',
-            data: {
-                username: $scope.user.username,
-                password: $scope.user.password
-            }
+            url: 'http://localhost:8080/api/users',
+            // data: {
+            //     username: $scope.user.username,
+            //     password: $scope.user.password
+            // }
         }).success(function(data) {
-            if (data.username == $scope.user.username && data.password == $scope.user.password) {
+            debugger;
+            if (data.username == $scope.user.username && data.userpwd == $scope.user.password) {
                 $rootScope.username = $scope.user.username;
                 $scope.hasLogined = true;
                 if ($scope.isSelected) {

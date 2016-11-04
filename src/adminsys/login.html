@@ -1,5 +1,5 @@
 <div class="login-form contanier col-lg-5">
-    <ng-form ng-hide="hasLogined" name="form" class="form-horizontal" role="form" style="position:relative;margin:0 auto;left:50%;" novalidate>
+    <ng-form ng-if="!hasLogined" name="form" class="form-horizontal" role="form" style="position:relative;margin:0 auto;left:50%;" novalidate>
         <div class="form-group">
             <h3 style="text-align: center;">登录界面</h3>
         </div>
@@ -30,7 +30,7 @@
             </div>
         </div>
     </ng-form>
-    <div ng-show="hasLogined" style="position:relative;margin:0 auto;left:50%;">
+    <div ng-if="hasLogined" style="position:relative;margin:0 auto;left:50%;">
         欢迎{{user.username}}
         <input type="button" name="button" value="退出登录" ng-click="logout()">
         <div><img src="src/images/snow.jpg" /></div>

@@ -32,7 +32,7 @@
 // 	});
 // }]);
 var myApp = angular.module("routeApp", ['ui.router','angularCSS','ngCookies']);
-Mock.mockjax(myApp);
+// Mock.mockjax(myApp);
 myApp.config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.when("", "/bootstrap/column");

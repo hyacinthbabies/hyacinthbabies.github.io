@@ -233,14 +233,17 @@ myApp.directive('hui', function() {
         restrict: 'E',
         replace: true,
         scope: {},
-        template: '<canvas id="hui" style="position:absolute;" width="500" height="500">' + 'Your browser does not support the canvas element .' + '</canvas>',
+        template: '<canvas id="hui" style="position:absolute;" width="200" height="300">' + 'Your browser does not support the canvas element .' + '</canvas>',
         link: function(scope, element, attrs) {
             scope.funLoad = function() {
                 var cxt = document.getElementById('hui').getContext('2d');
+                //缩小50%
+                cxt.scale(0.5,0.5);
                 cxt.beginPath();
                 cxt.lineWidth = 2;
                 cxt.strokeStyle = 'green';
                 cxt.moveTo(33, 43);
+                //贝塞尔2次曲线
                 cxt.quadraticCurveTo(55, 40, 124, 73);
                 cxt.moveTo(33, 43);
                 cxt.lineTo(68, 140);
@@ -250,6 +253,7 @@ myApp.directive('hui', function() {
                 cxt.lineTo(73, 136);
                 cxt.lineTo(74, 139);
                 cxt.quadraticCurveTo(36, 164, 24, 213);
+                //贝塞尔三次曲线
                 cxt.bezierCurveTo(52, 215, 49, 223, 41, 233);
                 cxt.quadraticCurveTo(61, 235, 76, 243);
                 cxt.bezierCurveTo(88, 350, 290, 350, 309, 252);
