@@ -1,3 +1,40 @@
-<div class="contanier col-lg-5">
-     下载angularjs
-</div>
+<div class="article-body contanier">
+    <strong>1.下载angularjs</strong>
+    <ol>
+        <li>CDN资源http://www.bootcdn.cn/angular.js/1.5.8/</li>
+        <li>直接下载https://github.com/angular/angular.js/releases</li>
+        <li>如果有nodejs的环境，直接用npm install angularjs</li>
+    </ol>
+    <strong>2.使用angularjs</strong>
+    <p>-----------------ng-app</p>
+    <p>-----------------angular框架起效的范围</p>
+    <pre class="brush: xml, html, xhtml, xslt;">
+	    &lt;!DOCTYPE html&gt;
+		&lt;html lang="en"&gt;
+		&lt;head&gt;
+		    <meta charset="utf-8">
+			<script src="angularjs的资源位置"></script>
+		&lt;/head&gt;
+		&lt;body ng-app="routeApp"&gt;
+			<div>因为routeApp，angular可以在整个body起效</div>
+		&lt;/body&gt;
+		&lt;/html&gt;
+    </pre>
+    <p>-----------------ng-controller</p>
+    <p>-----------------js控制的范围</p>
+    <pre class="brush: xml, html, xhtml, xslt;">
+    &lt;!DOCTYPE html&gt;
+		&lt;html lang="en"&gt;
+		&lt;head&gt;
+		    <meta charset="utf-8">
+			<script src="angularjs的资源位置"></script>
+		&lt;/head&gt;
+		&lt;body ng-app="routeApp"&gt;
+		    <div class="container" ng-controller="RouteFontCtrl">
+		        RouteFontCtrl只控制我这个div
+		    </div>
+			<div>不控制我这个div</div>
+		&lt;/body&gt;
+		&lt;/html&gt;
+    </pre>
+    </script>

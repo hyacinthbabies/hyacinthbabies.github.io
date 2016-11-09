@@ -67,6 +67,11 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "/src/study/angularjs/angular-router.html",
             css:'/src/study/angularjs/angular-router.css'
         })
+        .state("angular.promise", {
+            url: "/promise",
+            templateUrl: "/src/study/angularjs/angular-$q.html",
+            css:'/src/study/angularjs/angular-$q.css'
+        })
         .state("bootstrap.button", {
             url: "/button",
             templateUrl: "/src/bootstrap/button.html"

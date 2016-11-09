@@ -1,0 +1,116 @@
+<div class="article-body">
+    <strong>1.$q</strong><p>$q是angularjs对promise异步编程模式的一个简化实现版</p>
+    <strong>2.defer</strong><p>defer的字面意思是延迟， $q.defer()  可以创建一个deferred实例</p>
+    <pre class="brush: javascript;">
+    //通过$q服务注册一个延迟对象 deferred
+    var deferred = $q.defer();  
+    //通过deferred延迟对象，可以得到一个承诺promise，而promise会返回当前任务的完成结果
+    var promise = deferred.promise;  
+</pre>
+    <p>defer的方法：(1) deferred.resolve(value)表示成功，value是成功回调的展示结果；
+     (2) deferred.reject(value)表示失败，value是失败回调的展示结果
+     (3) notify(value)  更新promise的执行状态
+    </p>
+    <pre class="brush: javascript;">
+    //通过$q服务注册一个延迟对象 deferred
+    var deferred = $q.defer();  
+    //通过deferred延迟对象，可以得到一个承诺promise，而promise会返回当前任务的完成结果
+    var promise = deferred.promise;
+
+    deferred.notify('更新');
+    if(true){
+        deferred.resolve('你成功了');
+    }else{
+        deferred.reject('你失败了');
+    }
+
+    promise.then(function(success){
+        console.log(success); //你成功了
+    },function(error){
+        console.log(error);//你失败了
+    },function(update){
+        console.log(update); //更新
+    }) 
+</pre>
+<strong>3.promise</strong>
+<p>当创建一个deferred实例时，promise实例也会被创建。通过deferred.promise就可以检索到deferred派生的promise。
+promise的目的是允许interested parties 访问deferred任务完成的结果。</p>
+<p>promise 的方法:
+
+(1) then(successCallback, errorCallback, nitifyCallback) 根据promise被resolve/reject，或将要被resolve/reject,调用successCallback/errorCallback。
+(2) catch(errorCallback)  then(null, errorCallback)的缩写。
+
+(3) finally(callback, notifyCallback)</p>
+<strong>4.$q.all()</strong>
+<pre class="brush: javascript;">
+    var deferred = $q.defer();  
+    var promise = deferred.promise;
+
+    deferred.notify('更新');
+    if(true){
+        deferred.resolve('你成功了');
+    }else{
+        deferred.reject('你失败了');
+    }
+   
+    var deferred1 = $q.defer();  
+    var promise1 = deferred.promise;
+
+    deferred1.notify('更新1');
+    if(true){
+        deferred1.resolve('你成功了1');
+    }else{
+        deferred1.reject('你失败了1');
+    }
+
+    $q.all([promise,promise1]).then(function(success){
+        console.log(success);//['你成功了','你成功了1'];
+    },function(error){
+        console.log(error);//['你失败了','你失败了1'];
+    },function(update){
+        console.log(update);//['更新','更新1'];
+    })
+</pre>
+<strong>5.实例开发--百度地图API</strong>
+<p>百度地图获取经纬度是个异步过程，本案列需要解决，当获取到点之后，才去执行对此点的处理方法</p>
+<pre class="brush:javascript'">
+    //deferredList数组放置deferred对象
+    var deferredList=[];
+    //promiseList数组放置promise对象
+    var promiseList = [];
+
+    for (var i = 0; i < $scope.workingPlacesList.length; i++){
+        deferredList.push($q.defer());
+        promiseList.push(deferredList[i].promise);
+    }
+   
+    for (var i = 0; i < $scope.workingPlacesList.length; i++) {
+        var place = $scope.workingPlacesList[i]; 
+        //立即执行函数，解决异步操作中，i不同步问题   
+        (function(){
+            //$i函数执行完会销毁
+            var $i=i;
+            //调用地址解析方法，根据中文具体地址获取经纬度
+            geocoder.getPoint(place.detailAdress, function(point) {                                           
+                if (point) {
+                    //对应deferred对象的resolve完成状态，等待point执行完才会返回
+                    deferredList[$i].resolve(point);
+                    // 成功转换经纬度后，获取当前地址和转换的地址2点的距离
+                    var res = new BMap.Map().getDistance(r.point, point);
+                    //小数点保留1，单位 m
+                    var distance = res.toFixed(1);
+                } else {
+                    //reject方法，变成拒绝状态。
+                    deferredList[$i].reject("地址无法解析");  
+                }                              
+            }, place.cityName);
+        })();                        
+    }
+    // all() 传入Promise的数组，批量执行，返回一个promise对象 
+    // 等待geocoder.getPoint执行结束后再调用signResultPost()请求
+    $q.all(promiseList).then(function(success){
+        console.log(success);//point的值
+    },function(error){
+    });      
+</pre>
+</div>

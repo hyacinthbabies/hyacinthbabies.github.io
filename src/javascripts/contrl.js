@@ -19,7 +19,8 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
     //监听angularjs 渲染完成后
     $scope.$on('$viewContentLoaded', function() {
         //SyntaxHighlighter此插件必须在渲染成功后执行，插件执行前还未渲染完就无法起作用了。
-        // SyntaxHighlighter.defaults['gutter'] = 'false';
+        SyntaxHighlighter.defaults['quick-code'] = 'false';
+        SyntaxHighlighter.defaults['html-script'] = 'true';
         SyntaxHighlighter.defaults['toolbar'] = 'false';
         SyntaxHighlighter.highlight('codes');
     });
