@@ -1,6 +1,7 @@
 myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
     //监听路由变换
     $scope.$on('$stateChangeSuccess', function() {
+
         //https://my.oschina.net/jack088/blog/479466
         //刷新浏览器，菜单栏也能切换。不要用location.hash或者其他，它是获取当前url而不是改变了的url
         // console.log($location.path());
@@ -23,10 +24,11 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
         SyntaxHighlighter.defaults['html-script'] = 'true';
         SyntaxHighlighter.defaults['toolbar'] = 'false';
         SyntaxHighlighter.highlight('codes');
+        $.material.init();
     });
     //给Model添加拦截过滤器,路由增加限制，实现用户登录状态判断
     $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-
+        
     });
 });
 myApp.controller('RouteListCtl', function($scope) {
@@ -113,7 +115,7 @@ myApp.controller('RouteFontCtrl', function($scope) {
 
 });
 //------------------------------登录界面------------------------------------------
-myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $cookieStore) {
+myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $cookieStore,CkContentService) {
     //用户
     $scope.user = {
         'username': '',
@@ -131,7 +133,7 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
     } else {
         $scope.hasLogined = false;
     }
-    $scope.submit = function() {
+    $scope.logIn = function() {
         // if(!$scope.form.$invalid){
         //     alert("验证通过")
         // }else{
@@ -146,7 +148,7 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
             // }
         }).success(function(data) {
             debugger;
-            if (data.username == $scope.user.username && data.userpwd == $scope.user.password) {
+            if (data[0].username == $scope.user.username && data[0].userpwd == $scope.user.password) {
                 $rootScope.username = $scope.user.username;
                 $scope.hasLogined = true;
                 if ($scope.isSelected) {
@@ -169,4 +171,25 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
         };
         $cookieStore.put("person", '');
     }
+
+    $scope.getTextAreaValue = function(){
+        return CKEDITOR.instances.ck_textarea1.getData(); //CKEDITOR.instances.控件ID.getData();
+        // angular.element(document.getElementById('asign_ck')).html(content); 
+    }
+
+    $scope.getDataFromApi = function(){
+        var content_1 = $scope.getTextAreaValue();
+        var article = {articlename: 'mongodb的探究', //用户账号
+            authorname: 'hyacinthbaby', //密码
+            articlecontent: content_1, //年龄
+            articledate: '2016-11-30'}
+        var promise_1 = CkContentService.postArtical(article);
+        promise_1.then(function(success){
+            alert('成功');
+        });
+    }
+});
+//------------------------------angular配置界面------------------------------------------
+myApp.controller('configControl', function($scope) {
+    $scope.testModel = 'ng-model';
 });

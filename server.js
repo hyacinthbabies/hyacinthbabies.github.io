@@ -18,21 +18,22 @@ app.use(webpackMiddleware(compiler, {
     }
 }));
 app.use(webpackHotMiddleware(compiler));
+//bodyParser要放在路由之前，否则会报req.post 未定义
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 //运行时向数据库user插入一条数据（实验）
 // var tes = require('./src/test.js');
 // tes.list();
-var user = require('./src/test.js');
-app.use('/api/users',user.list);
+// var user = require('./src/test.js');
+// app.use('/api/postContent',user.insert);
+// app.use('/api/users',user.list);
+require('./src/test.router.js')(app);
 // rewrite to load static resources
 app.use(express.static(path.join(__dirname)));
 // static views
 app.get('/*', function(req, res) {
     res.sendfile('index.html', { root: path.join(__dirname)});
 });
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
 
 var http = require('http');
 

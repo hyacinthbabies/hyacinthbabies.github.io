@@ -1,0 +1,56 @@
+{
+  "name": "ckeditor",
+  "version": "4.6.0",
+  "description": "JavaScript WYSIWYG web text editor.",
+  "main": "ckeditor.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckeditor/ckeditor-releases.git"
+  },
+  "keywords": [
+    "ckeditor",
+    "fckeditor",
+    "editor",
+    "wysiwyg",
+    "html",
+    "richtext",
+    "text",
+    "javascript"
+  ],
+  "author": {
+    "name": "CKSource",
+    "url": "http://cksource.com/"
+  },
+  "license": "For licensing, see LICENSE.md or http://ckeditor.com/license.",
+  "bugs": {
+    "url": "http://dev.ckeditor.com"
+  },
+  "homepage": "http://ckeditor.com",
+  "gitHead": "2530c9c5d26f275882da192ba2231ac69e967474",
+  "_id": "ckeditor@4.6.0",
+  "scripts": {},
+  "_shasum": "37cdc988aa22ca6fc67540bb32b6f039a35e7718",
+  "_from": "ckeditor@*",
+  "_npmVersion": "3.10.3",
+  "_nodeVersion": "6.7.0",
+  "_npmUser": {
+    "name": "cksource",
+    "email": "npm@cksource.com"
+  },
+  "dist": {
+    "shasum": "37cdc988aa22ca6fc67540bb32b6f039a35e7718",
+    "tarball": "https://registry.npmjs.org/ckeditor/-/ckeditor-4.6.0.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "cksource",
+      "email": "npm@cksource.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ckeditor-4.6.0.tgz_1479311319258_0.1100359137635678"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/ckeditor/-/ckeditor-4.6.0.tgz"
+}

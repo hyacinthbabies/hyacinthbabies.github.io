@@ -60,7 +60,8 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         })
         .state("angular.config", {
             url: "/config",
-            templateUrl: "/src/study/angularjs/angular-config.html"
+            templateUrl: "/src/study/angularjs/angular-config.html",
+            controller:'configControl'
         })
         .state("angular.router", {
             url: "/router",
@@ -87,8 +88,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         })
         .state("bootstrap.dropdown", {
             url: "/dropdown",
-            templateUrl: "/src/bootstrap/dropdown.html",
-            controller:'RouteDropdownCtl'
+            templateUrl: "/src/bootstrap/dropdown.html"
         })
         .state("bootstrap.form", {
             url: "/form",

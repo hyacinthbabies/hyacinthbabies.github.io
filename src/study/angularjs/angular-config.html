@@ -24,17 +24,49 @@
     <p>-----------------js控制的范围</p>
     <pre class="brush: xml, html, xhtml, xslt;">
     &lt;!DOCTYPE html&gt;
-		&lt;html lang="en"&gt;
-		&lt;head&gt;
-		    <meta charset="utf-8">
-			<script src="angularjs的资源位置"></script>
-		&lt;/head&gt;
-		&lt;body ng-app="routeApp"&gt;
-		    <div class="container" ng-controller="RouteFontCtrl">
-		        RouteFontCtrl只控制我这个div
-		    </div>
-			<div>不控制我这个div</div>
-		&lt;/body&gt;
-		&lt;/html&gt;
+	&lt;html lang="en"&gt;
+	&lt;head&gt;
+	    <meta charset="utf-8">
+		<script src="angularjs的资源位置"></script>
+	&lt;/head&gt;
+	&lt;body ng-app="routeApp"&gt;
+	    <div class="container" ng-controller="RouteFontCtrl">
+	        RouteFontCtrl只控制我这个div
+	        <!-- 这里是组件 -->
+	        <nt-star></nt-star>
+	    </div>
+		<div>不控制我这个div</div>
+	&lt;/body&gt;
+	&lt;/html&gt;
     </pre>
-    </script>
+    <p>-----------------配置js文件</p>
+    <pre class="brush: javascript">
+        var myApp = angular.module("routeApp",[]);//ng-app,必须
+        myApp.config(function() {});//配路由
+        myApp.directive('ntStar', function() {});//写组件共用，nt-star
+        myApp.controller('RouteCtl', function() {});//ng-controller
+    </pre>
+    <strong>3.双向绑定</strong>
+    <pre class="brush: xml, html, xhtml, xslt;">
+    &lt;!DOCTYPE html&gt;
+	&lt;html lang="en"&gt;
+	&lt;head&gt;
+	    <meta charset="utf-8">
+		<script src="angularjs的资源位置"></script>
+	&lt;/head&gt;
+	&lt;body ng-app="routeApp"&gt;
+	    <div class="container" ng-controller="RouteFontCtrl">
+	        ng-model绑定 HTML 元素 到应用程序数据
+	        <input type="text" ng-model="testModel">
+	        {{testModel}}双向绑定，$scope.testModel值变{{testModel}}就会变
+	    </div>
+	&lt;/body&gt;
+	&lt;/html&gt;
+    </pre>
+    <pre class="brush: javascript">
+        var myApp = angular.module("routeApp",[]);//ng-app,必须
+        myApp.controller('RouteCtl', function($scope) {
+            $scope.testModel = 'ng-model绑定 HTML 元素 到应用程序数据';
+        });//ng-controller
+    </pre>
+    参考：<div><input type="text" ng-model="testModel" width="100%">{{testModel}}</div>

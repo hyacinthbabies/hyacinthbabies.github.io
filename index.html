@@ -12,10 +12,13 @@
         <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
         <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="src/stylesheets/style.css">
-        <link rel="stylesheet" href="src/javascripts/framefork/BootSideMenu.css">
+        <!-- <link rel="stylesheet" href="src/javascripts/framefork/BootSideMenu.css"> -->
         <link rel="stylesheet" type="text/css" href="src/stylesheets/framework/shCore.css">
         <link rel="stylesheet" type="text/css" href="src/stylesheets/framework/shThemeFadeToGrey.css">
+        <link rel="stylesheet" type="text/css" href="src/javascripts/framefork/material/css/bootstrap-material-design.min.css">
+        <link rel="stylesheet" type="text/css" href="src/javascripts/framefork/material/css/ripples.min.css">
         <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script src="src/javascripts/framefork/ckeditor/ckeditor.js"></script>
         <script src="build/main.0225a91fdd5c284638cb.js"></script>
         <script src="src/javascripts/framefork/angular.min.js"></script>
         <script src="src/javascripts/framefork/angular-route.min.js"></script>
@@ -25,6 +28,7 @@
         <!-- <script src="src/javascripts/framefork/mock-min.js"></script> -->
         <!-- <script src="src/javascripts/framefork/mock.angular.js"></script> -->
         <script src="src/javascripts/app.js"></script>
+        <script src="src/javascripts/service.js"></script>
         <script src="src/javascripts/contrl.js"></script>
         <script src="src/javascripts/directive.js"></script>
         <!-- <script src="src/javascripts/data.js"></script> -->
@@ -35,27 +39,48 @@
     <!-- HEADER -->
     <div data-ui-view="" id="uiContent"></div>
     <!--右侧菜单-->
-    <div id="demo" style="right:-300px;width:300px;">
-        <div class="list-group">
-            <div ui-sref=".bootstrap.column"><a href="#" class="list-group-item active">bootstrap</a></div>
-            <div ui-sref=".mongodb"><a href="#" class="list-group-item">mongodb</a></div>
-            <div ui-sref=".webpack"><a href="#" class="list-group-item">webpack</a></div>
-            <div ui-sref=".angular.config"><a href="#" class="list-group-item">angular</a></div>
-            <div ui-sref=".backend"><a href="#" class="list-group-item">&#x7BA1;&#x7406;&#x540E;&#x53F0;</a></div>
+    <div class="menu-espanso">
+        <div id="menu" class="menu"></div>
+        <span class="linee linea1"></span>
+        <span class="linee linea2"></span>
+        <span class="linee linea3"></span>
+        <div class="voci-menu">
+            <ul class="nav nav-pills nav-stacked" role="tablist" id="indexNav">
+                <li role="presentation" class="active" ui-sref=".bootstrap.column"><a href="">bootstrap</a></li>
+                <li role="presentation" ui-sref=".mongodb"><a href="">mongodb</a></li>
+                <li role="presentation" ui-sref=".webpack"><a href="">webpack</a></li>
+                <li role="presentation" ui-sref=".angular.config"><a href="">angular</a></li>
+                <li role="presentation" ui-sref=".backend"><a href="">管理后台</a></li>
+            </ul>
         </div>
     </div>
-    <hui></hui>
-    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <!-- <hui></hui> -->
     <script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script>
-    <script src="src/javascripts/framefork/BootSideMenu.js"></script>
+    <!-- <script src="src/javascripts/framefork/BootSideMenu.js"></script> -->
     <script src="src/javascripts/framefork/shCore.js"></script>
     <script src="src/javascripts/framefork/shBrushJScript.js"></script>
     <script src="src/javascripts/framefork/shBrushXml.js"></script>
+    <script src="src/javascripts/framefork/material/js/material.js"></script>
+    <script src="src/javascripts/framefork/material/js/ripples.js"></script>
     <script type="text/javascript">
-    $('#demo').BootSideMenu({
-        side: "right", // left or right
-        autoClose: true // auto close when page loads
+    // $('#demo').BootSideMenu({
+    //     side: "right", // left or right
+    //     autoClose: true // auto close when page loads
+    // });
+    // 切换
+    $('#indexNav li').click(function(e) {
+        $(this).tab('show');
     });
+    // 侧边栏
+    $(function() {
+        $('.menu , .linee').on('click', function() {
+            $('.menu').toggleClass('over')
+            $('.linea1').toggleClass('overL1')
+            $('.linea2').toggleClass('overL2')
+            $('.linea3').toggleClass('overL3')
+            $('.voci-menu').toggleClass('overvoci')
+        });
+    })
     </script>
 </body>
 

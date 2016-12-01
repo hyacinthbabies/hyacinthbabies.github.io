@@ -228,6 +228,7 @@ myApp.directive('errorMessage', ['$compile', function($compile) {
         }
     };
 }]);
+//灰太狼canvas绘制
 myApp.directive('hui', function() {
     return {
         restrict: 'E',
@@ -238,7 +239,7 @@ myApp.directive('hui', function() {
             scope.funLoad = function() {
                 var cxt = document.getElementById('hui').getContext('2d');
                 //缩小50%
-                cxt.scale(0.5,0.5);
+                cxt.scale(0.5, 0.5);
                 cxt.beginPath();
                 cxt.lineWidth = 2;
                 cxt.strokeStyle = 'green';
@@ -469,4 +470,34 @@ myApp.directive('hui', function() {
             window.addEventListener('load', scope.funLoad, false);
         }
     }
+});
+//如果用angularload动态加载script，下载https://github.com/urish/angular-load插件，导入模块
+//angularLoad.loadScript('./framefork/ckeditor/ckeditor.js').then(function() 
+//参考http://www.cnblogs.com/zsmhhfy/p/3835820.html博客
+//富文本编辑器
+myApp.directive('ckeditor', function() {
+    return {
+        require : '?ngModel',
+        link : function(scope, element, attrs, ngModel) {
+            var ckeditor = CKEDITOR.replace(element[0], {
+                //配置样式
+                skin: 'kama',
+                language: 'zh-cn'
+            });
+            if (!ngModel) {
+                return;
+            }
+            ckeditor.on('instanceReady', function() {
+                ckeditor.setData(ngModel.$viewValue);
+            });
+            ckeditor.on('pasteState', function() {
+                scope.$apply(function() {
+                    ngModel.$setViewValue(ckeditor.getData());
+                });
+            });
+            ngModel.$render = function(value) {
+                ckeditor.setData(ngModel.$viewValue);
+            };
+        }
+    };
 });

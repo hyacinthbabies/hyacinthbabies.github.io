@@ -3,9 +3,9 @@
     <div class="col-xs-2">
         <ul class="nav nav-pills nav-stacked" role="tablist" id="navTab">
             <li role="presentation" class="active" ui-sref=".config"><a href="">angularjs的配置</a></li>
-            <li role="presentation" ui-sref=".router"><a href="">ngRoute路由的配置</a></li>
-            <li role="presentation"><a href="">ui.router路由的配置</a></li>
-            <li role="presentation"><a href="">select的介绍</a></li>
+            <li role="presentation" ui-sref=".router"><a href="">angular路由的配置</a></li>
+            <li role="presentation"><a href="">directive的配置</a></li>
+            <li role="presentation"><a href="">service的介绍</a></li>
             <li role="presentation" ui-sref=".promise"><a href="">$q服务</a></li>
         </ul>
     </div>
@@ -18,7 +18,6 @@
 $('#navTab li').click(function(e) {
     $(this).tab('show');
 });
-SyntaxHighlighter.highlight('codes');
 //刷新浏览器，菜单栏也能切换
 if (location.hash) {
     var str = location.hash;

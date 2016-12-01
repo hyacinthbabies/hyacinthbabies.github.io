@@ -1,5 +1,6 @@
 <div class="login-form contanier col-lg-5">
-    <ng-form ng-if="!hasLogined" name="form" class="form-horizontal" role="form" style="position:relative;margin:0 auto;left:50%;" novalidate>
+    <!-- <ng-form ng-if="!hasLogined" name="form" class="form-horizontal" role="form" style="position:relative;margin:0 auto;left:50%;" novalidate> -->
+    <div style="position:relative;margin:0 auto;left:50%;">
         <div class="form-group">
             <h3 style="text-align: center;">登录界面</h3>
         </div>
@@ -8,6 +9,12 @@
             <div class="col-sm-10">
                 <input type="text" class="form-control" placeholder="请输入名字" minlength="12" maxlength="16" required name="username" ng-model="user.username" error-message>
             </div>
+        </div>
+        <!-- 过渡的样式 不知道原因-->
+        <div class="form-group label-static" ng-hide="true">
+            <label for="si4" class="control-label">密码：</label>
+            <input type="password" class="form-control" id="si4" minlength="8" maxlength="16" placeholder="请输入密码" required name='password' ng-model="user.password" error-message>
+            <span class="help-block">请输入8-16位密码</span>
         </div>
         <div class="form-group">
             <label for="lastname" class="col-sm-1 col-lg-2 control-label">密码：</label>
@@ -26,13 +33,17 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-1 col-lg-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default col-lg-12" ng-click="submit()" ng-disabled="form.$invalid">登录</button>
+                <button type="submit" class="btn btn-raised col-lg-12" ng-click="logIn()" ng-disabled="form.$invalid">登录</button>
             </div>
         </div>
-    </ng-form>
+    </div>
+    <!-- </ng-form> -->
     <div ng-if="hasLogined" style="position:relative;margin:0 auto;left:50%;">
         欢迎{{user.username}}
         <input type="button" name="button" value="退出登录" ng-click="logout()">
-        <div><img src="src/images/snow.jpg" /></div>
+        <!-- <div><img src="src/images/snow.jpg" /></div> -->
+        <textarea ckeditor id="ck_textarea1" cols="20" rows="2" ng-model="ck_value">
+        </textarea>
+        <input type="button" name="" value="button" ng-click="getDataFromApi()">
     </div>
 </div>
