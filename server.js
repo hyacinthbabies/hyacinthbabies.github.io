@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // var user = require('./src/test.js');
 // app.use('/api/postContent',user.insert);
 // app.use('/api/users',user.list);
-require('./src/test.router.js')(app);
+require('./router/test.router.js')(app);
 // rewrite to load static resources
 app.use(express.static(path.join(__dirname)));
 // static views

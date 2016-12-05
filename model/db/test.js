@@ -1,5 +1,5 @@
-var User = require("./user.js");
-var Article = require("../model/article.js");
+var User = require("../user.js");
+var Article = require("../article.js");
 
 /**
  * 插入

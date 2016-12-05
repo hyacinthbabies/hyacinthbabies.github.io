@@ -2,44 +2,41 @@
 <html lang="en" data-ng-app="routeApp">
 
 <head>
-    <div>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="chrome=1">
-        <meta name="description" content="Hyacinthbabies.GitHub.io : &#x4E2A;&#x4EBA;&#x535A;&#x5BA2;">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Hyacinthbabies.GitHub.io</title>
-        <link rel="stylesheet" type="text/css" media="screen" href="src/stylesheets/stylesheet.css">
-        <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-        <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="src/stylesheets/style.css">
-        <!-- <link rel="stylesheet" href="src/javascripts/framefork/BootSideMenu.css"> -->
-        <link rel="stylesheet" type="text/css" href="src/stylesheets/framework/shCore.css">
-        <link rel="stylesheet" type="text/css" href="src/stylesheets/framework/shThemeFadeToGrey.css">
-        <link rel="stylesheet" type="text/css" href="src/javascripts/framefork/material/css/bootstrap-material-design.min.css">
-        <link rel="stylesheet" type="text/css" href="src/javascripts/framefork/material/css/ripples.min.css">
-        <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-        <script src="src/javascripts/framefork/ckeditor/ckeditor.js"></script>
-        <script src="build/main.0225a91fdd5c284638cb.js"></script>
-        <script src="src/javascripts/framefork/angular.min.js"></script>
-        <script src="src/javascripts/framefork/angular-route.min.js"></script>
-        <script src="src/javascripts/framefork/angular-css.min.js"></script>
-        <script src="src/javascripts/framefork/angular-ui-router.min.js"></script>
-        <script src="src/javascripts/framefork/angular-cookies.min.js"></script>
-        <!-- <script src="src/javascripts/framefork/mock-min.js"></script> -->
-        <!-- <script src="src/javascripts/framefork/mock.angular.js"></script> -->
-        <script src="src/javascripts/app.js"></script>
-        <script src="src/javascripts/service.js"></script>
-        <script src="src/javascripts/contrl.js"></script>
-        <script src="src/javascripts/directive.js"></script>
-        <!-- <script src="src/javascripts/data.js"></script> -->
-    </div>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Hyacinthbabies.GitHub.io : &#x4E2A;&#x4EBA;&#x535A;&#x5BA2;">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hyacinthbabies.GitHub.io</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="src/stylesheets/stylesheet.css">
+    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="src/stylesheets/style.css">
+    <!-- <link rel="stylesheet" href="src/javascripts/framefork/BootSideMenu.css"> -->
+    <link rel="stylesheet" type="text/css" href="src/stylesheets/framework/shCore.css">
+    <link rel="stylesheet" type="text/css" href="src/stylesheets/framework/shThemeFadeToGrey.css">
+    <link rel="stylesheet" type="text/css" href="src/javascripts/framefork/material/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" type="text/css" href="src/javascripts/framefork/material/css/ripples.min.css">
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="src/javascripts/framefork/ckeditor/ckeditor.js"></script>
+    <script src="build/main.0225a91fdd5c284638cb.js"></script>
+    <script src="src/javascripts/framefork/angular.min.js"></script>
+    <script src="src/javascripts/framefork/angular-route.min.js"></script>
+    <script src="src/javascripts/framefork/angular-css.min.js"></script>
+    <script src="src/javascripts/framefork/angular-ui-router.min.js"></script>
+    <script src="src/javascripts/framefork/angular-cookies.min.js"></script>
+    <!-- <script src="src/javascripts/framefork/mock-min.js"></script> -->
+    <!-- <script src="src/javascripts/framefork/mock.angular.js"></script> -->
+    <script src="src/javascripts/app.js"></script>
+    <script src="src/javascripts/service.js"></script>
+    <script src="src/javascripts/contrl.js"></script>
+    <script src="src/javascripts/directive.js"></script>
 </head>
 
 <body style="background-color: #e5e4db;" ng-controller="RouteCtl">
     <!-- HEADER -->
     <div data-ui-view="" id="uiContent"></div>
     <!--右侧菜单-->
-    <div class="menu-espanso">
+    <div class="menu-espanso" id="menu_div" onmousedown="holdDown()" onmouseup="holdUp()">
         <div id="menu" class="menu"></div>
         <span class="linee linea1"></span>
         <span class="linee linea2"></span>
@@ -50,7 +47,7 @@
                 <li role="presentation" ui-sref=".mongodb"><a href="">mongodb</a></li>
                 <li role="presentation" ui-sref=".webpack"><a href="">webpack</a></li>
                 <li role="presentation" ui-sref=".angular.config"><a href="">angular</a></li>
-                <li role="presentation" ui-sref=".backend"><a href="">管理后台</a></li>
+                <li role="presentation" ui-sref=".backend"><a href="">&#x7BA1;&#x7406;&#x540E;&#x53F0;</a></li>
             </ul>
         </div>
     </div>
@@ -80,7 +77,78 @@
             $('.linea3').toggleClass('overL3')
             $('.voci-menu').toggleClass('overvoci')
         });
-    })
+    });
+    //实现菜单拖拽
+    //http://www.qdfuns.com/notes/35840/3defe0b72326a6694f7216122eae655b.html
+    var timeStart, timeEnd, time; //申明全局变量  
+
+    function getTimeNow() { //获取此刻时间  
+        var now = new Date();
+        return now.getTime();
+    }
+
+    function holdDown() { //鼠标按下时触发 
+        timeStart = getTimeNow(); //获取鼠标按下时的时间  
+        time = setInterval(function() {//setInterval会每100毫秒执行一次
+                timeEnd = getTimeNow(); //也就是每100毫秒获取一次时间  
+                if (timeEnd - timeStart > 1000) {//如果此时检测到的时间与第一次获取的时间差有1000毫秒  
+                    clearInterval(time); //便不再继续重复此函数 （clearInterval取消周期性执行）  
+                    var oDiv = document.getElementById("menu_div");
+                    //元素可以移动的最大宽高
+                    var maxWidth = window.innerWidth;
+                    var maxHeight = window.innerHeight;
+                    oDiv.onmousedown = function(e) {
+                        var e = e || window.event;
+                        //获取鼠标拖拽开始的位置
+                        var mx_div = e.clientX;
+                        var my_div = e.clientY;
+                        //拖拽开始时 元素距离父级的位置
+                        var divLeft = oDiv.offsetLeft;
+                        var divTop = oDiv.offsetTop;
+                        document.onmousemove = function(e) {
+                                var e = e || window.event;
+
+                                //获取拖拽移动时 鼠标的位置
+                                var mx = e.clientX;
+                                var my = e.clientY;
+
+                                //计算 鼠标间的距离
+                                var lessX = mx - mx_div;
+                                var lessY = my - my_div;
+
+                                var positionLeft = lessX + divLeft;
+                                var positionTop = lessY + divTop;
+
+                                //右边边框临界值
+                                if (positionLeft >= maxWidth) {
+                                    positionLeft = maxWidth;
+                                } else if (positionLeft <= 0) {
+                                    //左边边框临界值
+                                    positionLeft = 0;
+                                }
+                                //下边边框临界值
+                                if (positionTop >= maxHeight) {
+                                    positionTop = maxHeight;
+                                } else if (positionTop <= 0) {
+                                    //上边边框临界值
+                                    positionTop = 0;
+                                }
+
+                                oDiv.style.top = positionTop + "px";
+                                oDiv.style.left = positionLeft + "px";
+                            }
+                            //鼠标抬起时不响应document.onmousemove时间
+                        document.onmouseup = function() {
+                            document.onmousemove = null;  
+                        }
+                    }　　　
+                }
+            }, 100);
+    }
+
+    function holdUp() {
+        clearInterval(time); //如果按下时间不到1000毫秒便弹起，  
+    }
     </script>
 </body>
 

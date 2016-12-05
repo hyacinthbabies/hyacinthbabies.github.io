@@ -1,36 +1,3 @@
-// var routeApp = angular.module('routeApp',['ngRoute','angularCSS']);
-// routeApp.config(['$routeProvider',function($routeProvider){
-// 	$routeProvider
-// 	.when('/column',{
-// 		templateUrl:'column.html',
-// 		css:'column.css'
-// 	})
-// 	.when('/table',{
-// 		templateUrl:'table.html',
-// 		controller:'RouteListCtl'
-// 	})
-// 	.when('/button',{
-// 		templateUrl:'button.html',
-// 		controller:'RouteListCtl'
-// 	})
-// 	.when('/dropdown',{
-// 		templateUrl:'dropdown.html',
-// 		controller:'RouteDropdownCtl'
-// 	})
-// 	.when('/form',{
-// 		templateUrl:'form.html'
-// 	})
-// 	.when('/font',{
-// 		templateUrl:'font.html',
-// 		controller:'RouteFontCtrl'
-// 	})
-// 	.when('/label',{
-// 		templateUrl:'label.html'
-// 	})
-// 	.otherwise({
-// 		redirectTo:'/'
-// 	});
-// }]);
 var myApp = angular.module("routeApp", ['ui.router','angularCSS','ngCookies']);
 // Mock.mockjax(myApp);
 myApp.config(function($stateProvider, $urlRouterProvider) {

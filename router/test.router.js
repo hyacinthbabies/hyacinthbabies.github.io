@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
-var usersController = require('./test.js');
+var usersController = require('../model/db/test.js');
 module.exports = function(app) {
   // User Routes
   app.use('/api/users',usersController.list);
