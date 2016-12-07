@@ -1,11 +1,10 @@
-.syntaxhighlighter {
+/*.syntaxhighlighter {
     overflow: visible !important;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 div.syntaxhighlighter {
-    /*width: 60% !important;*/
     white-space: normal;
     word-break: break-all;
     word-wrap: break-word;
@@ -19,3 +18,4 @@ div.syntaxhighlighter .gutter .line {
     border-right: 0 !important;
     line-height: 20px !important;
 }
+*/
