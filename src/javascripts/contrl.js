@@ -11,9 +11,10 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
             loc = str.split('/');
             var name = loc[loc.length - 1];
             var flags = $('[ui-sref$=' + name + ']').find('a').hasClass('active');
+            debugger;
             if (!flags) {
                 $('[ui-sref$=' + name + ']').find('a').addClass('active');
-                $('[ui-sref$=' + name + ']').siblings('div').find('a').removeClass('active');
+                $('[ui-sref$=' + name + ']').siblings('li').find('a').removeClass('active');
             }
         }
     });
@@ -192,4 +193,9 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
 //------------------------------angular配置界面------------------------------------------
 myApp.controller('configControl', function($scope) {
     $scope.testModel = 'ng-model';
+});
+
+//-----------------------------javascript知识----------------------------------------------
+myApp.controller('summaryControl',function($scope){
+
 });

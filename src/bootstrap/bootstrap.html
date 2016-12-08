@@ -11,7 +11,7 @@
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav" id="navTab">
-                <li class="active" ui-sref=".column"><a href="">column</a></li>
+                <li ui-sref=".column"><a class="active" href="">column</a></li>
                 <li ui-sref=".button"><a href="">button</a></li>
                 <li ui-sref=".table"><a href="">table</a></li>
                 <li ui-sref=".dropdown"><a href="">dropdown</a></li>
@@ -30,13 +30,14 @@ $('#navTab li').click(function(e) {
     $(this).tab('show');
 });
 //刷新浏览器，菜单栏也能切换
-if (location.hash) {
-    var str = location.hash;
-    var loc = new Array();
-    loc = str.split('/');
-    var name = loc[loc.length - 1];
-    $('[ui-sref$=' + name + ']').tab('show');
-}
+// if (location.hash) {
+//     debugger;
+//     var str = location.hash;
+//     var loc = new Array();
+//     loc = str.split('/');
+//     var name = loc[loc.length - 1];
+//     $('[ui-sref$=' + name + ']').tab('show');
+// }
 //导航栏固定
 //参考http://www.cnblogs.com/zhouyangla/p/5829869.html
 $(function() {

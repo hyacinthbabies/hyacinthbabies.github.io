@@ -1,0 +1,28 @@
+.panel.panel-default {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+
+.panel.panel-default .panel-body {
+    height: 110px;
+}
+
+.panel.panel-default .panel-footer {
+    position: absolute;
+    top: 139px;
+    width: 100%;
+}
+
+.secondPage {
+    position: absolute;
+    height: 140px !important;
+    width: 100%;
+    background-color: #fff;
+    top: 140px;
+    transition: top .6s;
+}
+.bigContent{
+	width:0;
+	/*transition: width .6s;*/
+}

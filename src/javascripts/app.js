@@ -76,4 +76,10 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             css:'/src/adminsys/login.css',
             controller:'loginControl'
         })
+        .state("javas", {
+            url: "/javas",
+            templateUrl: "/src/study/javascript/summary.html",
+            css:'/src/study/javascript/summary.css',
+            controller:'summaryControl'
+        })
 });
