@@ -71,7 +71,8 @@
                 <label class="pull-right btn-xs"><a>查看详情</a></label>
             </div>
             <div class="panel-body">
-                confirm(); alert();
+                基本类型和引用类型，instanceof检测什么类型的对象
+                <br/> 执行环境、作用域
             </div>
             <div class="panel-body secondPage">
                 222
@@ -139,7 +140,7 @@
                 <label class="pull-right btn-xs"><a>查看详情</a></label>
             </div>
             <div class="panel-body">
-                confirm(); alert();
+                window：js访问浏览器窗口；ECMAScript全局对象
             </div>
             <div class="panel-body secondPage">
                 222
@@ -150,15 +151,430 @@
         </div>
     </div>
     <div class="col-sm-10 col-md-6 col-lg-12 bigContent" style="margin-bottom: 30px;height:200px;box-shadow: inset 1px-1px 1px #444, inset -1px 1px 1px #444;width:0;">
-        <div class="panel panel-default hideLable">
+        <div class="panel panel-default hideLable" style="padding-bottom: 0;">
             <div class="panel-heading">
                 <span style="">最大的那个</span>
             </div>
-            <div class="panel-body">
-                confirm(); alert();
+            <div class="panel-body" style="height:auto;">
+                <div class="col-sm-12 col-md-4 col-lg-2" style="height:400px;overflow-y: auto;padding: 0;">
+                    <nav class="navbar navbar-default" role="navigation" style="background-color: #fff;">
+                        <ul class="nav nav-pills nav-stacked" role="navigation" id="navTab">
+                            <li role="presentation" class="active" ui-sref=".config"><a href="">angularjs的配置</a></li>
+                            <li role="presentation" ui-sref=".router"><a href="">angular路由的配置</a></li>
+                            <li role="presentation"><a href="">directive的配置</a></li>
+                            <li role="presentation"><a href="">service的介绍</a></li>
+                            <li class="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                    Java <b class="caret"></b>
+                </a>
+                                <ul class="dropdown-menu" style="position: static;float: none;width: auto;margin-top: 0;box-shadow: none;">
+                                    <li><a href="">jmeter</a></li>
+                                    <li><a href="">EJB</a></li>
+                                    <li><a href="">Jasper Report</a></li>
+                                    <li><a href="">另一个分离的链接</a></li>
+                                </ul>
+                            </li>
+                            <li role="presentation"><a href="">directive的配置</a></li>
+                            <li role="presentation"><a href="">service的介绍</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-8">
+                    <div class="section thirteen-section">
+                        <h3>事件</h3>
+                        <div class="1-level-title">
+                            <div>
+                                <h4>一、事件流</h4>
+                                <p>概念：从页面中接收事件的顺序</p>
+                            </div>
+                            <!-- 事件流 -->
+                            <div class="2-level-title">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>事件</th>
+                                                <th>概念</th>
+                                                <th>流程</th>
+                                                <th>浏览器开始目标</th>
+                                                <th>DOM2级开始目标</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="">
+                                                <td>事件冒泡</td>
+                                                <td>IE的事件流，最开始由具体的元素，逐级向上传播</td>
+                                                <td>流程</td>
+                                                <td>target开始</td>
+                                                <td>target开始</td>
+                                            </tr>
+                                            <tr class="">
+                                                <td>事件捕获</td>
+                                                <td>NetScape团队提出，最开始由不具体的元素，逐级向下传播</td>
+                                                <td>流程</td>
+                                                <td>window开始</td>
+                                                <td>document开始</td>
+                                            </tr>
+                                            <tr class="">
+                                                <td colspan="5">
+                                                    <div class="concept-image" style="margin-left:10%;">
+                                                        <div style="width:300px;height:100px;border:1px solid #000;padding:15px 15px 5px;position: relative;">
+                                                            <span style="position: absolute;top:0;left:0;">html</span>
+                                                            <div style="width:270px;height:80px;border:1px solid #000;padding:15px 15px 5px;position: relative;">
+                                                                <span style="position: absolute;top:0;left:0;">body</span>
+                                                                <div style="width:240px;height:60px;border:1px solid #000;padding:15px 15px 5px;position: relative;">
+                                                                    <span style="position: absolute;top:0;left:0;">div</span>
+                                                                    <div class="text-center" style="width:210px;height:40px;border:1px solid #000;padding:10px 10px 5px;position: relative;">
+                                                                        <span style="position: absolute;top:0;left:0;">a</span>事件目标(event.srcElement||event.target)
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div>
+                                    <h4>W3School模型</h4>
+                                    <p>语法：<br/>
+                                    element.addEventListener(event, function, useCapture)</p>
+                                    <p>参数：
+                                       <table class="table">
+                                           <thead>
+                                               <th>参数</th>
+                                               <th>描述</th>
+                                           </thead>
+                                           <tbody>
+                                               <tr>
+                                                   <td>event</td>
+                                                   <td>必选</td>
+                                               </tr>
+                                               <tr>
+                                                   <td>function</td>
+                                                   <td>必选</td>
+                                               </tr>
+                                               <tr>
+                                                   <td>useCapture</td>
+                                                   <td>可选，布尔值true表示捕获，false表示冒泡</td>
+                                               </tr>
+                                           </tbody>
+                                       </table>
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4>传统绑定事件方式</h4>
+                                    <p>语法：<br/>
+                                    element.onclick = function</p>
+                                    <p>在一个支持W3C DOM的浏览器中,上述事件默认冒泡事件</p>
+                                </div>
+                                <div>
+                                    <h4>IE浏览器(不包括IE11)</h4>
+                                    <p>语法：<br/>
+                                    element.attachEvent(event, function)</p>
+                                </div>
+                                <div>
+                                    <h4>Demo测试</h4>
+                                    <pre class="brush: xml xhtml xslt html;">
+
+                                    </pre> 
+                                </div>
+                                <div>
+                                    <h4>阻止事件的传播</h4>
+                                    <p>语法：<br/>
+                                    element.attachEvent(event, function)</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>二、事件处理程序</h4>
+                                <p>概念：响应某个事件的函数</p>
+                            </div>
+                            <!-- 事件处理程序 -->
+                            <div class="2-level-title">
+                                <div>
+                                    <h4>1.HTML事件处理程序</h4>
+                                    <pre>
+&lt;input type="button" value="click me" onclick="alert('Clicked');"&gt;</pre>
+                                    <p>如果要在处理事件中使用HTML语法字符，如<code>&amp;</code>、<code>&quot;</code>、<code>&gt;</code>等，需转义</p>
+                                    <pre>
+&lt;input type="button" value="click me" onclick="alert(&quot;Clicked&quot;);"&gt;</pre>
+                                    <p>调用脚本</p>
+                                    <pre>
+&lt;script type="text/javascript"&gt;
+    function showMessage(){
+        alert("hello world");
+    }
+&lt;/script&gt;
+&lt;input type="button" value="click me" onclick="showMessage()"&gt;</pre>
+                                    <p>访问自身属性：event、this</p>
+                                    <pre>
+&lt;!-- 输出 "Click" --&gt;
+&lt;input type="button" value="click me" onclick="alert(event.type);"&gt;
+&lt;!-- 输出 "click me" --&gt;
+&lt;input type="button" value="click me" onclick="alert(this.value);"&gt;</pre>
+                                    <p>动态创建的函数，扩展作用域(访问document和元素自身属性)</p>
+                                    <pre>
+function(){
+    with(document){
+       with(this){
+           //元素属性值
+       }
+    }
+}
+&lt;!-- 输出 "click me" --&gt;
+&lt;input type="button" value="click me" onclick="alert(value);"&gt;</pre>
+                                    <p>动态创建的函数，扩展作用域，当前是表单元素</p>
+                                    <pre>
+function(){
+    with(document){
+       with(this.form){
+           with(this){
+              //元素属性值
+           }  
+       }
+    }
+}
+&lt;!-- 文本框中文本 --&gt;
+&lt;form method="post"&gt;
+    &lt;input type="text" name="username" value=""&gt;
+    &lt;input type="button" value="shq" onclick="alert(username.value);"&gt;
+&lt;/form&gt;</pre>
+                                </div>
+                                <div>
+                                    <h4>2.DOM0级事件处理程序</h4>
+                                    <pre>
+var btn = document.getElementById('myBtn');
+btn.onclick = function(){
+    alert(this.id);//myBtn
+}
+//清除事件处理程序
+btn.onclick = null;</pre>
+                                </div>
+                                <div>
+                                    <h4>3.DOM2级事件处理程序</h4>
+                                    <p>处理addEventListener()、删除removeEventListener()</p>
+                                    <pre>
+var btn = document.getElementById('myBtn');
+var handle = function(){
+    alert(this.id);//myBtn
+};
+btn.addEventListener("click",handle,false);
+//清除事件，注意函数必须写出来，因为无法删除匿名函数
+btn.removeEventListener("click",handle,false);</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 第21章start -->
+                    <div class="section thirteen-section">
+                        <h3>Ajax和Comet</h3>
+                        <p>概念：ajax技术的核心XMLHttpRequest对象(简称XHR),它为向服务器发送请求和解析服务器响应提供了流畅的接口</p>
+                        <div class="1-level-title">
+                            <div>
+                                <h4>一、XMLHttpRequest对象</h4>
+                                <pre>
+//适用于IE7之前的版本
+function createXHR(){
+    if (typeof arguments.calle.activeXString != “string”) {
+        var versions = [“MSXML2.XMLHttp.6.0”, “MSXML2.XMLHttp.3.0”, “MSXML2.XMLHttp”],i, len;
+        for (i = 0, len =  versions.length; i&lt;len; i++) {
+            try {
+                new ActiveXObject(versions[i]);
+                arguments.callee.activeXString = versions[i];
+                break;
+            } catch (ex) {//跳过}
+        }
+    }
+    return new ActiveXObject(arguments.callee.activeXString);
+}</pre> 
+                                <p>ie7以上及其他浏览器都支持原生XHR对象</p>
+                                <pre>var xhr = new XMLHttpRequest();</pre>
+                                <p>支持所有版本</p>
+                                <pre>
+//是否存在原生XHR
+function createXHR(){
+    if(typeof XMLHttpRequest != "undefined"){
+        return new XMLHttpRequest();
+    }else if(typeof ActiveXObject != "undefined"){//兼容ie7之前}else{//...}}
+//后面直接用xhr
+var xhr = createXHR();</pre>
+                            </div>
+                            <div class="2-level-title">
+                                <div>
+                                    <h4>1.XHR的用法</h4>
+                                    <p>方法：启动一个请求以备发送<br/>
+                                    open(arg1,arg2,agr3)</p>
+                                    <p>参数：<br/>
+                                    arg1:要发送的请求的类型(get、post等)<br/>
+                                    arg2:请求的URL<br/>
+                                    arg3:表示是否异步发送请求的布尔值</p>
+                                    <p>方法：发送特定的请求<br/>
+                                    send(arg)</p>
+                                    <p>参数：<br/>
+                                    arg:请求主体发送的数据，如果不需要，传入null</p>
+                                </div>
+                                <div>
+                                    <h4>2.HTTP头部信息</h4>
+                                    <p>方法：设置请求头信息<br/>
+                                        setRequestHeader(头部字段名称，头部字段值)
+                                    </p>
+                                    <p>方法：获取请求头信息<br/>
+                                        getResponseHeader(头部字段名称)
+                                    </p>
+                                    <p>方法：获取所有请求头信息字符串<br/>
+                                        getAllResponseHeaders()
+                                    </p>
+                                    <p>头部字段名称见表格<table class="table">
+                                        <thead>
+                                            <th>头部信息</th>
+                                            <th>解释</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Accept</td>
+                                                <td>浏览器能够处理的内容类型</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Accept-Charset</td>
+                                                <td>浏览器能够显示的字符集</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Accept-encoding</td>
+                                                <td>浏览器能够处理的压缩编码</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Accept-Lanuage</td>
+                                                <td>浏览器当前设置的语言</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Connection</td>
+                                                <td>浏览器与服务器之间连接的类型</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cookie</td>
+                                                <td>当前页面设置的任何cookie</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Host</td>
+                                                <td>发出请求的页面所在的域</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Referer</td>
+                                                <td>发出请求的页面的URL</td>
+                                            </tr>
+                                            <tr>
+                                                <td>User-Agent</td>
+                                                <td>浏览器用户代理字符串</td>
+                                            </tr>
+                                        </tbody>
+                                    </table></p>
+                                    <p>用法demo</p>
+                                    <pre>
+                                        
+                                    </pre>
+                                </div>
+                                <div>
+                                    <h4>3.GET请求</h4>
+                                    <p>URL末尾的查询字符串的格式：<br/>
+                                        (1)encodeURIComponent()编码<br/>
+                                        (2)&amp;分隔
+                                    </p>
+                                    <p>用法demo</p>
+                                    <pre>
+function addURLParam(url,name,value){
+    url += (url.indexOf("?") == -1 ? "?" : "&amp;");
+    url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+    return url;
+}</pre>
+                                </div>
+                                <div>
+                                    <h4>4.POST请求</h4>
+                                    <p>服务器对post请求和web表单提交处理不一样</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>二、XMLHttpRequest 2级</h4>
+                                <p>概念：</p>
+                            </div>
+                            <div class="2-level-title">
+                                <div>
+                                    <h4>1.FormData</h4>
+                                    <p></p>
+                                </div>
+                                <div>
+                                    <h4>2.超时设定</h4>
+                                    <p></p>
+                                </div>
+                                <div>
+                                    <h4>3.overrideMimeType()</h4>
+                                    <p></p>
+                                </div>
+                            <div>
+                            <div>
+                                <h4>三、进度事件</h4>
+                                <p>概念：W3C定义与客户端服务器通信有关的事件，只针对XHR<br/>
+                                <table class="table">
+                                    <thead>
+                                        <th>事件名称</th>
+                                        <th>解释</th>
+                                        <th>浏览器支持</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>loadstart</td>
+                                            <td>在接收到响应数据的第一个字节触发</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>progress</td>
+                                            <td>在接收响应期间连续不断地触发</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>error</td>
+                                            <td>在请求发生错误时触发</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>abort</td>
+                                            <td>在因为调用abort()方法而终止连接时触发</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>load</td>
+                                            <td>在接收到完整响应数据时触发</td>
+                                            <td>ie8只支持load</td>
+                                        </tr>
+                                        <tr>
+                                            <td>loaded</td>
+                                            <td>在通信完成或者触发error、abort或load事件后触发</td>
+                                            <td>都不支持</td>
+                                        </tr>
+                                    </tbody>
+                                </table></p>
+                            </div>
+                            <div class="2-level-title">
+                                <div>
+                                    <h4>1.FormData</h4>
+                                    <p></p>
+                                </div>
+                                <div>
+                                    <h4>2.超时设定</h4>
+                                    <p></p>
+                                </div>
+                                <div>
+                                    <h4>3.overrideMimeType()</h4>
+                                    <p></p>
+                                </div>
+                            <div>
+                        </div>
+                    </div> 
+                    <!-- 第21章end --> 
+                </div>
             </div>
-            <div class="" style="">
-                <button>返回</button>
+            <div class="text-center" style="">
+                <button type="button" class="btn btn-raised btn-sm back">返回</button>
             </div>
         </div>
     </div>
@@ -184,7 +600,7 @@ selector2.click(function(e) {
     $(this).parent().parent().parent().find('.bigContent').siblings().css('display', 'none');
 
 });
-$('button').click(function(e) {
+$('button.back').click(function(e) {
     // $(this).removeClass('showLabel');
     $(this).parent().parent().parent().css('width', '0');
     $(this).parent().parent().parent().siblings().css('display', 'block');

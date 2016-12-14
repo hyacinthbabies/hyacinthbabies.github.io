@@ -1,7 +1,7 @@
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="margin-bottom:0;background-color: #000;">
+<nav class="navbar navbar-default navbar-inverse prarentNav" role="navigation" style="margin-bottom:0;background-color: #000;">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#parent-navbar-collapse">
                 <span class="sr-only">切换导航</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -9,7 +9,7 @@
             </button>
             <span class="navbar-brand">个人bootstrap文档</span>
         </div>
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <div class="collapse navbar-collapse" id="parent-navbar-collapse">
             <ul class="nav navbar-nav" id="navTab">
                 <li ui-sref=".column"><a class="active" href="">column</a></li>
                 <li ui-sref=".button"><a href="">button</a></li>
@@ -41,12 +41,12 @@ $('#navTab li').click(function(e) {
 //导航栏固定
 //参考http://www.cnblogs.com/zhouyangla/p/5829869.html
 $(function() {
-    var navHg = $(".navbar").offset().top; //得到导航对象
+    var navHg = $(".navbar.prarentNav").offset().top; //得到导航对象
     $(window).scroll(function() {
         var scroH = $(this).scrollTop();
         //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
         if (scroH >= navHg) {
-            $(".navbar").css({
+            $(".navbar.prarentNav").css({
                 "position": "fixed",
                 "z-index": '1',
                 "width": "100%",
@@ -54,7 +54,7 @@ $(function() {
             });
             // $(".navbar").addClass('fixednav');
         } else if (scroH < navHg) {
-            $(".navbar").css({
+            $(".navbar.prarentNav").css({
                 "position": "relative"
             });
             // $(".navbar").removeClass('fixednav');

@@ -31,42 +31,142 @@
     </div>
 </div>
 <div class="container-mongo container">
-    <p style="font-size:24px;"><a href="http://docs.mongoing.com/manual-zh/">mongoDB探索第一步</a>
-        <star></star>
-        <srow></srow>
+    <p style="font-size:24px;"><a href="http://docs.mongoing.com/manual-zh/">mongoDB数据库</a>
     </p>
     <p>8天学通MongoDB——第一天 基础入门</p>
     http://www.cnblogs.com/huangxincheng/archive/2012/02/18/2356595.html
 </div>
 <div class="container-mongo container">
-    <p style="font-size:24px;"><a href="http://docs.mongoing.com/manual-zh/">mongoDB探索第一步</a>
+    <p style="font-size:24px;"><a href="http://docs.mongoing.com/manual-zh/">express探索第一步</a>
         <star></star>
         <srow></srow>
     </p>
     <div>
         <ol>
-            <li><a href="https://www.mongodb.com/download-center#community">下载mongoDB(已存入百度盘)</a></li>
-            <li><a href="http://www.runoob.com/mongodb/mongodb-window-install.html">菜鸟教程mongoDB安装说明</a></li>
+            <li>全局安装node、express</li>
+            <li>创建express项目：输入命令express+文件名(自定义)
+                <pre class="brush: javascript;">
+                    Administrator@c64-20151207MKE MINGW64 /e/testStudy
+                    $ express myStudyNode
+                </pre>
+            </li>
             <li>
-                <ins>启动数据库服务器</ins>找到mongoDB安装目录(公司电脑上C:\Program Files\MongoDB\Server\3.2\bin)点击mongod.exe
+                待命令跑完，会生成项目。npm install安装包之后，在bin文件夹的www文件中，会发现端口号，npm start之后访问localhost:3000
                 <star></star>
             </li>
-            <li>点击mongo.exe操作数据库，进行CRUD</li>
-            <li>mongoDB可视化应用<a href="https://robomongo.org/">Robomongo(已存入百度盘)</a></li>
-        </ol>
-    </div>
-    <p style="font-size:24px;">mongoDB探索第二步</p>
-    <div>
-        <a href="http://www.nodeclass.com/api/mongoose.html"> Mongoose</a>
-    </div>
-    <div>
-        <ol>
-            <li>前提：nodejs环境</li>
-            <li>开启数据库服务，创建数据库</li>
-            <li>npm init 初始化一个项目myfirstData</li>
-            <li>npm install mongoose --save安装mongoose</li>
-            <li><a href="http://www.cnblogs.com/zhongweiv/p/mongoose.html">在项目myfirstData中,像此作者一样创建文件</a></li>
-            <li>执行node server.js，会有数据插入到数据库(或者在package.json的scripts里配置'start':'node server.js'，npm start执行也可)</li>
+            <li>连接数据库：与app.js在同级目录创建db.js文件配置mongoose(提前npm install mongoose --save)
+                <pre class="brush: javascript;">
+                    var mongoose = require('mongoose'),
+                    DB_URL = 'mongodb://localhost:27017/shqTest';
+
+                    mongoose.Promise = global.Promise;
+                    /**
+                     * 连接
+                     */
+                    mongoose.connect(DB_URL);
+
+                    /**
+                     * 连接成功
+                     */
+                    mongoose.connection.on('connected', function() {
+                        console.log('Mongoose connection open to ' + DB_URL);
+                    });
+
+                    /**
+                     * 连接异常
+                     */
+                    mongoose.connection.on('error', function(err) {
+                        console.log('Mongoose connection error: ' + err);
+                    });
+
+                    /**
+                     * 连接断开
+                     */
+                    mongoose.connection.on('disconnected', function() {
+                        console.log('Mongoose connection disconnected');
+                    });
+
+                    module.exports = mongoose;
+
+                </pre>
+            </li>
+            <li>新建文件夹model,新建文件user.js，放置数据模型
+                <pre class="brush: javascript;">
+                /**
+                 * 用户信息
+                 */
+                var mongoose = require('../db.js'),
+                    Schema = mongoose.Schema;
+
+                var UserSchema = new Schema({          
+                    username : { type: String },                    //用户账号
+                    userpwd: {type: String},                        //密码
+                    userage: {type: String},                        //年龄
+                    logindate : { type: String}                       //最近登录时间
+                });
+
+                module.exports = mongoose.model('User',UserSchema,'User');
+                </pre>
+            </li>
+            <li>新建controller文件test.user.js，写增删改查
+                <pre class="brush: javascript;">
+                var User = require("../model/user.js");
+
+                /**
+                 * 查询
+                 */
+                module.exports = {
+                    list: function(req, res) {
+                        User.find(function(err,user) {
+                            if (err) {
+                                console.log("Error:" + err);
+                            } else {
+                                console.log("Res:" + user);
+                                res.json(user);
+                            }
+                        })
+                    }
+                }
+                </pre>
+            </li>
+            <li>在routes文件夹中users.js中配置routeapi，即调用方法请求路径
+                <pre class="brush: javascript;">
+                'use strict';
+
+                var usersController = require('../controller/test.user.js');
+                module.exports = function(app) {
+                  // User Routes
+                  app.use('/api/users',usersController.list);
+                };
+                </pre>
+            </li>
+            <li>在app.js中引入users.js，require('./routes/users.js)(app);
+                <pre class="brush: javascript;">
+                    require('./routes/users.js')(app);
+                </pre>
+            </li>
+            <li>开启数据库服务，npm start此项目</li>
+            <li>浏览器访问http://localhost:3000/api/users</li>
+            <li>文件目录：
+                <pre class="brush: javascript;">
+                    myStudyNode
+                         ---bin
+                            ---www
+                         ---controller
+                            ---test.user.js
+                         ---model
+                            ---user.js
+                         ---node_modules
+                         ---public
+                         ---routes
+                            ---users.js
+                         ---views
+                         app.js
+                         db.js
+                         npm-debug.log
+                         package.json
+                </pre>
+            </li>
         </ol>
     </div>
 </div>
