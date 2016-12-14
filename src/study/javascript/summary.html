@@ -179,7 +179,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-8">
+                <div class="col-sm-12 col-md-4 col-lg-9">
                     <div class="section thirteen-section">
                         <h3>事件</h3>
                         <div class="1-level-title">
@@ -371,8 +371,9 @@ btn.removeEventListener("click",handle,false);</pre>
                         <h3>Ajax和Comet</h3>
                         <p>概念：ajax技术的核心XMLHttpRequest对象(简称XHR),它为向服务器发送请求和解析服务器响应提供了流畅的接口</p>
                         <div class="1-level-title">
-                            <div>
-                                <h4>一、XMLHttpRequest对象</h4>
+                            <h4>一、XMLHttpRequest对象</h4>
+                            <div style="padding-left:2em;">
+                                
                                 <pre>
 //适用于IE7之前的版本
 function createXHR(){
@@ -400,7 +401,7 @@ function createXHR(){
 //后面直接用xhr
 var xhr = createXHR();</pre>
                             </div>
-                            <div class="2-level-title">
+                            <div class="2-level-title" style="padding-left:2em;">
                                 <div>
                                     <h4>1.XHR的用法</h4>
                                     <p>方法：启动一个请求以备发送<br/>
@@ -493,26 +494,42 @@ function addURLParam(url,name,value){
                                     <p>服务器对post请求和web表单提交处理不一样</p>
                                 </div>
                             </div>
-                            <div>
-                                <h4>二、XMLHttpRequest 2级</h4>
+                            
+                            <h4>二、XMLHttpRequest 2级</h4>
+                            <div style="padding-left:2em;">
                                 <p>概念：</p>
                             </div>
-                            <div class="2-level-title">
+                            <div class="2-level-title" style="padding-left:2em;">
                                 <div>
                                     <h4>1.FormData</h4>
-                                    <p></p>
+                                    <p>概念：为序列化表单以及创建与表单格式相同的(用于通过XHR传输)提供便利</p>
+                                    <p>创建FormData对象:
+<pre>var data = new FormData();
+data.append("name","Nich");
+//或者如下面这样写
+var data = new FormData(document.forms[0]);</pre>
+                                    直接通过send()方法发送(不需设置请求头)
+                                    </p>
                                 </div>
                                 <div>
-                                    <h4>2.超时设定</h4>
-                                    <p></p>
+                                    <h4>2.超时设定(ie8支持)</h4>
+                                    <p>概念：timeout设置数值，超时后会调用ontimeout事件处理程序
+                                    <pre>xhr.timeout = 100;
+xhr.ontimeout = function(){alert("延时")};</pre>
+                                    </p>
+
                                 </div>
                                 <div>
                                     <h4>3.overrideMimeType()</h4>
-                                    <p></p>
+                                    <p>概念：重写XHR响应的MIME类型
+                                    <pre>//将响应当成xml来处理
+xhr.overrideMimeType("text/xml");</pre>
+                                    </p>
                                 </div>
-                            <div>
-                            <div>
-                                <h4>三、进度事件</h4>
+                            </div>
+                            
+                            <h4>三、进度事件</h4>
+                            <div style="padding-left:2em;">
                                 <p>概念：W3C定义与客户端服务器通信有关的事件，只针对XHR<br/>
                                 <table class="table">
                                     <thead>
@@ -554,20 +571,166 @@ function addURLParam(url,name,value){
                                     </tbody>
                                 </table></p>
                             </div>
-                            <div class="2-level-title">
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>1.load事件(火狐支持)</h4>
                                 <div>
-                                    <h4>1.FormData</h4>
                                     <p></p>
                                 </div>
+                                
+                                <h4>2.progress事件(Mozilla革新)</h4>
                                 <div>
-                                    <h4>2.超时设定</h4>
-                                    <p></p>
+                                    <p>概念：此事件会在浏览器接收数据期间周期性触发</p>
+                                    <p>onprogress事件处理程序会接收一个event对象，其target属性指向XHR对象，它还有其他3个属性
+                                    <table class="table">
+                                        <thead>
+                                            <th>属性名</th>
+                                            <th>概念</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>lengthComputable</td>
+                                                <td>表示进度信息是否可用的布尔值</td>
+                                            </tr>
+                                            <tr>
+                                                <td>position</td>
+                                                <td>表示已经接收的字节数</td>
+                                            </tr>
+                                            <tr>
+                                                <td>totalSize</td>
+                                                <td>表示根据Content-Length响应头部确定的预期字节数</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    写法事例：
+                                    <pre>
+xhr.onprogress = function(event){
+   var divStatus = document.getElementById('status');
+   if(event.lengthComputable){
+       divStatus.innerHTML = "received" + event.position +"of" +event.totalSize + "bytes";
+   }
+}</pre></p>
                                 </div>
-                                <div>
-                                    <h4>3.overrideMimeType()</h4>
-                                    <p></p>
-                                </div>
+                            </div>
+                           
+                            <h4>四、跨源资源共享</h4>
                             <div>
+                                <p>基本思想：<u>使用自定义HTTP头部让浏览器与服务器沟通，从而决定请求成功还是失败</u><br/>
+                                </p>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>1.IE对CORS的实现</h4>
+                                <p>概要：ie8引入了XDR对象，与XHR类似，但它能够实现安全可靠的跨域通信</p>
+                                <p>XDR与XHR的区别:
+                                <ul><li>cookies不会随请求发送，也不会随响应返回</li><li>只能设置请求头部信息中的Content-Type字段</li><li>不能访问响应头部信息</li><li>只支持GET和POST请求</li></ul>
+                                </p>
+                                <p>方法：<br/>
+                                open(arg1,arg2)</p>
+                                <p>参数：<br/>
+                                arg1:请求的类型<br/>
+                                arg2:url</p>
+                                <p>XDR请求是<strong>异步</strong>执行，请求返回会触发<code>load</code>事件，响应的数据会保存在<code>responseText</code>中,如下所示：
+<pre>var xdr = new XDomainRequest();
+xdr.onload = function(){
+    alert(xdr.responseText);
+};
+//无法确定状态码，失败会触发error事件
+xdr.onerror = function(){
+    alert("An error occurred.");
+};
+xdr.timeout = 1000;
+xdr.ontimeout = function(){
+    alert("Request took too long");
+};
+xdr.open("post","http://www.somewhere-else.com/page/*);
+//为支持POST请求，XDR对象提供contentType属性，用来表示数据发送格式
+//此属性是XDR对象影响头部信息的唯一方式
+xdr.contentType = "application/x-www-form-urlencoded";
+xdr.send("name1=value1&amp;name2=value2");</pre></p>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>2.其他浏览器对CORS的实现</h4>
+                                <p>概要：Firefox3.5+、Safari4+、Chrome、IOS版Safari和Android平台的Webkit实现了对CORS的<strong>原生</strong>支持</p>
+                                <p>通过跨域XHR对象可以访问<code>status</code>和<code>statusText</code>属性，支持<strong>同步</strong>请求,跨域对象也有限制：
+                                <ul>
+                                    <li>不能使用setRequestHeader()设置自定义头部</li>
+                                    <li>不能发送和接收cookie</li>
+                                    <li>调用getAllResponseHeaders()方法总会返回空字符串</li>
+                                </ul></p>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>3.Preflighted Requests(预请求)</h4>
+                                <p>场景：使用下列高级选项发送请求时，便会向服务器发送Preflight请求：
+                                <ul>
+                                    <li>Origin:与简单的请求相同</li>
+                                    <li>Access-Control-Request-Method：请求自身使用的方法</li>
+                                    <li>Access-Control-Request-Headers：(可选)自定义的头部信息，多个头部以逗号分隔</li>
+                                </ul>
+                                发送请求后，服务器通过在响应中发送如下头部与浏览器沟通：
+                                <ul>
+                                    <li>Access-Control-Allow-Origin:与简单的请求相同</li>
+                                    <li>Access-Control-Allow-Methods：允许的方法，多个方法以逗号分隔</li>
+                                    <li>Access-Control-Allow-Headers：允许的头部，多个头部以逗号分隔</li>
+                                    <li>Access-Control-Max-Age：应该将这个Preflight请求缓存多长时间(以秒表示)</li>
+                                </ul>支持预请求的浏览器包括：Firefox3.5+、Safari4+、Chrome、ie11</p>
+                            </div>
+                             <div class="2-level-title" style="padding-left:2em;">
+                                <h4>4.带凭证的请求</h4>
+                                <P>凭据：<u>cookie、HTTP认证及客户端SSL证明</u></P>
+                                <p>通过将<code>withCredentials</code>属性设置为true，可以指定某个请求应发送凭据。</p>
+                                <p>支持预请求的浏览器包括：Firefox3.5+、Safari4+、Chrome、ie11</p>
+                            </div>
+                             <div class="2-level-title" style="padding-left:2em;">
+                                <h4>5.跨浏览器的CORS</h4>
+                                <p>简单请求：非Preflight和不带凭据的请求。</p>
+                                <p>检测XHR是否支持CORS的方法,主要看withCredentials属性：
+                                <pre>
+function createCORSRequest(method,url){
+    var xhr = new XMLHttpRequest();
+    if("withCredentials" in xhr){
+       xhr.open(method,url,true);
+    }else if(typeof XDomainRequest != "undefined"){
+       vxhr = new XDomainRequest();
+       xhr.open(method,url);
+    }else{
+       xhr = null;
+    }
+    return xhr;
+}
+var request = createCORSRequest("get","http://www.somewhere-else.com/page/");
+if(request){
+    request.onload = function(){
+       //对request.responseText进行处理
+    };
+    request.send();
+}</pre></p>
+                            </div>
+                            <h4>五、其他跨域技术</h4>
+                            <div>
+                                <p>基本思想：<u>CORS出现前，不修改服务器前提下，利用<strong>DOM</strong>中能够执行跨域请求的功能<br/></u>
+                                </p>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>1.图像Ping</h4>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>2.JOSNP</h4>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>3.Comet</h4>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>4.服务器发送事件</h4>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>5.Web Sockets</h4>
+                            </div>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                <h4>6.SSE与Web Sockets</h4>
+                            </div>
+                            <h4>六、安全</h4>
+                            <div class="2-level-title" style="padding-left:2em;">
+                                
+                            </div>
                         </div>
                     </div> 
                     <!-- 第21章end --> 
