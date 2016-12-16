@@ -5,3 +5,14 @@
     width: 100%;
     top: 0;
 }
+
+@media (max-width: 800px) {
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .container .panel span {
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+}

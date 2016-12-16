@@ -1,0 +1,186 @@
+<div class="section thirteen-section">
+    <h3>第13章 事件</h3>
+    <div class="1-level-title">
+        <div>
+            <h4>一、事件流</h4>
+            <p>概念：从页面中接收事件的顺序</p>
+        </div>
+        <!-- 事件流 -->
+        <div class="2-level-title">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>事件</th>
+                            <th>概念</th>
+                            <th>流程</th>
+                            <th>浏览器开始目标</th>
+                            <th>DOM2级开始目标</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td>事件冒泡</td>
+                            <td>IE的事件流，最开始由具体的元素，逐级向上传播</td>
+                            <td>流程</td>
+                            <td>target开始</td>
+                            <td>target开始</td>
+                        </tr>
+                        <tr class="">
+                            <td>事件捕获</td>
+                            <td>NetScape团队提出，最开始由不具体的元素，逐级向下传播</td>
+                            <td>流程</td>
+                            <td>window开始</td>
+                            <td>document开始</td>
+                        </tr>
+                        <tr class="">
+                            <td colspan="5">
+                                <div class="concept-image" style="margin-left:10%;">
+                                    <div style="width:300px;height:100px;border:1px solid #000;padding:15px 15px 5px;position: relative;">
+                                        <span style="position: absolute;top:0;left:0;">html</span>
+                                        <div style="width:270px;height:80px;border:1px solid #000;padding:15px 15px 5px;position: relative;">
+                                            <span style="position: absolute;top:0;left:0;">body</span>
+                                            <div style="width:240px;height:60px;border:1px solid #000;padding:15px 15px 5px;position: relative;">
+                                                <span style="position: absolute;top:0;left:0;">div</span>
+                                                <div class="text-center" style="width:210px;height:40px;border:1px solid #000;padding:10px 10px 5px;position: relative;">
+                                                    <span style="position: absolute;top:0;left:0;">a</span>事件目标(event.srcElement||event.target)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h4>W3School模型</h4>
+                <p>语法：
+                    <br/> element.addEventListener(event, function, useCapture)</p>
+                <p>参数：
+                    <table class="table">
+                        <thead>
+                            <th>参数</th>
+                            <th>描述</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>event</td>
+                                <td>必选</td>
+                            </tr>
+                            <tr>
+                                <td>function</td>
+                                <td>必选</td>
+                            </tr>
+                            <tr>
+                                <td>useCapture</td>
+                                <td>可选，布尔值true表示捕获，false表示冒泡</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+            <div>
+                <h4>传统绑定事件方式</h4>
+                <p>语法：
+                    <br/> element.onclick = function</p>
+                <p>在一个支持W3C DOM的浏览器中,上述事件默认冒泡事件</p>
+            </div>
+            <div>
+                <h4>IE浏览器(不包括IE11)</h4>
+                <p>语法：
+                    <br/> element.attachEvent(event, function)</p>
+            </div>
+            <div>
+                <h4>Demo测试</h4>
+                <pre class="brush: xml xhtml xslt html;">
+
+                                    </pre>
+            </div>
+            <div>
+                <h4>阻止事件的传播</h4>
+                <p>语法：
+                    <br/> element.attachEvent(event, function)</p>
+            </div>
+        </div>
+        <div>
+            <h4>二、事件处理程序</h4>
+            <p>概念：响应某个事件的函数</p>
+        </div>
+        <!-- 事件处理程序 -->
+        <div class="2-level-title">
+            <div>
+                <h4>1.HTML事件处理程序</h4>
+                <pre>
+&lt;input type="button" value="click me" onclick="alert('Clicked');"&gt;</pre>
+                <p>如果要在处理事件中使用HTML语法字符，如<code>&amp;</code>、<code>&quot;</code>、<code>&gt;</code>等，需转义</p>
+                <pre>
+&lt;input type="button" value="click me" onclick="alert(&quot;Clicked&quot;);"&gt;</pre>
+                <p>调用脚本</p>
+                <pre>
+&lt;script type="text/javascript"&gt;
+    function showMessage(){
+        alert("hello world");
+    }
+&lt;/script&gt;
+&lt;input type="button" value="click me" onclick="showMessage()"&gt;</pre>
+                <p>访问自身属性：event、this</p>
+                <pre>
+&lt;!-- 输出 "Click" --&gt;
+&lt;input type="button" value="click me" onclick="alert(event.type);"&gt;
+&lt;!-- 输出 "click me" --&gt;
+&lt;input type="button" value="click me" onclick="alert(this.value);"&gt;</pre>
+                <p>动态创建的函数，扩展作用域(访问document和元素自身属性)</p>
+                <pre>
+function(){
+    with(document){
+       with(this){
+           //元素属性值
+       }
+    }
+}
+&lt;!-- 输出 "click me" --&gt;
+&lt;input type="button" value="click me" onclick="alert(value);"&gt;</pre>
+                <p>动态创建的函数，扩展作用域，当前是表单元素</p>
+                <pre>
+function(){
+    with(document){
+       with(this.form){
+           with(this){
+              //元素属性值
+           }  
+       }
+    }
+}
+&lt;!-- 文本框中文本 --&gt;
+&lt;form method="post"&gt;
+    &lt;input type="text" name="username" value=""&gt;
+    &lt;input type="button" value="shq" onclick="alert(username.value);"&gt;
+&lt;/form&gt;</pre>
+            </div>
+            <div>
+                <h4>2.DOM0级事件处理程序</h4>
+                <pre>
+var btn = document.getElementById('myBtn');
+btn.onclick = function(){
+    alert(this.id);//myBtn
+}
+//清除事件处理程序
+btn.onclick = null;</pre>
+            </div>
+            <div>
+                <h4>3.DOM2级事件处理程序</h4>
+                <p>处理addEventListener()、删除removeEventListener()</p>
+                <pre>
+var btn = document.getElementById('myBtn');
+var handle = function(){
+    alert(this.id);//myBtn
+};
+btn.addEventListener("click",handle,false);
+//清除事件，注意函数必须写出来，因为无法删除匿名函数
+btn.removeEventListener("click",handle,false);</pre>
+            </div>
+        </div>
+    </div>
+</div>

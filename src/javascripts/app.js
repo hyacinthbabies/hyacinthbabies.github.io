@@ -1,4 +1,4 @@
-var myApp = angular.module("routeApp", ['ui.router','angularCSS','ngCookies']);
+var myApp = angular.module("routeApp", ['ui.router', 'angularCSS', 'ngCookies']);
 // Mock.mockjax(myApp);
 myApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -8,13 +8,13 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state("bootstrap", {
             url: "/bootstrap",
             templateUrl: "/src/bootstrap/bootstrap.html",
-            controller:'RouteListCtl',
-            css:'/src/bootstrap/bootstrap.css'
+            controller: 'RouteListCtl',
+            css: '/src/bootstrap/bootstrap.css'
         })
         .state("mongodb", {
             url: "/mongodb",
             templateUrl: "/src/study/mongodb/mongodb.html",
-            css:'/src/study/mongodb/mongodb.css'
+            css: '/src/study/mongodb/mongodb.css'
         })
         .state("webpack", {
             url: "/webpack",
@@ -23,22 +23,22 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state("angular", {
             url: "/angular",
             templateUrl: "/src/study/angularjs/angular.html",
-            css:'/src/study/angularjs/angular.css'
+            css: '/src/study/angularjs/angular.css'
         })
         .state("angular.config", {
             url: "/config",
             templateUrl: "/src/study/angularjs/angular-config.html",
-            controller:'configControl'
+            controller: 'configControl'
         })
         .state("angular.router", {
             url: "/router",
             templateUrl: "/src/study/angularjs/angular-router.html",
-            css:'/src/study/angularjs/angular-router.css'
+            css: '/src/study/angularjs/angular-router.css'
         })
         .state("angular.promise", {
             url: "/promise",
             templateUrl: "/src/study/angularjs/angular-$q.html",
-            css:'/src/study/angularjs/angular-$q.css'
+            css: '/src/study/angularjs/angular-$q.css'
         })
         .state("bootstrap.button", {
             url: "/button",
@@ -47,7 +47,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state("bootstrap.column", {
             url: "/column",
             templateUrl: "/src/bootstrap/column.html",
-            css:'/src/bootstrap/column.css'
+            css: '/src/bootstrap/column.css'
         })
         .state("bootstrap.table", {
             url: "/table",
@@ -64,7 +64,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state("bootstrap.font", {
             url: "/font",
             templateUrl: "/src/bootstrap/font.html",
-            controller:'RouteFontCtrl'
+            controller: 'RouteFontCtrl'
         })
         .state("bootstrap.label", {
             url: "/label",
@@ -77,13 +77,13 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         .state("backend", {
             url: "/backend",
             templateUrl: "/src/adminsys/login.html",
-            css:'/src/adminsys/login.css',
-            controller:'loginControl'
+            css: '/src/adminsys/login.css',
+            controller: 'loginControl'
         })
         .state("javas", {
             url: "/javas",
             templateUrl: "/src/study/javascript/summary.html",
-            css:'/src/study/javascript/summary.css',
-            controller:'summaryControl'
+            css: '/src/study/javascript/summary.css',
+            controller: 'summaryControl'
         })
 });

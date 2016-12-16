@@ -11,7 +11,6 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
             loc = str.split('/');
             var name = loc[loc.length - 1];
             var flags = $('[ui-sref$=' + name + ']').find('a').hasClass('active');
-            debugger;
             if (!flags) {
                 $('[ui-sref$=' + name + ']').find('a').addClass('active');
                 $('[ui-sref$=' + name + ']').siblings('li').find('a').removeClass('active');
@@ -29,7 +28,7 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
     });
     //给Model添加拦截过滤器,路由增加限制，实现用户登录状态判断
     $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-        
+
     });
 });
 myApp.controller('RouteListCtl', function($scope) {
@@ -116,7 +115,7 @@ myApp.controller('RouteFontCtrl', function($scope) {
 
 });
 //------------------------------登录界面------------------------------------------
-myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $cookieStore,CkContentService) {
+myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $cookieStore, CkContentService) {
     //用户
     $scope.user = {
         'username': '',
@@ -173,19 +172,21 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
         $cookieStore.put("person", '');
     }
 
-    $scope.getTextAreaValue = function(){
+    $scope.getTextAreaValue = function() {
         return CKEDITOR.instances.ck_textarea1.getData(); //CKEDITOR.instances.控件ID.getData();
         // angular.element(document.getElementById('asign_ck')).html(content); 
     }
 
-    $scope.getDataFromApi = function(){
+    $scope.getDataFromApi = function() {
         var content_1 = $scope.getTextAreaValue();
-        var article = {articlename: 'mongodb的探究', //用户账号
+        var article = {
+            articlename: 'mongodb的探究', //用户账号
             authorname: 'hyacinthbaby', //密码
             articlecontent: content_1, //年龄
-            articledate: '2016-11-30'}
+            articledate: '2016-11-30'
+        }
         var promise_1 = CkContentService.postArtical(article);
-        promise_1.then(function(success){
+        promise_1.then(function(success) {
             alert('成功');
         });
     }
@@ -196,6 +197,29 @@ myApp.controller('configControl', function($scope) {
 });
 
 //-----------------------------javascript知识----------------------------------------------
-myApp.controller('summaryControl',function($scope){
-
+myApp.controller('summaryControl', function($scope, $location, $anchorScroll) {
+    //锚点移动
+    $scope.gotoAnchor = function(id) {
+        switch (id) {
+            case '21section1':
+                $location.hash('21section1');
+                break;
+            case '21section2':
+                $location.hash('21section2');
+                break;
+            case '21section3':
+                $location.hash('21section3');
+                break;
+            case '21section4':
+                $location.hash('21section4');
+                break;
+            case '21section5':
+                $location.hash('21section5');
+                break;
+            case '21section6':
+                $location.hash('21section6');
+                break;
+        };
+        $anchorScroll();
+    };
 });
