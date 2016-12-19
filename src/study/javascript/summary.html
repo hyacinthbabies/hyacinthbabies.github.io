@@ -251,6 +251,51 @@ var xhr = createXHR();</pre>
                                     <p>参数：
                                         <br/> arg:请求主体发送的数据，如果不需要，传入null
                                     </p>
+                                    <h4><mark>同步</mark></h4>
+                                    <p>
+                                        等执行完，响应数据会填充XHR的属性
+                                        <ul>
+                                            <li>responseText:作为响应主体被返回的文本</li>
+                                            <li>responseXML:响应"text/xml"或"application/xml"时,包含XML Dom文档</li>
+                                            <li>status:响应的HTTP状态</li>
+                                            <li>statusText:HTTP状态的说明</li>
+                                        </ul>
+                                    </p>
+                                    <p>demo
+                                    <pre>
+//同步
+xhr.open("get","example.php",false);
+xhr.send(null);
+if((xhr.status >= 200 &amp;&amp; xhr.status<300) || xhr.status == 304){
+    alert(xhr.responseText);
+}else{
+    alert('request is unsuccessful'+xhr.status);
+}</pre></p>
+                                    <h4><mark>异步</mark></h4>
+                                    <p>XHR的readystate属性：请求/响应过程的当前活动阶段
+                                       <ul>
+                                           <li>0:未初始化。尚未调用open()</li>
+                                           <li>1:启动。已经调用open(),但未调用send()</li>
+                                           <li>2:发送。已经调用send(),但尚未接收到响应</li>
+                                           <li>3:接收。已经接收到部分数据</li>
+                                           <li>4:完成。已经接收到所有数据，并且可以在客户端使用</li>
+                                       </ul>
+                                    </p>
+                                    <p>demo
+                                    <pre>
+//只要readystate变化，就会触发此函数
+xhr.onreadystatechange = function(){
+    if(xhr.readyState == 4){
+        if((xhr.status >= 200 &amp;&amp; xhr.status<300) || xhr.status == 304){
+            alert(xhr.responseText);
+        }else{
+            alert('request is unsuccessful'+xhr.status);
+        }
+    }
+};
+//异步
+xhr.open("get","example.txt",true);
+xhr.send(null);</pre></p>
                                 </div>
                                 <div>
                                     <h4>2.HTTP头部信息</h4>
@@ -268,51 +313,57 @@ var xhr = createXHR();</pre>
                                             <thead>
                                                 <th>头部信息</th>
                                                 <th>解释</th>
+                                                <th>可设值</th>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>Accept</td>
                                                     <td>浏览器能够处理的内容类型</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Accept-Charset</td>
                                                     <td>浏览器能够显示的字符集</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Accept-encoding</td>
                                                     <td>浏览器能够处理的压缩编码</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Accept-Lanuage</td>
                                                     <td>浏览器当前设置的语言</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Connection</td>
                                                     <td>浏览器与服务器之间连接的类型</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Cookie</td>
                                                     <td>当前页面设置的任何cookie</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Host</td>
                                                     <td>发出请求的页面所在的域</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Referer</td>
                                                     <td>发出请求的页面的URL</td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>User-Agent</td>
                                                     <td>浏览器用户代理字符串</td>
+                                                    <td></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </p>
-                                    <p>用法demo</p>
-                                    <pre>
-                                        
-                                    </pre>
                                 </div>
                                 <div>
                                     <h4>3.GET请求</h4>
