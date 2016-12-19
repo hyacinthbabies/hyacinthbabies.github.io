@@ -1,0 +1,54 @@
+<div class="section twenty" name="20section">
+    <h3>第20章 JOSN</h3>
+    <p>JSON:简单值、对象、数组</p>
+    <div class="1-level-title">
+        <h4>一、js---JSON字符串</h4>
+        <div class="2-level-title" style="padding-left:2em;">
+            <p>1.javascript序列化为一个JSON字符串<u>不包含任何空格字符或缩进</u>
+                <br>方法：JSON.stringify(arg1,arg2,arg3)
+                <ul>
+                    <li>arg1:javascript对象</li>
+                    <li>arg2:是一个过滤器，可以是数组或者函数function(key,value)(可选)</li>
+                    <li>arg3:是一个选项(数字则空格缩进，字符串则字符串填充)，表示是否在JSON字符串中保留缩进(最大缩进空格为10)(可选)</li>
+                </ul>
+            </p>
+            <p>2.理解toJSON()
+                <pre>
+var book ={"title":"Professial",
+           "authors":["Nic C.zg"],
+           year:2011,
+            toJSON:function(){
+               return this.title;
+            }
+           };
+//如果有toJSON()并且能取到值，则调用该方法。如果有第2个参数，则toJSON()返回的值是过滤器函数的传参
+var jsonText = JSON.stringify(book);</pre></p>
+        </div>
+        <h4>二、JSON---js值</h4>
+        <div class="2-level-title" style="padding-left:2em;">
+            <p>1.JSON字符串得到javascript值
+                <br>方法：JSON.parse(arg1,arg2)
+                <ul>
+                    <li>arg1:json对象</li>
+                    <li>arg2:函数function(key,value)(还原函数)<u>返回undefined则会删除该属性</u></li>
+                </ul>
+                <pre>
+var book ={"title":"Professial",
+           "authors":["Nic C.zg"],
+           year:2011,
+            releaseDate:new Date(2011,11,1)
+           };
+//日期已经解析成json字符串
+var jsonText = JSON.stringify(book);
+//在还原函数中又还原成Date对象
+var bookcopy = JOSN.parse(jsonText,function(key,value){
+    if(key == "releaseDate"){
+       return new Date(value);
+    }else{
+       return value;
+    }
+});
+alert(bookcopy.releaseDate.getFullYear());</pre></p>
+        </div>
+    </div>
+</div>

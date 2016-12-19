@@ -201,6 +201,12 @@ myApp.controller('summaryControl', function($scope, $location, $anchorScroll) {
     //锚点移动
     $scope.gotoAnchor = function(id) {
         switch (id) {
+            case '13section':
+                $location.hash('13section');
+                break;
+            case '20section':
+                $location.hash('20section');
+                break;
             case '21section1':
                 $location.hash('21section1');
                 break;
