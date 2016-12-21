@@ -139,29 +139,37 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
         // }else{
         //     $scope.form.$setSubmitted(true);
         // }
-        $http({
-            method: 'POST',
-            url: 'http://localhost:8080/api/users',
-            // data: {
-            //     username: $scope.user.username,
-            //     password: $scope.user.password
-            // }
-        }).success(function(data) {
-            debugger;
-            if (data[0].username == $scope.user.username && data[0].userpwd == $scope.user.password) {
-                $rootScope.username = $scope.user.username;
-                $scope.hasLogined = true;
-                if ($scope.isSelected) {
-                    $cookieStore.put("person", { name: $scope.user.username, pass: $scope.user.password });
-                }
-                $state.go('angular.config');
-            } else {
-                console.log('用户名或者密码不对');
-            }
+        // $http({
+        //     method: 'POST',
+        //     url: 'http://localhost:8080/api/users',
+        //     // data: {
+        //     //     username: $scope.user.username,
+        //     //     password: $scope.user.password
+        //     // }
+        // }).success(function(data) {
+        //     if (data[0].username == $scope.user.username && data[0].userpwd == $scope.user.password) {
+        //         $rootScope.username = $scope.user.username;
+        //         $scope.hasLogined = true;
+        //         if ($scope.isSelected) {
+        //             $cookieStore.put("person", { name: $scope.user.username, pass: $scope.user.password });
+        //         }
+        //         $state.go('angular.config');
+        //     } else {
+        //         console.log('用户名或者密码不对');
+        //     }
 
-        }).error(function(data) {
-            console.log('登录失败');
-        })
+        // }).error(function(data) {
+        //     console.log('登录失败');
+        // })
+        if ("hyacinthbaby" == $scope.user.username && "123qwe123" == $scope.user.password) {
+            $rootScope.username = $scope.user.username;
+            $scope.hasLogined = true;
+            if ($scope.isSelected) {
+                $cookieStore.put("person", { name: $scope.user.username, pass: $scope.user.password });
+            }
+        } else {
+            alert("数据库服务还未启动wo");
+        }
     };
     $scope.logout = function() {
         $scope.hasLogined = false;
