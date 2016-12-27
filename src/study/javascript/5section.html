@@ -588,6 +588,20 @@ objectSayColor();//blue</div>
 每个函数继承的toLocaleString()和toString()、valueOf()只能返回函数代码
 <h3>6.基本包装类型</h3>
 为便于操作基本类型值，ES5提供了3个特殊的引用类型：Boolean、Number和String<br />
+6.1 Boolean类型<br />
+用构造函数创建new Boolean(true/false);<br />
+用处不大<br />
+6.2 Number类型<br />
+用构造函数创建new Number(数值);<br />
+一些将数值格式化为字符串的方法：<br />
+<span class="marker">toFixed()</span>按照指定的小数位返回数值的字符串表示<br />
+<span class="marker">toExponential()</span>按照指定小数位格式化数值，返回指数表示法（e）<br />
+<span class="marker">toPrecision()</span>返回固定大小格式，也可能返回指数格式
+
+<div style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;">var num = 10;<br />
+alert(num.toFixed(2));//&quot;10.00&quot;<br />
+alert(num.toExponential(1));//&quot;1.0e+1&quot;<br />
+alert(num.toPrecision(1));//&quot;1e+2&quot;</div>
 6.3 String类型<br />
 用构造函数创建<ins>new String();</ins><br />
 用<span class="marker">length</span>属性表示长度，&quot;hello world&quot;.length //11
@@ -633,7 +647,7 @@ alert(stringvalue.substr(3,7));//&quot;lo worl&quot;<br />
 <span class="marker">indexOf()</span>从字符串开头向后搜索子字符串，返回位置<br />
 <span class="marker">lastIndexOf()</span>从字符串的末尾向前搜索子字符串，返回位置<br />
 没有找到返回-1
-<div style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;">var stringValue = &quot;hello world&quot;;<br />
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringValue = &quot;hello world&quot;;<br />
 alert(stringValue.indexOf(&quot;o&quot;));//4<br />
 alert(stringValue.lstIndexOf(&quot;o&quot;));//7</div>
 
@@ -642,7 +656,7 @@ alert(stringValue.lstIndexOf(&quot;o&quot;));//7</div>
 </ul>
 创建一个字符串的副本，删除前置及后缀的所有空格
 
-<div style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;">var stringValue = &quot; &nbsp; &nbsp; hello world&quot;;<br />
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringValue = &quot; &nbsp; &nbsp; hello world&quot;;<br />
 var trimmedStringValue = stringVlaue.trim();<br />
 alert(trimmedStringValue );//&quot;hello world&quot;</div>
 
@@ -656,13 +670,133 @@ alert(trimmedStringValue );//&quot;hello world&quot;</div>
 </ul>
 <span class="marker">match()</span>：本质与RegExp和exec()方法相同，接收一个参数，要么是一个正则表达式，要么是一个RegExp对象
 
-<div style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;">var text = &quot;cat,bat,sat,fat&quot;;<br />
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;cat,bat,sat,fat&quot;;<br />
 vat pattern = /.at/;<br />
 var matches = text.match(pattern);<br />
 alert(matches[0]);//&quot;cat&quot;</div>
+<span class="marker">search()</span>:与match()方法的参数相同：由字符串或RegExp对象指定的一个正则表达式。返回字符串中第一个匹配项的索引，如果没有返回-1
 
-<h3>search():<br />
-7.单体内置对象</h3>
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;cat,bat,sat,fat&quot;;<br />
+vat pos = text.search(/at/);<br />
+alert(pos);//1</div>
+<span class="marker">replace()</span>:接收2个参数（RegExp对象或一个字符串，一个字符串或一个函数）
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;cat,bat,sat,fat&quot;;<br />
+var result = text.replace(&quot;at&quot;,&quot;ond&quot;);<br />
+alert(result);//&quot;cond,bat,sat,fat&quot;<br />
+<br />
+result = text.replace(/at/g,&quot;ond&quot;);<br />
+alert(result);//&quot;cond,bond,sond,fond&quot;</div>
+(1)如果第二个参数是字符串，还可以使用一些特殊字符序列
+
+<table border="0" cellpadding="1" cellspacing="1" style="width:600px">
+	<tbody>
+		<tr>
+			<td>字符序列</td>
+			<td>替换文本</td>
+		</tr>
+		<tr>
+			<td>$$</td>
+			<td>$</td>
+		</tr>
+		<tr>
+			<td>$&amp;</td>
+			<td>匹配整个模式的子字符串。与RegExp.lastMatch的值相同</td>
+		</tr>
+		<tr>
+			<td>$&#39;</td>
+			<td>匹配的子字符串之前的子字符串。与RegExp.leftContext的值相同</td>
+		</tr>
+		<tr>
+			<td>$`</td>
+			<td>匹配的子字符串之后的子字符串。与RegExp.rightContext的值相同</td>
+		</tr>
+		<tr>
+			<td>$n</td>
+			<td>匹配第n个捕获组的子字符串，其中n等于0-9.例如，$1是匹配第一个捕获组的子字符串，$2是匹配第二个捕获组的子字符串，以此类推。如果正则表达式中没有定义捕获组，则使用空字符串</td>
+		</tr>
+		<tr>
+			<td>$nn</td>
+			<td>
+			<table border="0" cellpadding="1" cellspacing="1" style="width:600px">
+				<tbody>
+					<tr>
+						<td>&nbsp;</td>
+						<td>匹配第nn个捕获组的子字符串，其中nn等于01-99.例如，$01是匹配第一个捕获组的子字符串，$02是匹配第二个捕获组的子字符串，以此类推。如果正则表达式中没有定义捕获组，则使用空字符串</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+&nbsp;
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;cat,bat,sat,fat&quot;;<br />
+result = text.replace(/(.at)/g,&quot;word($1)&quot;);<br />
+alert(result);//word(cat),word(bat),word(sat),word(fat)</div>
+(2)如果第2个参数是函数，function（模式的匹配项，模式匹配项在字符串中位置，原始字符串）。返回一个字符串
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">function htmlEscape(text){<br />
+&nbsp;&nbsp; return text.replace(/[&lt;&gt;&quot;&amp;]/g,function(match,pos,originalText){<br />
+&nbsp;&nbsp; &nbsp; &nbsp;switch(match){<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case &quot;&lt;&quot;:<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &quot;&amp;lt;&quot;;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &quot;&gt;&quot;:<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &quot;&amp;gt;&quot;;&nbsp;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case &quot;&amp;&quot;:<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &quot;&amp;amp;&quot;;<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &quot;\&quot;:<br />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &quot;&amp;quot;&quot;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp;}<br />
+&nbsp; &nbsp; });<br />
+}<br />
+alert(htmlEscape(&quot;&lt;p class=\&quot;greeting\&quot;&gt;Hello world!&lt;/p&gt;));<br />
+//&amp;lt;p class = &amp;quot;greeting&amp;quot;&amp;gt;Hello world!&amp;lt;/p&amp;gt;</div>
+<span class="marker">split(</span>):基于指定的分隔符将一个分隔成多个子字符串，并将结果放在一个数组中。分隔符可以是字符串，也可以是一个RegExp对象。第2个参数可选，用于指定数组长度
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colorText = &quot;red,blue,green,yellow&quot;;<br />
+var colors1 = colorText.split(&quot;,&quot;);//[&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;,yellow&quot;]<br />
+var colors2 = colorText.split(&quot;,&quot;,2);//[&quot;red&quot;,&quot;blue&quot;]<br />
+var colors3 = colorText.split(/[^\,]+/);//[&quot;&quot;,&quot;,&quot;,&quot;,&quot;,&quot;,&quot;,&quot;&quot;]</div>
+
+<ul>
+	<li><span class="marker">localeCompare()</span>方法</li>
+</ul>
+比较2个字符串，并返回下列值的一个
+
+<table border="0" cellpadding="1" cellspacing="1" style="width:500px">
+	<tbody>
+		<tr>
+			<td>如果字符串在字母表中应该排在字符串参数之前，则返回一个负数</td>
+		</tr>
+		<tr>
+			<td>如果字符串等于字符串参数，则返回0</td>
+		</tr>
+		<tr>
+			<td>如果字符串在字母表中应该排在字符串参数之后，则返回一个正数</td>
+		</tr>
+	</tbody>
+</table>
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringValue = &quot;yellow&quot;;<br />
+alert(stringvalue.localeCompare(&quot;brick&quot;);//1<br />
+alert(stringvalue.localeCompare(&quot;yellow&quot;);//0<br />
+alert(stringvalue.localeCompare(&quot;zoo&quot;);//-1</div>
+
+<ul>
+	<li><span class="marker">fromCharCode()</span>方法</li>
+</ul>
+接收一个或多个字符编码，然后将它们转换成一个字符串
+
+<div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">alert(String.fromCharCode(104,101,108,108,111));//&quot;hello&quot;</div>
+
+<ul>
+	<li>HTML方法</li>
+</ul>
+js动态格式化HTML的需求，但是最好不用，无法表达语义
+
+<h3>7.单体内置对象</h3>
 开发人员不必显示地实例化内置对象，因为它们已经实例化了。<br />
 Object、Array、String等都是内置对象，ECMA-262还定义了2个单体内置对象：Global和Math<br />
 7.1 Global对象<br />

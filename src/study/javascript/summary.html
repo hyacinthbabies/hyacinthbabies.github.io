@@ -75,10 +75,13 @@
                 <br/> 执行环境、作用域
             </div>
             <div class="panel-body secondPage">
-                222
+
             </div>
             <div class="panel-footer">
-                标签：
+                <span class="label label-success">join()</span>
+                <span class="label label-info">push()</span>
+                <span class="label label-success">pop()</span>
+                <span class="label label-primary">unshift()</span>
             </div>
         </div>
     </div>
@@ -92,10 +95,29 @@
                 confirm(); alert();
             </div>
             <div class="panel-body secondPage">
-                222
+                 <span class="label label-default">toLocaleString()</span>
+                <span class="label label-info">toString()</span>
+                <span class="label label-primary">valueOf()</span>
+                
+                <span class="label label-default">shift</span>
+                <span class="label label-info">reverse</span>
+                <span class="label label-primary">sort</span>
+                <span class="label label-success">concat</span>
+                <span class="label label-info">slice</span>
+                <span class="label label-success">splice</span>
+                <span class="label label-primary">indexOf</span>
+                <span class="label label-danger">every</span>
+                <span class="label label-primary">filter</span>
+                <span class="label label-success">forEach</span>
+                <span class="label label-info">map</span>
+                <span class="label label-success">some</span>
+                <span class="label label-primary">reduce</span>
             </div>
             <div class="panel-footer">
-                标签
+                标签：<span class="label label-success">join</span>
+                <span class="label label-info">push</span>
+                <span class="label label-success">pop</span>
+                <span class="label label-primary">unshift</span>
             </div>
         </div>
     </div>
@@ -239,7 +261,939 @@
                     <!-- 第4章end -->
                     <!-- 第5章start -->
                     <div class="section seven-section" name="7section">
-                       
+                        <h2><strong>第5章 引用类型</strong></h2>
+                        <h3>一、Object类型</h3> 创建Object实例的方式2种：
+                        <ul>
+                            <li>使用<span class="marker">new</span>后跟Object构造函数</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var person = new Object();
+                            <br /> person.name = &quot;shq&quot;;</div>
+                        <ul>
+                            <li>使用<span class="marker">对象字面量</span>表示法</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var person = {
+                            <br /> &nbsp;&nbsp; name : &quot;shq&quot;
+                            <br /> };
+                        </div>
+                        访问属性的方式2中：
+                        <ins>点表示法</ins>和
+                        <ins>方括号表示</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">alert(person.name);//点表示法（最好使用此）
+                            <br /> alert(person[&quot;name&quot;]);//方括号表示法
+                            <br /> var propertyName = &quot;name&quot;;
+                            <br /> alert(person[propertyName]);//方括号访问变量
+                        </div>
+                        <h3>二、Array类型</h3> 创建数组的基本方式2种：
+                        <ul>
+                            <li>使用new后跟Array构造函数，new可省略</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = new Array();//new&nbsp;
+                            <br /> var colors = new Array(20);//数组长度为20
+                            <br /> var colors = new Array(&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;);//包含3个字符串的数组</div>
+                        <ul>
+                            <li>使用数组字面量表示法</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = [&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;];</div>
+                        访问值的方式：
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">alert(colors[0]);//red，索引从0-(length-1)
+                            <br /> alert(colors.length);//长度，3
+                        </div>
+                        <h3>1.检测数组</h3> 对于一个网页或者一个全局作用域：
+                        <span class="marker">instanceof</span>
+                        <br /> ECMAScript5：
+                        <span class="marker">Array.isArray()</span>
+                        <br /> 支持isArray的浏览器：IE9+、Firefox4+、Safari5+、Opera10.5+、Chrome
+                        <h3>2.转换方法</h3> 返回由数组中每个值的字符串形式拼接而成的一个以逗号分隔的字符串
+                        <span class="marker">toLocaleString()</span>、<span class="marker">toString()</span>、<span class="marker">valueOf()</span>、<span class="marker">join()</span>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = [&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;];
+                            <br /> alert(colors.toString());//red,blue,green
+                            <br /> alert(colors.toLocaleString());//red,blue,green
+                            <br /> alert(colors.valueOf());//red,blue,green
+                            <br /> alert(colors);//red,blue,green
+                            <ins>会在后台调用toString()方法</ins>
+                            <br /> alert(colors.join(&quot;,&quot;));//red,blue,green
+                            <br /> alert(colors.join(&quot;||&quot;));//red||blue||green
+                        </div>
+                        <h3>3.栈方法</h3> 数组可以表现得像栈一样，LIFO
+                        <ins>后进先出</ins>
+                        <br /> 插入：
+                        <span class="marker">push()</span>逐个添加到数字末尾，并返回修改后数组的长度
+                        <br /> 移除：
+                        <span class="marker">pop()</span>从数组末尾移除最后一项，返回移除的项
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = new Array();
+                            <br /> var count = colors.push(&quot;red&quot;,&quot;green&quot;);
+                            <br /> alert(count);//2
+                            <br /> alert(colors);//[&quot;red&quot;,&quot;green&quot;]
+                            <br /> var item = colors.pop();
+                            <br /> alert(item);//&quot;green&quot;
+                        </div>
+                        <h3>4.队列方法</h3> 数组也可以表现得像队列一样，FIFO
+                        <ins>先进先出</ins>
+                        <br /> 插入：
+                        <span class="marker">unshift()</span>在数组前端添加任意个项并返回新数组的长度
+                        <br /> 移除：
+                        <span class="marker">shift()</span>移除数组中的第一个项并返回该项
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = new Array();
+                            <br /> var count = colors.unshift(&quot;red&quot;,&quot;green&quot;);
+                            <br /> alert(count);//2
+                            <br /> alert(colors);//[&quot;green&quot;,&quot;red&quot;]
+                            <br /> var item = colors.shift();
+                            <br /> alert(item);//&quot;green&quot;&nbsp;
+                        </div>
+                        <ins>push()+shift()实现先进先出、pop()+unshift()实现后进后出</ins>
+                        <h3>5.重排序方法</h3>
+                        <span class="marker">reverse()</span>反转数组项的顺序
+                        <br />
+                        <span class="marker">sort()</span>默认升序排列，会调用toString()进行转型后比较字符串
+                        <br />
+                        <ins>sort()可以接收函数作为参数function(arg1,arg2)</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var values = [0,1,5,10,15];
+                            <br /> values.sort();
+                            <br /> alert(values);//0,1,10,15,5
+                            <br /> //利用函数纠正排序
+                            <br /> function compare(value1,value2){
+                            <br /> &nbsp;&nbsp;if(value1 &lt; value2){
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp;return -1;
+                            <br /> &nbsp;&nbsp; }else if(value1 &gt; value2){
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; return 1;
+                            <br /> &nbsp;&nbsp; }else{
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; return 0;
+                            <br /> &nbsp; &nbsp;}
+                            <br /> &nbsp; &nbsp;//对于数值类型或valueOf()方法返回数值类型的对象类型,直接使用
+                            <br /> &nbsp; &nbsp;//return value2-value1;//升序
+                            <br /> }
+                            <br /> var values = [0,1,5,10,15];
+                            <br /> values.sort(compare);
+                            <br /> alert(values);//0,1,5,10,15
+                        </div>
+                        <h3>6.操作方法</h3>
+                        <span class="marker">concat()</span>创建当前数值的一个副本，然后接收到的参数添加到这个副本的末尾，构建新数值
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;];
+                            <br /> var colors2 = colors.concat(&quot;yellow&quot;,[&quot;black&quot;,&quot;brown&quot;]);
+                            <br /> alert(colors);//red,green,blue
+                            <br /> alert(colors2);//red,green,blue,yellow,black,brown
+                        </div>
+                        <span class="marker">slice()</span>能够基于当前数组中的一个或多个项创建一个数组
+                        <br /> 接收一或两个参数，即
+                        <ins>slice(返回项的起始,结束位置)</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;yellow&quot;,&quot;purple&quot;];
+                            <br /> var colors2 = colors.slice(1);
+                            <br /> var colors3 = colors.slice(1,4);
+                            <br /> var colors4 = colors.slice(-1);//-1+colors.length = 4
+                            <br /> alert(colors2);//green,blue,yellow,purplr
+                            <br /> alert(colors3);//green,blue,yellow
+                            <br /> alert(colors4);//purple
+                        </div>
+                        <span class="marker">splice()</span>主要用途是向数组的中部插入项，使用方法有3种
+                        <ul>
+                            <li>删除:
+                                <ins>splice(起始位置，要删除的项数)</ins>
+                            </li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;];
+                            <br /> var removed = splice(0,1);//删除第一项
+                            <br /> alert(colors);//green,blue
+                            <br /> alert(removed);//red
+                        </div>
+                        <ul>
+                            <li>插入:
+                                <ins>splice(起始位置，0，要插入的项)</ins>
+                            </li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;];
+                            <br /> var removed = splice(1,0,&quot;yellow&quot;,&quot;orange&quot;);//从位置1开始插入2项
+                            <br /> alert(colors);//red,green,yellow,orange,blue
+                            <br /> alert(removed);//返回的是一个空数组
+                        </div>
+                        <ul>
+                            <li>替换:
+                                <ins>splice(起始位置，要删除的项数，要插入的任意数量的项)</ins>
+                            </li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colors = [&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;];
+                            <br /> var removed = splice(1,1,&quot;yellow&quot;,&quot;purple&quot;);//插入2项，删除1项
+                            <br /> alert(colors);//red,yellow,purple,blue
+                            <br /> alert(removed);//green,返回的数组中只包含一项
+                        </div>
+                        <h3>7.位置方法</h3> 返回要查找的项在数组中的位置，或在没找到的情况下返回-1(查找必须严格相等，
+                        <strong>===</strong>)
+                        <br />
+                        <span class="marker">indexOf()</span>:从数组的开头(0)开始向后找
+                        <br />
+                        <ins>indexOf(要查找的项,表示查找起点位置的索引(可选))</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var numbers = [1,2,3,4,5,4,3,2,1];
+                            <br /> alert(numbers.indexOf(4));//3
+                            <br /> alert(numbers.indexOf(4,4));//5
+                            <hr />var person = {name:&quot;Nic&quot;};
+                            <br /> var people = [{name:&quot;Nic&quot;}];
+                            <br /> var morePeople = [person];
+                            <br /> alert(people.indexOf(person));//-1
+                            <br /> alert(morePeople.indexOf(person));//0
+                        </div>
+                        <span class="marker">lastIndexOf()</span>:从数组的末尾开始向前找
+                        <br />
+                        <ins>lastIndexOf(要查找的项,表示查找起点位置的索引(可选))</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var numbers = [1,2,3,4,5,4,3,2,1];
+                            <br /> alert(numbers.lastIndexOf(4));//5
+                            <br /> alert(numbers.lastIndexOf(4,4));//3
+                        </div>
+                        浏览器：IE9+、Firefox2+、Safari3+、Opera9.5、Chrome
+                        <h3>8.迭代方法</h3>
+                        <ins>迭代方法(要在每一项上运行的函数，运行该函数的作用域对象--影响this的值(可选))</ins>
+                        <br />
+                        <ins>传入的函数(数组项的值,该项在数组中的位置,数组对象本身)</ins>
+                        <ul>
+                            <li><span class="marker">every()</span>:对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var numbers = [1,2,3,4,5,4,3,2,1];
+                            <br /> var everyResult = numbers.every(function(item,index,array){
+                            <br /> &nbsp; return (item &gt;2);
+                            <br /> });
+                            <br /> alert(everyResult);//false
+                        </div>
+                        <ul>
+                            <li><span class="marker">filter()</span>:对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var numbers = [1,2,3,4,5,4,3,2,1];
+                            <br /> var filterResult = numbers.filter(function(item,index,array){
+                            <br /> &nbsp; return (item &gt;2);
+                            <br /> });
+                            <br /> alert(filterResult);//[3,4,5,4,3]
+                        </div>
+                        <ul>
+                            <li><span class="marker">forEach()</span>:对数组中的每一项运行给定函数，这个方法没有返回值</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">//本质上与for循环迭代数组一样
+                            <br /> var numbers = [1,2,3,4,5,4,3,2,1];
+                            <br /> numbers.forEach(function(item,index,array){
+                            <br /> &nbsp; //执行某些操作
+                            <br /> });
+                        </div>
+                        <ul>
+                            <li><span class="marker">map()</span>:对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var numbers = [1,2,3,4,5,4,3,2,1];
+                            <br /> var mapResult = numbers.map(function(item,index,array){
+                            <br /> &nbsp; return item * 2
+                            <br /> });
+                            <br /> alert(mapResult);//[2,4,6,8,10,8,6,4,2]
+                        </div>
+                        <ul>
+                            <li><span class="marker">some()</span>:对函数中的每一项运行给定函数，如果该函数对任一项返回true，则返回true</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var numbers = [1,2,3,4,5,4,3,2,1];
+                            <br /> var someResult = numbers.some(function(item,index,array){
+                            <br /> &nbsp; return (item &gt;2);
+                            <br /> });
+                            <br /> alert(someResult);//true
+                        </div>
+                        浏览器：IE9+、Firefox2+、Safari3+、Opera9.5、Chrome
+                        <h3>9.缩小方法</h3> 迭代数组的所有项，然后构建一个最终返回的值
+                        <br />
+                        <ins>缩小方法(在每一项上调用的函数,作为缩小基础的初始值(可选))</ins>
+                        <br />
+                        <ins>传入的函数(前一个值，当前值，项的索引，数组对象)返回的任何值作为第一个参数自动传给下一项</ins>
+                        <br />
+                        <span class="marker">reduce():</span>从数组的第一项开始，逐个遍历到最后。执行求数组中的所有值之和的操作
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var values = [1,2,3,4,5];
+                            <br /> var sum = values.reduce(function(prev,cur,index,array){
+                            <br /> &nbsp; return prev + cur;//第一次执行prev是1，第二次执行prev是3（1+2）
+                            <br /> });
+                            <br /> alert(sum);//15
+                        </div>
+                        <span class="marker">reduceRight()</span>:从数组的最后一项开始，向前遍历到第一项
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var values = [1,2,3,4,5];
+                            <br /> var sum = values.reduceRight(function(prev,cur,index,array){
+                            <br /> &nbsp; return prev + cur;//第一次执行prev是5，第二次执行prev是9（5+4）
+                            <br /> });
+                            <br /> alert(sum);//15
+                        </div>
+                        浏览器：IE9+、Firefox3+、Safari4+、Opera10.5、Chrome
+                        <h3>三、Date类型</h3> Date类型使用自UTC国际协调时间1970年1月1日午夜(零时)开始经过的毫秒数来保存日期
+                        <br /> 创建日期对象，使用new操作符和Date构造函数即可
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var now = new Date();//获取当前日期和时间
+                            <br /> alert(now);//Wed Dec 21 2016 11:08:11 GMT+0800 (中国标准时间)</div>
+                        根据特定日期和时间创建日期对象:
+                        <br />
+                        <span class="marker">Date.parse()</span>:接收表示日期的字符串参数，返回相应日期的毫秒数。如果不能表示日期，则返回NaN
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var someDate = new Date(Date.parse(&quot;May 25,2004&quot;));
+                            <br /> var someDate = new Date(&quot;May 25,2004&quot;);//与调用parse等价，不用浏览器实现可能不同
+                            <br /> alert(someDate);//Tue May 25 2004 00:00:00 GMT+0800 (中国标准时间)</div>
+                        <span class="marker">Date.UTC():</span>返回表示日期的毫秒数
+                        <br />
+                        <ins>date.UTC(年份，基于0的月份0-11，月中哪一天1-31(默认1），小时数0-23(默认0)，分钟(默认0)，秒(默认0)，毫秒数(默认0))只有前2个参数必须</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">//有疑问
+                            <br /> //按理是GMT时间2005年5月5日下午5:55:55
+                            <br /> var all = new Date(Date.UTC(2005,4,5,17,55,55));
+                            <br /> alert(all);//Fri May 06 2005 01:55:55 GMT+0800 (中国标准时间)
+                            <br /> //本地时间2005年5月5日下午5:55:55
+                            <br /> var all = new Date(2005,4,5,17,55,55);</div>
+                        <span class="marker">Date().now()</span>:返回表示调用这个方法时的日期和时间的毫秒数
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">Date.now();//1482300835521
+                            <br /> //在不支持的浏览器中，用+
+                            <br /> +new Date();//1482300835521</div>
+                        浏览器：IE9+、Firefox3+、Safari3+、Opera10.5、Chrome
+                        <h3>1.继承的方法</h3> Date类型重写了
+                        <span class="marker">toLocaleString()</span>、<span class="marker">toString()</span>、<span class="marker">valueOf()</span>
+                        <br /> toLocaleString():按照与浏览器设置的地区相适应的格式返回日期和时间
+                        <br /> toString():返回带有时区信息的日期和时间
+                        <br /> 这2个方法价值不大
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">//不同浏览器返回不同，如Chrome
+                            <br /> new Date().toLocaleString();//&quot;2016/12/21 下午2:18:45&quot;
+                            <br /> new Date().toString();//&quot;Wed Dec 21 2016 14:19:07 GMT+0800 (中国标准时间)&quot;</div>
+                        valueOf():返回日期的毫秒数
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">new Date().valueOf();//1482301210346</div>
+                        <h3>2.日期格式化方法</h3> Date类型有一些专门将日期格式化字符串的方法：(Chrome浏览器)
+                        <ul>
+                            <li>new Date().<span class="marker">toDateString()</span>;//&quot;Wed Dec 21 2016&quot;</li>
+                            <li>new Date().<span class="marker">toTimeString()</span>;//&quot;14:25:21 GMT+0800 (中国标准时间)&quot;</li>
+                            <li>new Date().<span class="marker">toLocaleDateString()</span>;//&quot;2016/12/21&quot;</li>
+                            <li>new Date().<span class="marker">toLocaleTimeString()</span>;//&quot;下午2:26:59&quot;</li>
+                            <li>new Date().<span class="marker">toUTCString()</span>;//&quot;Wed, 21 Dec 2016 06:27:39 GMT&quot;</li>
+                        </ul>
+                        <h3>3.日期/时间组件方法</h3> 直接取得和设置日期中特定部分的方法：(Chrome浏览器)
+                        <ul>
+                            <li>new Date().<span class="marker">getTime()</span>;//1482301954791//返回表示日期毫秒数，与valueOf()一样</li>
+                            <li>new Date().<span class="marker">setTime</span>(1482301954790);//1482301954790</li>
+                            <li><span class="marker">getFullYear()、getMonth()、getDate()、getDay()、getHours()、getMinutes()、getSeconds()、getMilliseconds()、getTimezoneOffset()</span>(相对应还有set方法，如setFullYear()。以及加UTC，如getUTCSeconds())</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">new Date().getFullYear();//2016
+                            <br /> new Date().setFullYear(2016);//1482302498725</div>
+                        <h3>四、RegExp类型</h3> 创建正则表达式：1字面量形式，2RegExp构造函数
+                        <ul>
+                            <li>字面量形式：</li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var expression = / pattern / flags ;</div>
+                        <ins>pattern模式：可以包含字符类、限定符、分组、向前查找以及反向引用</ins>
+                        <br />
+                        <ins>flags:可以有一个或多个标志，用以标明正则表达式的行为</ins>
+                        <br /> 正则表达式的匹配模式支持下列3个标志：
+                        <br />
+                        <span class="marker">g:</span>表示全局global模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止
+                        <br />
+                        <span class="marker">i:</span>表示不区分大小写模式，即在确定匹配项时忽略模式与字符串的大小写
+                        <br />
+                        <span class="marker">m:</span>表示多行模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项
+                        <br />
+                        <ins>一个正则表达式是一个模式与上述3个标志的组合体</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">//匹配字符串中所有&ldquo;at&rdquo;的实例
+                            <br /> var pattern1 = /at/g;
+                            <br /> //匹配第一个&ldquo;bat&rdquo;或&ldquo;cat&rdquo;，不区分大小写
+                            <br /> var pattern2 = /[bc]at/i;
+                            <br /> //匹配多有以&ldquo;at&rdquo;结尾的3个字符串的组合，不区分大小写
+                            <br /> var&nbsp;pattern3 = /.at/gi;</div>
+                        <span class="marker">元字符</span>都必须转义，元字符包括：
+                        <br />
+                        <strong>（ [ { \ ^ $ | } ? * + . ] ）</strong>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">//匹配第一个&ldquo;[bc]at&rdquo;,不区分大小写
+                            <br /> var pattern1 = /\[bc\]at/i;
+                            <br /> //匹配所有&ldquo;.at&rdquo;,不区分大小写
+                            <br /> var pattern2 = /\.at/gi;</div>
+                        <ul>
+                            <li>构造函数形式：
+                                <ins>RegExp(匹配的字符串模式，可选的标志字符串)</ins>
+                            </li>
+                        </ul>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">//匹配第一个&ldquo;bat&rdquo;或&ldquo;cat&rdquo;，不区分大小写
+                            <br /> var pattern1 = new RegExp(&quot;[bc]at&quot;,&quot;i&quot;);</div>
+                        由于构造函数模式参数是字符串，所以某些情况字符需要双重转义：
+                        <table style="width:100%">
+                            <tbody>
+                                <tr>
+                                    <td>字面量模式</td>
+                                    <td>等价的字符串</td>
+                                </tr>
+                                <tr>
+                                    <td>/\[bc\]at/</td>
+                                    <td>&quot;\\[bc\\]at/&quot;</td>
+                                </tr>
+                                <tr>
+                                    <td>/\.at/</td>
+                                    <td>&quot;\\.at&quot;</td>
+                                </tr>
+                                <tr>
+                                    <td>/name\/age/</td>
+                                    <td>&quot;name\\/age&quot;</td>
+                                </tr>
+                                <tr>
+                                    <td>/\d.\d{1,2}/</td>
+                                    <td>&quot;\\d.\\d{1,2}&quot;</td>
+                                </tr>
+                                <tr>
+                                    <td>/\w\\hello\\123/</td>
+                                    <td>&quot;\\w\\\\hello\\\\123&quot;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br /> ECMAScript5规定：使用正则表达式字面量和使用regExp构造函数一样，每次都创建新的RegExp实例
+                        <h3>1.RegExp实例属性（意义不大）</h3>
+                        <ul>
+                            <li>global：布尔值，表示是否设置了g标志</li>
+                            <li>ignoreCase：布尔值，表示是否设置了i标志</li>
+                            <li>lastIndex：整数，表示开始搜索下一个匹配项的字符位置，从0算起</li>
+                            <li>multiline：布尔值，表示是否设置了m标志</li>
+                            <li>source：正则表达式的字符串表示，安卓字面量形式而非传入构造函数中的字符串模式返回</li>
+                        </ul>
+                        <h3>2.RegExp实例方法</h3>
+                        <span class="marker">exec()</span>:专门捕获组而设计的
+                        <br />
+                        <ins>exec(要应用模式的字符串)</ins>,返回包含第一个匹配项信息的数组（包含2个属性：index和input）；或者没有匹配项的情况返回null
+                        <br /> index：表示匹配项在字符串中的位置
+                        <br /> input：表示应用正则表达式的字符串
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;mom and dad and baby&quot;;
+                            <br /> var pattern = /mom( and dad( and baby)?)?/gi;
+                            <br /> var matches = pattern.exec(text);
+                            <br /> alert(matches.index);//0
+                            <br /> alert(matches.input);//&quot;mom and dad and baby&quot;
+                            <br /> //第一项是匹配的整个字符串
+                            <br /> alert(matches[0]);//&quot;mom and dad and baby&quot;
+                            <br /> //第二项包含与第一个捕获组匹配的内容
+                            <br /> alert(matches[1]);//&quot; and dad and baby&quot;
+                            <br /> //第三项包含与第二个捕获组匹配的内容
+                            <br /> alert(matches[2]);//&quot; and baby&quot;</div>
+                        <ins>非全局模式下：每次调用exec()返回的都是第一个匹配项，lastIndex的值始终保持不变。全局模式下：每次调用exec()返回的都是下一个匹配项，lastIndex的值增加。</ins>
+                        <br />
+                        <span class="marker">test()</span>：接收一个参数，模式与参数匹配的情况返回true，否则返回false
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;000-00-0000&quot;;
+                            <br /> var pattern = /\d{3}-\d{2}-\d{4}/;
+                            <br /> if(pattern.test(text)){
+                            <br /> &nbsp;&nbsp;alert(&quot;匹配&quot;);
+                            <br /> }
+                        </div>
+                        RegExp实例继承的
+                        <ins>toLocaleString()和toString()</ins>都会返回正则表达式的字面量，与创建正则表达式方式无关。正则表达式
+                        <ins>valueOf</ins>返回正则表达式本身
+                        <h3>3.RegExp构造函数属性</h3> 这些属性分别有一个长属性名和一个短属性名（Opera除外，不支持短属性名）
+                        <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+                            <tbody>
+                                <tr>
+                                    <td>长属性名</td>
+                                    <td>短属性名</td>
+                                    <td>说明</td>
+                                </tr>
+                                <tr>
+                                    <td>input</td>
+                                    <td>$_</td>
+                                    <td>最近一次要匹配的字符串。Opera不支持此属性</td>
+                                </tr>
+                                <tr>
+                                    <td>lastMatch</td>
+                                    <td>$&amp;</td>
+                                    <td>最近一次的匹配项。Opera不支持此属性</td>
+                                </tr>
+                                <tr>
+                                    <td>lastParen</td>
+                                    <td>$+</td>
+                                    <td>最近一次匹配的捕获组。Opera不支持此属性</td>
+                                </tr>
+                                <tr>
+                                    <td>leftContext</td>
+                                    <td>$`</td>
+                                    <td>input字符串中lastMatch之前的文本</td>
+                                </tr>
+                                <tr>
+                                    <td>multiline</td>
+                                    <td>$*</td>
+                                    <td>布尔值，表示是否所有表达式都使用多行模式。ie、Opera不支持此属性</td>
+                                </tr>
+                                <tr>
+                                    <td>rightContext</td>
+                                    <td>$&#39;</td>
+                                    <td>input字符串中lastMatch之后的文本</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        还有另外9个属性，访问RegExp.$1...RegExp.$9，分别用于存储第一...第九个撇皮的捕获组，在调用exec和test时会被自动填充
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;this has been a short summer&quot;;
+                            <br /> var pattern = /(.)hort/g;
+                            <br /> if(pattern.test(text)){
+                            <br /> &nbsp;alert(RegExp.input);//&nbsp;this has been a short summer
+                            <br /> &nbsp;alert(RegExp.leftContext);//&nbsp;this has been a
+                            <br /> &nbsp;alert(RegExp.[&quot;$`&quot;]);
+                            <br /> &nbsp;alert(RegExp.rightContext);//&nbsp;summer
+                            <br /> &nbsp;alert(RegExp.lastMatch);//&nbsp;short
+                            <br /> &nbsp;alert(RegExp.lastParen);// s
+                            <br /> &nbsp;alert(RegExp.multiline);// false
+                            <br /> }
+                            <hr />var text = &quot;this has been a short summer&quot;;
+                            <br /> var pattern = /(..)or(.)/g;
+                            <br /> if(pattern.test(text)){
+                            <br /> &nbsp;alert(RegExp.$1);//&nbsp;sh
+                            <br /> &nbsp;alert(RegExp.$2);//&nbsp;t
+                            <br /> }
+                        </div>
+                        <h3>4.模式的局限性</h3> ECMAScript有一些特性不支持
+                        <h3>五、Function类型</h3>
+                        <h3>1.没有重载（深入理解）</h3>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var addSomeNumber = function(num){
+                            <br /> &nbsp;&nbsp; return num + 100;
+                            <br /> }
+                            <br /> addSomeNumber = function(num){
+                            <br /> &nbsp;&nbsp; return num + 200;
+                            <br /> }
+                            <br /> //后一个变量会覆盖前一个变量
+                            <br /> var result =&nbsp;addSomeNumber(100);//300</div>
+                        <h3>2.函数声明与函数表达式</h3> 在第几章会有介绍
+                        <h3>3.作为值的函数</h3> 可以从一个函数中返回另一个函数，
+                        <ins>如上sort()重排序</ins>
+                        <h3>4.函数内部属性</h3> 函数内部，2个特殊的对象：
+                        <span class="marker">argumnents</span>和<span class="marker">this</span>，
+                        <br />
+                        <span class="marker">argumnents</span>：是一个类数组对象，包含传入函数中的所有参数。它有一个callee的属性，它是一个指针，指向拥有这个arguments对象的函数
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">function factorial(num){
+                            <br /> &nbsp;&nbsp;if(num &lt;= 1){
+                            <br /> &nbsp; &nbsp; &nbsp; return 1;
+                            <br /> &nbsp; &nbsp;}else{
+                            <br /> &nbsp; &nbsp; &nbsp; //return num * factorial(num-1)
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp;return num * arguments.callee(num-1)
+                            <br /> &nbsp; &nbsp;}
+                            <br /> }
+                        </div>
+                        <span class="marker">this：</span>引用的是函数可以执行的环境对象，也可以说this值，当在全局作用域调用函数，this指代window。
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">window.color = &quot;red&quot;;
+                            <br /> var o = {color:&quot;blue&quot;};
+                            <br /> function sayColor(){
+                            <br /> &nbsp;&nbsp;alert(this.color);
+                            <br /> }
+                            <br /> sayColor();//red
+                            <br /> o.sayColor = sayColor;
+                            <br /> o.sayColor();//blue
+                        </div>
+                        <span class="marker">caller：</span>ECMAScript5规范化另一个函数对象的属性，它保存着调用当前的函数的引用
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">function outer(){
+                            <br /> &nbsp;&nbsp; inner();
+                            <br /> }
+                            <br /> function inner(){
+                            <br /> &nbsp;&nbsp; alert(inner.caller);
+                            <br /> &nbsp;&nbsp; //alert(arguments.callee.caller);
+                            <br /> }
+                            <br /> outer();
+                        </div>
+                        严格模式下，arguments.callee会报错，arguments.caller为ES5定义，严格模式也会报错，非严格模式是undefined
+                        <h3>5.函数属性和方法</h3> 在ES中，函数是对象，有属性和方法，每个函数包含2个属性：
+                        <span class="marker">length</span>和<span class="marker">prototype</span>
+                        <br /> length：表示函数希望接收的命名参数的个数
+                        <br /> prototype：在第6章会详细介绍
+                        <br /> 每个函数包含2个非继承而来的方法：
+                        <strong><span class="marker">apply()</span></strong>和<strong><span class="marker">call()</span></strong>,这2个方法的用途都是在特定的作用域中调用函数，实际上
+                        <ins>等于设置函数体内this对象的值</ins>。
+                        <br />
+                        <span class="marker">apply()</span>：apply(在其中运行函数的作用域，参数数组)，第二个参数可以是Array实例，或者arguments对象
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">function sum(num1,num2){
+                            <br /> &nbsp;&nbsp;return num1+num2;
+                            <br /> }
+                            <br /> function callSum1(num1,num2){
+                            <br /> &nbsp;&nbsp;return sum.apply(this,arguments);//传入arguments对象
+                            <br /> }
+                            <br /> function callSum2(num1,num2){
+                            <br /> &nbsp;&nbsp;return sum.apply(this,[num1,num2]);//传入数组
+                            <br /> }
+                            <br /> alert(callSum1(10,10));//20
+                            <br /> alert(callSum2(10,10));//20
+                        </div>
+                        <span class="marker">call()</span>：与apply()作用一样，区别在与call方法必须明确传入每一个参数
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">function sum(num1,num2){
+                            <br /> &nbsp;&nbsp;return num1+num2;
+                            <br /> }
+                            <br /> function callSum1(num1,num2){
+                            <br /> &nbsp;&nbsp;return sum.call(this,num1,num2);
+                            <br /> }
+                            <br /> alert(callSum1(10,10));//20
+                        </div>
+                        apply()和call()真正强大的地方：
+                        <ins><strong>扩充函数赖以运行的作用域</strong></ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">window.color = &quot;red&quot;;
+                            <br /> var o = {color:&quot;blue&quot;};
+                            <br /> function sayColor(){
+                            <br /> &nbsp;&nbsp;alert(this.color);
+                            <br /> }
+                            <br /> sayColor();//red
+                            <br /> sayColor.call(this);//red
+                            <br /> sayColor.call(window);//red
+                            <br /> //this指向对象o
+                            <br /> sayColor.call(o);//blue
+                        </div>
+                        ES5还定义了一个方法：bind()
+                        <br />
+                        <span class="marker">bind()</span>:这个方法会创建一个函数的实例，其中this值会被绑定到传给bind()函数的值
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">window.color = &quot;red&quot;;
+                            <br /> var o = {color:&quot;blue&quot;};
+                            <br /> function sayColor(){
+                            <br /> &nbsp;&nbsp;alert(this.color);
+                            <br /> }
+                            <br /> var objectSayColor = sayColor.bind(o);
+                            <br /> objectSayColor();//blue
+                        </div>
+                        支持bind()浏览器：IE9+、Firefox4+、Safari5.1+、Opera12+和Chrome
+                        <br /> 每个函数继承的toLocaleString()和toString()、valueOf()只能返回函数代码
+                        <h3>6.基本包装类型</h3> 为便于操作基本类型值，ES5提供了3个特殊的引用类型：Boolean、Number和String
+                        <br /> 6.1 Boolean类型
+                        <br /> 用构造函数创建new Boolean(true/false);
+                        <br /> 用处不大
+                        <br /> 6.2 Number类型
+                        <br /> 用构造函数创建new Number(数值);
+                        <br /> 一些将数值格式化为字符串的方法：
+                        <br />
+                        <span class="marker">toFixed()</span>按照指定的小数位返回数值的字符串表示
+                        <br />
+                        <span class="marker">toExponential()</span>按照指定小数位格式化数值，返回指数表示法（e）
+                        <br />
+                        <span class="marker">toPrecision()</span>返回固定大小格式，也可能返回指数格式
+                        <div style="background:#eeeeee;border:1px solid #cccccc;padding:5px 10px;">var num = 10;
+                            <br /> alert(num.toFixed(2));//&quot;10.00&quot;
+                            <br /> alert(num.toExponential(1));//&quot;1.0e+1&quot;
+                            <br /> alert(num.toPrecision(1));//&quot;1e+2&quot;
+                        </div>
+                        6.3 String类型
+                        <br /> 用构造函数创建
+                        <ins>new String();</ins>
+                        <br /> 用
+                        <span class="marker">length</span>属性表示长度，&quot;hello world&quot;.length //11
+                        <ul>
+                            <li>字符方法</li>
+                        </ul>
+                        <span class="marker">charAt()</span>:以单字符字符串的形式返回给定位置的那个字符
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringValue = &quot;hello world&quot;;
+                            <br /> alert(stringValue.charAt(1));//&quot;e&quot;
+                            <br /> alert(stringValue[1]);//&quot;e&quot;
+                        </div>
+                        <span class="marker">charCodeAt()</span>:返回给定位置的那个字符编码
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringValue = &quot;hello world&quot;;
+                            <br /> alert(stringVlaue.charCodeAt(1));//&quot;101&quot;
+                        </div>
+                        <ul>
+                            <li>字符串操作方法</li>
+                        </ul>
+                        <span class="marker">concat():</span>用于将一或多个字符串拼接起来，返回拼接得到的新字符串
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringvalue = &quot;hello&quot;;
+                            <br /> var result = stringValue.concat(&quot;world&quot;,&quot;!&quot;);
+                            <br /> alert(result);//&quot;hello world!&quot;</div>
+                        创建新字符串的方法，返回被操作字符串的一个子字符串，可以传1或2个采纳数，如果第2个未传，则将字符串的长度作为结束位置：
+                        <br />
+                        <span class="marker">slice()：</span>
+                        <ins>function(指定子字符串的开始位置，子字符串最后一个字符后面的位置)</ins>:
+                        <br />
+                        <span class="marker">substr()：</span>
+                        <ins>function(指定子字符串的开始位置，子字符串最后一个字符后面的位置)</ins>:
+                        <br />
+                        <span class="marker">substring()：</span>
+                        <ins>function(指定子字符串的开始位置，返回的字符个数)</ins>:
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringvalue = &quot;hello world&quot;;
+                            <br /> alert(stringvalue.slice(3));//&quot;lo world&quot;
+                            <br /> alert(stringvalue.slice(3,7));//&quot;lo w&quot;
+                            <br /> alert(stringvalue.substring(3));//&quot;lo world&quot;
+                            <br /> alert(stringvalue.substring(3,7));//&quot;lo w&quot;
+                            <br /> alert(stringvalue.substr(3));//&quot;lo world&quot;
+                            <br /> alert(stringvalue.substr(3,7));//&quot;lo worl&quot;
+                            <br /> //如果传入负值，不同方法转换方式不同
+                        </div>
+                        <ul>
+                            <li>字符串位置方法</li>
+                        </ul>
+                        <span class="marker">indexOf()</span>从字符串开头向后搜索子字符串，返回位置
+                        <br />
+                        <span class="marker">lastIndexOf()</span>从字符串的末尾向前搜索子字符串，返回位置
+                        <br /> 没有找到返回-1
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringValue = &quot;hello world&quot;;
+                            <br /> alert(stringValue.indexOf(&quot;o&quot;));//4
+                            <br /> alert(stringValue.lstIndexOf(&quot;o&quot;));//7
+                        </div>
+                        <ul>
+                            <li><span class="marker">trim()</span>方法</li>
+                        </ul>
+                        创建一个字符串的副本，删除前置及后缀的所有空格
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringValue = &quot; &nbsp; &nbsp; hello world&quot;;
+                            <br /> var trimmedStringValue = stringVlaue.trim();
+                            <br /> alert(trimmedStringValue );//&quot;hello world&quot;</div>
+                        <ul>
+                            <li>字符串大小写转换方法</li>
+                        </ul>
+                        4个<span class="marker">toLowerCase()</span>、<span class="marker">toLocaleLowerCase()</span>、<span class="marker">toUpperCase()</span>、<span class="marker">toLocaleUpperCase()</span>
+                        <ul>
+                            <li>字符串的模式匹配方法</li>
+                        </ul>
+                        <span class="marker">match()</span>：本质与RegExp和exec()方法相同，接收一个参数，要么是一个正则表达式，要么是一个RegExp对象
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;cat,bat,sat,fat&quot;;
+                            <br /> vat pattern = /.at/;
+                            <br /> var matches = text.match(pattern);
+                            <br /> alert(matches[0]);//&quot;cat&quot;
+                        </div>
+                        <span class="marker">search()</span>:与match()方法的参数相同：由字符串或RegExp对象指定的一个正则表达式。返回字符串中第一个匹配项的索引，如果没有返回-1
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;cat,bat,sat,fat&quot;;
+                            <br /> vat pos = text.search(/at/);
+                            <br /> alert(pos);//1
+                        </div>
+                        <span class="marker">replace()</span>:接收2个参数（RegExp对象或一个字符串，一个字符串或一个函数）
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;cat,bat,sat,fat&quot;;
+                            <br /> var result = text.replace(&quot;at&quot;,&quot;ond&quot;);
+                            <br /> alert(result);//&quot;cond,bat,sat,fat&quot;
+                            <br />
+                            <br /> result = text.replace(/at/g,&quot;ond&quot;);
+                            <br /> alert(result);//&quot;cond,bond,sond,fond&quot;
+                        </div>
+                        (1)如果第二个参数是字符串，还可以使用一些特殊字符序列
+                        <table border="0" cellpadding="1" cellspacing="1" style="width:600px">
+                            <tbody>
+                                <tr>
+                                    <td>字符序列</td>
+                                    <td>替换文本</td>
+                                </tr>
+                                <tr>
+                                    <td>$$</td>
+                                    <td>$</td>
+                                </tr>
+                                <tr>
+                                    <td>$&amp;</td>
+                                    <td>匹配整个模式的子字符串。与RegExp.lastMatch的值相同</td>
+                                </tr>
+                                <tr>
+                                    <td>$&#39;</td>
+                                    <td>匹配的子字符串之前的子字符串。与RegExp.leftContext的值相同</td>
+                                </tr>
+                                <tr>
+                                    <td>$`</td>
+                                    <td>匹配的子字符串之后的子字符串。与RegExp.rightContext的值相同</td>
+                                </tr>
+                                <tr>
+                                    <td>$n</td>
+                                    <td>匹配第n个捕获组的子字符串，其中n等于0-9.例如，$1是匹配第一个捕获组的子字符串，$2是匹配第二个捕获组的子字符串，以此类推。如果正则表达式中没有定义捕获组，则使用空字符串</td>
+                                </tr>
+                                <tr>
+                                    <td>$nn</td>
+                                    <td>
+                                        <table border="0" cellpadding="1" cellspacing="1" style="width:600px">
+                                            <tbody>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>匹配第nn个捕获组的子字符串，其中nn等于01-99.例如，$01是匹配第一个捕获组的子字符串，$02是匹配第二个捕获组的子字符串，以此类推。如果正则表达式中没有定义捕获组，则使用空字符串</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        &nbsp;
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var text = &quot;cat,bat,sat,fat&quot;;
+                            <br /> result = text.replace(/(.at)/g,&quot;word($1)&quot;);
+                            <br /> alert(result);//word(cat),word(bat),word(sat),word(fat)
+                        </div>
+                        (2)如果第2个参数是函数，function（模式的匹配项，模式匹配项在字符串中位置，原始字符串）。返回一个字符串
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">function htmlEscape(text){
+                            <br /> &nbsp;&nbsp; return text.replace(/[&lt;&gt;&quot;&amp;]/g,function(match,pos,originalText){
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp;switch(match){
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case &quot;&lt;&quot;:
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &quot;&amp;lt;&quot;;
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &quot;&gt;&quot;:
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &quot;&amp;gt;&quot;;&nbsp;
+                            <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case &quot;&amp;&quot;:
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &quot;&amp;amp;&quot;;
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; case &quot;\&quot;:
+                            <br /> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return &quot;&amp;quot;&quot;;
+                            <br /> &nbsp; &nbsp; &nbsp; &nbsp;}
+                            <br /> &nbsp; &nbsp; });
+                            <br /> }
+                            <br /> alert(htmlEscape(&quot;&lt;p class=\&quot;greeting\&quot;&gt;Hello world!&lt;/p&gt;));
+                            <br /> //&amp;lt;p class = &amp;quot;greeting&amp;quot;&amp;gt;Hello world!&amp;lt;/p&amp;gt;</div>
+                        <span class="marker">split(</span>):基于指定的分隔符将一个分隔成多个子字符串，并将结果放在一个数组中。分隔符可以是字符串，也可以是一个RegExp对象。第2个参数可选，用于指定数组长度
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var colorText = &quot;red,blue,green,yellow&quot;;
+                            <br /> var colors1 = colorText.split(&quot;,&quot;);//[&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;,yellow&quot;]
+                            <br /> var colors2 = colorText.split(&quot;,&quot;,2);//[&quot;red&quot;,&quot;blue&quot;]
+                            <br /> var colors3 = colorText.split(/[^\,]+/);//[&quot;&quot;,&quot;,&quot;,&quot;,&quot;,&quot;,&quot;,&quot;&quot;]</div>
+                        <ul>
+                            <li><span class="marker">localeCompare()</span>方法</li>
+                        </ul>
+                        比较2个字符串，并返回下列值的一个
+                        <table border="0" cellpadding="1" cellspacing="1" style="width:500px">
+                            <tbody>
+                                <tr>
+                                    <td>如果字符串在字母表中应该排在字符串参数之前，则返回一个负数</td>
+                                </tr>
+                                <tr>
+                                    <td>如果字符串等于字符串参数，则返回0</td>
+                                </tr>
+                                <tr>
+                                    <td>如果字符串在字母表中应该排在字符串参数之后，则返回一个正数</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var stringValue = &quot;yellow&quot;;
+                            <br /> alert(stringvalue.localeCompare(&quot;brick&quot;);//1
+                            <br /> alert(stringvalue.localeCompare(&quot;yellow&quot;);//0
+                            <br /> alert(stringvalue.localeCompare(&quot;zoo&quot;);//-1
+                        </div>
+                        <ul>
+                            <li><span class="marker">fromCharCode()</span>方法</li>
+                        </ul>
+                        接收一个或多个字符编码，然后将它们转换成一个字符串
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">alert(String.fromCharCode(104,101,108,108,111));//&quot;hello&quot;</div>
+                        <ul>
+                            <li>HTML方法</li>
+                        </ul>
+                        js动态格式化HTML的需求，但是最好不用，无法表达语义
+                        <h3>7.单体内置对象</h3> 开发人员不必显示地实例化内置对象，因为它们已经实例化了。
+                        <br /> Object、Array、String等都是内置对象，ECMA-262还定义了2个单体内置对象：Global和Math
+                        <br /> 7.1 Global对象
+                        <br />
+                        <span class="marker">Global对象</span>：所有在全局作用域中定义的属性和函数，都是Global对象的属性。前面介绍的inNaN()、isFinite()、parseInt()以及parseFloat()都是Global对象方法，还有其他一些方法：
+                        <ul>
+                            <li>URI编码方法</li>
+                        </ul>
+                        encodeURI()和encodeURIComponent()都可以对URI进行编码，用UTF-8编码替换多有无效的字符，从而让浏览器能够接受和理解。
+                        <br />
+                        <span class="marker">encodeURI()</span>：用于整个URI，不会对本身属于URI的特殊字符进行编码
+                        <br />
+                        <span class="marker">encodeURIComponent()</span>：用于URI中的某一段，会对任何非标准字符进行编码
+                        <br /> 与它们相对的2个解码方法：
+                        <span class="marker">decodeURI()</span>和D<span class="marker">ecodeURIComponent()</span>
+                        <ul>
+                            <li>eval()方法</li>
+                        </ul>
+                        一个ES语言最强大的方法，就像一个完整的ES解析器，
+                        <br />
+                        <ins>eval(执行的ES或js字符串)</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">eval(&quot;function sayHi(){alert(&#39;hi&#39;);}&quot;);
+                            <br /> sayHi();//hi
+                        </div>
+                        不存在变量提升。eval很强，
+                        <ins>但是在执行用户输入数据的情况下，非常危险，可能会有恶意输入</ins>
+                        <ul>
+                            <li>Global对象的属性</li>
+                        </ul>
+                        例如特殊的值undefined、NaN、Infinity，此外，所有原生引用类型的构造函数，像Object、Function。还有其他更多...
+                        <ul>
+                            <li>window对象</li>
+                        </ul>
+                        在全局作用域中声明的所有变量和函数，都成了window对象的属性
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var color = &quot;red&quot;;
+                            <br /> function sayColor(){
+                            <br /> &nbsp;&nbsp;alert(window.color);
+                            <br /> }
+                            <br /> window.sayColor();//red
+                        </div>
+                        访问Global对象的方法
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var global = function(){
+                            <br /> &nbsp;&nbsp;return this;
+                            <br /> }();
+                            <br /> //this值等于Global对象
+                        </div>
+                        7.2 Math对象
+                        <ul>
+                            <li>Math对象的属性</li>
+                        </ul>
+                        <table border="0" cellpadding="1" cellspacing="1" style="width:500px">
+                            <tbody>
+                                <tr>
+                                    <td>属性</td>
+                                    <td>说明</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.E</td>
+                                    <td>自然对数的底数，即常量e的值</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.LN10</td>
+                                    <td>10的自然对数</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.LN2</td>
+                                    <td>2的自然对数</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.LOG2E</td>
+                                    <td>以2为底e的对数</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.LOG10E</td>
+                                    <td>以10为底e的对数</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.PI</td>
+                                    <td>&Pi;的值</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.SQRT1_2</td>
+                                    <td>1/2的平方根（即2的平方根的倒数）</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.SQRT2</td>
+                                    <td>2的平方根</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul>
+                            <li><span class="marker">min()</span>和<span class="marker">max()</span></li>
+                        </ul>
+                        用于确定一组数值中的最小值和最大值，看接收任意多个数值参数
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var max = Math.max(3,54,32,16);
+                            <br /> alert(max);//54
+                        </div>
+                        <ins>要找到数组中的最大值或最小值，可以用apply</ins>
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">var values = [1,2,3,4,5,6,7,8];
+                            <br /> var max = Math.max.apply(Math,values);</div>
+                        <ul>
+                            <li>舍入方法</li>
+                        </ul>
+                        <span class="marker">Math.ceil(）</span>执行向上舍入，即它总是将数值向上舍入为最接近的整数
+                        <br />
+                        <span class="marker">Math.floor()</span>执行向下舍入，即它总是将数值向下舍入为最接近的整数
+                        <br />
+                        <span class="marker">Math.round()</span>执行标准舍入，即它总是将数值四舍五入为最接近的整数
+                        <ul>
+                            <li><strong><span class="marker">random()</span></strong>方法</li>
+                        </ul>
+                        返回介于0-1之间的一个随机数，不包括0和1
+                        <br /> 套用下面的公式，就可以从某个整数范围内随机选择一个值
+                        <div style="background:#eeeeee; border:1px solid #cccccc; padding:5px 10px">值 = Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)</div>
+                        <ul>
+                            <li>其他方法</li>
+                        </ul>
+                        <table border="0" cellpadding="1" cellspacing="1" style="width:500px">
+                            <tbody>
+                                <tr>
+                                    <td>方法</td>
+                                    <td>说明</td>
+                                    <td>方法</td>
+                                    <td>说明</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.abs(num)</td>
+                                    <td>返回num的绝对值</td>
+                                    <td>Math.asin(x)</td>
+                                    <td>返回x的反正弦值</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.exp(num)</td>
+                                    <td>返回Math.E的num次幂</td>
+                                    <td>Math.atan(x)</td>
+                                    <td>返回x的反正切值</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.log(num)</td>
+                                    <td>返回num的自然对数</td>
+                                    <td>Math.atan2(y,x)</td>
+                                    <td>返回y/x的反正切值</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.pow(num)</td>
+                                    <td>返回num的power次幂</td>
+                                    <td>Math.cos(x)</td>
+                                    <td>返回x的余弦值</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.sqrt(num)</td>
+                                    <td>返回num的平方根</td>
+                                    <td>Math.sin(x)</td>
+                                    <td>返回x的正弦值</td>
+                                </tr>
+                                <tr>
+                                    <td>Math.acos(num)</td>
+                                    <td>返回x的反余弦值</td>
+                                    <td>Math.tan(x)</td>
+                                    <td>返回x的正切值</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- 第5章end -->
                     <!-- 第7章start -->

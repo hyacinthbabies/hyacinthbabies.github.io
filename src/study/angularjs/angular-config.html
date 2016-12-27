@@ -68,5 +68,728 @@
         myApp.controller('RouteCtl', function($scope) {
             $scope.testModel = 'ng-model绑定 HTML 元素 到应用程序数据';
         });//ng-controller
-    </pre>
-    参考：<div><input type="text" ng-model="testModel" width="100%">{{testModel}}</div>
+    </pre> 参考：
+    <div>
+        <input type="text" ng-model="testModel" width="100%">{{testModel}}</div>
+    <h2>
+        暂时放置在此 Pro Angular
+    </h2>
+    <div>
+        <pre>
+Part 1
+预备开始：
+	Chapter 1
+		MVC---M:var person ={name:'123'}
+		     C:$scope.username = person.name
+		     V:ng-model="username"
+    -------------------www.apress.com-----------------------上述网址访问例子-------------
+    ------------------ http://yeoman.io-------------------一个受欢迎的客户端开发工具-----
+    ------------------Batarang AngularJS.------------------谷歌插件，对开发angularjs很有帮助-----------
+    ------------------- http://docs.angularjs.org/guide/ie --------------------看一些兼容性的解决方法----------
+    -------------------WebStorm (www.jetbrains.com/webstorm) and Sublime Text (www.sublimetext.com)----开发工具--------
+    ------------------- www.microsoft.com/visualstudio/express --------------最好用vs开发----------------
+	Listing 1-1:一个复杂的文档
+	    &lt;!DOCTYPE html&gt;
+		&lt;html ng-app="todoApp"&gt;
+		&lt;head&gt;
+		&lt;title&gt;TO DO List&lt;/title&gt;
+		&lt;link href="bootstrap.css" rel="stylesheet" /&gt;
+		&lt;link href="bootstrap-theme.css" rel="stylesheet" /&gt;
+		&lt;script src="angular.js"&gt;&lt;/script&gt;
+		&lt;script&gt;
+			var model = {
+			user: "Adam",
+			items: [{ action: "Buy Flowers", done: false },
+				{ action: "Get Shoes", done: false },
+				{ action: "Collect Tickets", done: true },
+				{ action: "Call Joe", done: false }]
+			};
+			var todoApp = angular.module("todoApp", []);
+			todoApp.controller("ToDoCtrl", function ($scope) {
+				$scope.todo = model;
+			});
+		&lt;/script&gt;
+		&lt;/head&gt;
+		&lt;body ng-controller="ToDoCtrl"&gt;
+			&lt;div class="page-header"&gt;
+				&lt;h1&gt;To Do List&lt;/h1&gt;
+			&lt;/div&gt;
+			&lt;div class="panel"&gt;
+				&lt;div class="input-group"&gt;
+					&lt;input class="form-control" /&gt;
+					&lt;span class="input-group-btn"&gt;
+						&lt;button class="btn btn-default"&gt;Add&lt;/button&gt;
+					&lt;/span&gt;
+				&lt;/div&gt;
+				&lt;table class="table table-striped"&gt;
+					&lt;thead&gt;
+						&lt;tr&gt;
+							&lt;th&gt;Description&lt;/th&gt;
+							&lt;th&gt;Done&lt;/th&gt;
+						&lt;/tr&gt;
+					&lt;/thead&gt;
+					&lt;tbody&gt;&lt;/tbody&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/body&gt;
+		&lt;/html&gt;
+     Listing 1-2：清单的部分
+        ...
+		&lt;body ng-controller="ToDoCtrl"&gt;
+		    &lt;div class="page-header"&gt;
+		        &lt;h1&gt;
+					{{todo.user}}'s To Do List
+					&lt;span class="label"&gt;{{todo.items.length}}&lt;/span&gt;
+				&lt;/h1&gt;
+		    &lt;/div&gt;
+		    &lt;div class="panel"&gt;
+		        &lt;div class="input-group"&gt;
+		            &lt;input class="form-control" /&gt;
+		            &lt;span class="input-group-btn"&gt;
+						&lt;button class="btn btn-default"&gt;Add&lt;/button&gt;
+					&lt;/span&gt;
+		        &lt;/div&gt;
+		        &lt;table class="table table-striped"&gt;
+		            &lt;thead&gt;
+		                &lt;tr&gt;
+		                    &lt;th&gt;Description&lt;/th&gt;
+		                    &lt;th&gt;Done&lt;/th&gt;
+		                &lt;/tr&gt;
+		            &lt;/thead&gt;
+		           &lt;tbody&gt;
+		                &lt;tr ng-repeat="item in todo.items"&gt;
+		                    &lt;td&gt;{{item.action}}&lt;/td&gt;
+		                    &lt;td&gt;{{item.done}}&lt;/td&gt;
+		                &lt;/tr&gt;
+		            &lt;/tbody&gt;
+		        &lt;/table&gt;
+		    &lt;/div&gt;
+		&lt;/body&gt;
+	安装Node.js---------------- http://Nodejs.org------------------
+	安装web服务----------------npm install connect-----------------
+	配置server.js
+	    var connect = require('connect');
+		connect.createServer(
+			connect.static("../angularjs")
+		).listen(5000);
+	安装测试系统-------------------Karma测试运行器+Jasmine测试框架----------------
+	npm install -g karma
+	下载angularJs-----------------http://angularjs.org--------------可以下载压缩版或引用CDN或未压缩版---
+
+	Table 1-1.                The Types of Web Forms Code Nuggets    File Description Used in Chapter
+	angular-touch.js          Provides touchscreen event support.                23
+	angular-animate.js        Provides animations when content changes.          23
+	angular-mocks.js          Provides mock objects for unit testing.            27
+	angular-route.js          Provides URL routing.                              21
+	angular-sanitize.js       Provides escaping for dangerous content.           19
+	angular-locale-fr-fr.js   Provides localization details for French as it is spoken
+	in France. This is one of a wide range of localization files found in the i18n folder.
+    
+    下载bootstrap-----------------http://getbootstrap.com-----------------------------------------------
+    bootstrap-3.0.3/dist/css/bootstrap.css
+    bootstrap-3.0.3/dist/css/bootstrap-theme.css
+
+    安装Livereload------------ http://livereload.com ----------自动刷新浏览器--------------------------
+    （谷歌插件，sublime插件）
+
+    安装Deployd------------ https://github.com/deployd/deployd 或者 http://deployd.com/ -------------------------一个生成后端数据的软件,建立在node和mongoDB基础--
+
+    一个简单的测试test.html：
+            &lt;!DOCTYPE html&gt;
+			&lt;html ng-app&gt;
+			&lt;head&gt;
+			&lt;title&gt;First Test&lt;/title&gt;
+			&lt;script src="angular.js"&gt;&lt;/script&gt;
+			&lt;link href="bootstrap.css" rel="stylesheet" /&gt;
+			&lt;link href="bootstrap-theme.css" rel="stylesheet" /&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+			&lt;div class="btn btn-default"&gt;{{"AngularJS"}}&lt;/div&gt;
+			&lt;div class="btn btn-success"&gt;Bootstrap&lt;/div&gt;
+			&lt;/body&gt;
+			&lt;/html&gt;
+	启动服务：node server.js
+	浏览器输入：localhost:5000/test.html
+
+Chapter 2
+    第一个angular应用
+    在页面中应用angular：angular由很多模块组成
+    Listing 2-2 
+       &lt;!DOCTYPE html&gt;
+		&lt;html ng-app="todoApp"&gt;
+		&lt;head&gt;
+			&lt;title&gt;TO DO List&lt;/title&gt;
+			&lt;link href="bootstrap.css" rel="stylesheet" /&gt;
+			&lt;link href="bootstrap-theme.css" rel="stylesheet" /&gt;
+			&lt;script src="angular.js"&gt;&lt;/script&gt;
+			&lt;script&gt;
+			    var todoApp = angular.module("todoApp", []);
+			&lt;/script&gt;
+		&lt;/head&gt;
+		&lt;body&gt;
+			&lt;div class="page-header"&gt;
+			   &lt;h1&gt;Adam's To Do List&lt;/h1&gt;
+			&lt;/div&gt;
+			&lt;div class="panel"&gt;
+				&lt;div class="input-group"&gt;
+					&lt;input class="form-control" /&gt;
+					&lt;span class="input-group-btn"&gt;
+					&lt;button class="btn btn-default"&gt;Add&lt;/button&gt;
+					&lt;/span&gt;
+				&lt;/div&gt;
+				&lt;table class="table table-striped"&gt;
+					&lt;thead&gt;
+						&lt;tr&gt;
+							&lt;th&gt;Description&lt;/th&gt;
+							&lt;th&gt;Done&lt;/th&gt;
+						&lt;/tr&gt;
+					&lt;/thead&gt;
+					&lt;tbody&gt;
+						&lt;tr&gt;&lt;td&gt;Buy Flowers&lt;/td&gt;&lt;td&gt;No&lt;/td&gt;&lt;/tr&gt;
+						&lt;tr&gt;&lt;td&gt;Get Shoes&lt;/td&gt;&lt;td&gt;No&lt;/td&gt;&lt;/tr&gt;
+						&lt;tr&gt;&lt;td&gt;Collect Tickets&lt;/td&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;/tr&gt;
+						&lt;tr&gt;&lt;td&gt;Call Joe&lt;/td&gt;&lt;td&gt;No&lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/body&gt;
+		&lt;/html&gt;
+		ng-app  ng-controller="ToDoCtrl"  scope范围$scope,$在angular中表示内置特征
+		MVC---------model、view、controller
+		单向模型绑定：
+			{{数据绑定表达式}}-----限制在指定的控制器scope定义范围
+			使用指令：ng-repeat
+					...
+					&lt;tr ng-repeat="item in todo.items"&gt;
+					&lt;td&gt;{{item.action}}&lt;/td&gt;&lt;td&gt;{{item.done}}&lt;/td&gt;
+					&lt;/tr&gt;
+					...
+        使用双向模型绑定：
+            Listing 2-6：
+                ...
+				&lt;tr ng-repeat="item in todo.items"&gt;
+				&lt;td&gt;{{item.action}}&lt;/td&gt;
+				&lt;td&gt;&lt;input type="checkbox" ng-model="item.done" /&gt;&lt;/td&gt;
+				&lt;td&gt;{{item.done}}&lt;/td&gt;
+				&lt;/tr&gt;
+				...
+           Listing 2-7:
+                $scope.incompleteCount = function () {
+					var count = 0;
+					angular.forEach($scope.todo.items, function (item) {
+						if (!item.done) { count++ }
+					});
+					return count;
+				}
+
+				&lt;body ng-controller="ToDoCtrl"&gt;
+					&lt;div class="page-header"&gt;
+						&lt;h1&gt;
+							{{todo.user}}'s To Do List
+							&lt;span class="label label-default" ng-hide="incompleteCount() == 0"&gt;
+								{{incompleteCount()}}
+							&lt;/span&gt;
+						&lt;/h1&gt;
+					&lt;/div&gt;
+					&lt;div class="panel"&gt;
+						&lt;div class="input-group"&gt;
+							&lt;input class="form-control" /&gt;
+							&lt;span class="input-group-btn"&gt;
+								&lt;button class="btn btn-default"&gt;Add&lt;/button&gt;
+							&lt;/span&gt;
+						&lt;/div&gt;
+						&lt;table class="table table-striped"&gt;
+							&lt;thead&gt;
+								&lt;tr&gt;
+								&lt;th&gt;Description&lt;/th&gt;
+								&lt;th&gt;Done&lt;/th&gt;
+								&lt;/tr&gt;
+							&lt;/thead&gt;
+							&lt;tbody&gt;
+
+
+
+
+								&lt;tr ng-repeat="item in todo.items"&gt;
+									&lt;td&gt;{{item.action}}&lt;/td&gt;
+									&lt;td&gt;&lt;input type="checkbox" ng-model="item.done" /&gt;&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/tbody&gt;
+						&lt;/table&gt;
+					&lt;/div&gt;
+				&lt;/body&gt;
+           
+           ng-hide：ng-hide="false",会隐藏dom
+                    ...
+					&lt;span class="label label-default" ng-hide="incompleteCount() == 0"&gt;
+					{{incompleteCount()}}
+					&lt;/span&gt;
+					...
+
+		   ng-class：
+		        ...
+	   			$scope.warningLevel = function () {
+					return $scope.incompleteCount() &lt; 3 ? "label-success" : "label-warning";
+				}
+				...
+				&lt;span class="label label-default" ng-class="warningLevel()" ng-hide="incompleteCount() == 0"&gt;
+					{{incompleteCount()}}
+				&lt;/span&gt;
+				...
+		   ng-click:
+		        ...
+		        $scope.addNewItem = function (actionText) {
+				 	scope.todo.items.push({ action: actionText, done: false });
+				}
+				...
+				&lt;input class="form-control" ng-model="actionText" /&gt;
+				&lt;span class="input-group-btn"&gt;
+					&lt;button class="btn btn-default" ng-click="addNewItem(actionText)"&gt;Add&lt;/button&gt;
+				&lt;/span&gt;
+				...
+		 过滤和排序模型数据
+		    Listing 2-10：
+		        ...
+				&lt;tbody&gt;
+					&lt;tr ng-repeat="item in todo.items | filter:{done: false} | orderBy:'action'"&gt;
+						&lt;td&gt;{{item.action}}&lt;/td&gt;
+						&lt;td&gt;&lt;input type="checkbox" ng-model="item.done" /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;
+				...
+			改进过滤器，可以存储隐藏的item，方便显示出来
+			Listing 2-11：创建自定义filter
+	            todoApp.filter("checkedItems", function () {
+					return function (items, showComplete) {
+						var resultArr = [];
+						angular.forEach(items, function (item) {
+							if (item.done == false || showComplete == true) {
+								resultArr.push(item);
+							}
+						});
+						return resultArr;
+					}
+				});
+
+				...
+				&lt;div class="panel"&gt;
+					&lt;div class="input-group"&gt;
+						&lt;input class="form-control" ng-model="actionText" /&gt;
+						&lt;span class="input-group-btn"&gt;
+							&lt;button class="btn btn-default"
+							ng-click="addNewItem(actionText)"&gt;Add&lt;/button&gt;
+						&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;table class="table table-striped"&gt;
+						&lt;thead&gt;
+							&lt;tr&gt;
+								&lt;th&gt;Description&lt;/th&gt;
+								&lt;th&gt;Done&lt;/th&gt;
+							&lt;/tr&gt;
+						&lt;/thead&gt;
+						&lt;tbody&gt;
+							&lt;tr ng-repeat=
+							"item in todo.items | checkedItems:showComplete | orderBy:'action'"&gt;
+								&lt;td&gt;{{item.action}}&lt;/td&gt;
+								&lt;td&gt;&lt;input type="checkbox" ng-model="item.done" /&gt;&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/tbody&gt;
+					&lt;/table&gt;
+					&lt;div class="checkbox-inline"&gt;
+						&lt;label&gt;&lt;input type="checkbox" ng_model="showComplete"&gt; Show Complete&lt;/label&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				...
+		
+		通过ajax获取数据data：todo.json文件
+		    Listing 2-13：  [{ "action": "Buy Flowers", "done": false },
+							{ "action": "Get Shoes", "done": false },
+							{ "action": "Collect Tickets", "done": true },
+							{ "action": "Call Joe", "done": false }]
+                todoApp.run(function ($http) {
+					$http.get("todo.json").success(function (data) {
+						model.items = data;
+					});
+				});
+
+Chapter 3
+    将angular应用到上下文
+    理解angular优势在哪：浏览器操作服务端开发的
+    理解双向绑定和单页面
+        aNGULarJS aND JQUerY：angular有一个缩减的jquery 叫jqLite，如果项目中有jquery则在angular优先使用它而不是jqLite
+    理解MVC（如果需要，仔细阅读47-54页）
+
+Chapter 4
+    理解html和bootstrap css
+
+Chapter 5
+    js
+    使用promise：一般用ajax进行请求会遇到promise，http发送请求结束，会用promise表示完成状态
+                myApp.controller("demoCtrl", function ($scope, $http) {
+				var promise = $http.get("todo.json");
+					promise.success(function (data) {
+						$scope.todos = data;
+					});
+				});
+				3种方法：success、error、then(success,error)
+				$http.get("todo.json").then(function (response) {
+					$scope.todos = response.data;
+				}, function () {
+					$scope.todos = [{action: "Error"}];
+				}).then(function () {
+					$scope.todos.push({action: "Request Complete"});
+				});
+	json数据:   var jsonString = angular.toJson(data);
+	            console.log(jsonString);//json字符串
+	            $scope.todos = angular.fromJson(jsonString);
+	            console.log($scope.todos);//json对象
+
+Chapter 6
+    SportsStore 一个真实的应用
+
+Chapter 9
+    解剖angular应用 modules, directives, filters,factories, and services
+    dependency injection and factory functions依赖注入和工厂功能
+    Modules是angular最高级别的组件
+    组件对象的成员：
+    	animation(name, factory)
+    	config(callback) 
+    	constant(key, value)
+    	controller(name, constructor)
+    	directive(name, factory) 
+    	factory(name, provider) 
+    	filter(name, factory) 
+    	provider(name, type) 
+    	name 
+    	run(callback) 
+    	service(name, constructor) 
+    	value(name, value)
+    Controller是angular中最大的构建模块之一：
+    	...
+		myApp.controller("dayCtrl", function ($scope) {
+		...
+		$scope是依赖注入的一个例子，angular查询参数时会定位到注入的组件
+	定义services：
+		单例对象
+		service，factory, and provider
+	定义values：
+	    var now = new Date();
+		myApp.value("nowValue", now);
+		myApp.service("days", function (nowValue) {
+			this.today = nowValue.getDay();
+			this.tomorrow = this.today + 1;
+		});
+
+		。。。
+		var now = new Date();
+		myApp.service("days", function () {
+			this.today = now.getDay();
+			this.tomorrow = this.today + 1;
+		});
+    使用modules去组织代码
+    config方法在模块被加载时执行，run是模块加载结束后执行
+
+Chapter 10
+	使用binding和Template Directives
+		ng-bind、ng-bind-template：用{{}}表示处理单向绑定
+		ng-non-bindable：阻止angular处理内联绑定表达式
+		ng-model：创建双向绑定
+		ng-repeat：生成重复的元素
+		$first or $last：在ng-repeat指令中获取上下文的当前对象
+		ng-repeat-start、ng-repeat-end：重复更多的最高级别属性
+		ng-include：加载一个局部视图
+		ng-switch：有条件地显示元素
+		ng-cloak：当angular处理内容时隐藏内联表达式
+	使用data binding
+	    ng-bind:绑定一个html元素innerText的属性
+	    ng-bind-html:
+	    ng-bind-template:
+	    ng-model:
+	    ng-non-bindable:阻止绑定操作
+    ng-repeat：使用data 对象 keys
+			    ...
+				&lt;tr ng-repeat="item in todos"&gt;
+				&lt;td ng-repeat="(key, value) in item"&gt;
+				{{key}}={{value}}
+				&lt;/td&gt;
+				&lt;/tr&gt;
+				...
+		    	使用内置的变量：&lt;tr ng-repeat="item in todos"&gt;
+									&lt;td&gt;{{$index + 1}}&lt;/td&gt;
+									&lt;td ng-repeat="prop in item"&gt;
+									{{prop}}
+									&lt;/td&gt;
+								&lt;/tr&gt;
+         		ng-repeat内置的变量：$index：返回当前在的序号
+         		                     $first：第一个
+         		                     $middle：判断是否既不是第一个也不是第二个
+         		                     $last：最后一个
+         		                     $even：偶数
+         		                     $odd：奇数
+        Listing 10-10.ng-repeat-start和 ng-repeat-end
+         		&lt;tr ng-repeat-start="item in todos"&gt;
+                	&lt;td&gt;This is item {{$index}}&lt;/td&gt;
+	            &lt;/tr&gt;
+	            &lt;tr&gt;
+	                &lt;td&gt;The action is: {{item.action}}&lt;/td&gt;
+	            &lt;/tr&gt;
+	            &lt;tr ng-repeat-end&gt;
+	                &lt;td&gt;Item {{$index}} is {{item.complete? '' : "not "}} complete&lt;/td&gt;
+	            &lt;/tr&gt;
+	            结果是：This is item 0
+						The action is: Get groceries
+						Item 0 is not complete
+						This is item 1
+						The action is: Call plumber
+						Item 1 is not complete
+	ng-include的配置参数
+	 		src：url
+	 		onload：内容加载后指定一个表达式
+	 		autoscroll：内容加载后指定滚动窗口
+	 		注意引号：&lt;ng-include src="'table.html'"&gt;&lt;/ng-include&gt;
+ ng-switch：&lt;div ng-switch on="data.mode"&gt;
+				...
+			&lt;div ng-switch-when="Table"&gt;
+				&lt;table class="table"&gt;
+					&lt;!-- elements omitted for brevity --&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+			&lt;div ng-switch-when="List"&gt;
+				&lt;ol&gt;
+					&lt;!-- elements omitted for brevity --&gt;
+				&lt;/ol&gt;
+			&lt;/div&gt;
+			...
+			&lt;div ng-switch-default&gt;
+				Select another option to display a layout
+			&lt;/div&gt;
+			...
+	选择ng-include还是ng-switch：ng-switch适合简短的内容，ng-include适合比较复杂的
+	ng-cloak：隐藏未处理的内联模板绑定表达式
+
+Chapter 11
+    使用元素和事件指令
+    ng-show：
+    ng-hide：
+    ng-if：
+    ng-repeat带filter：
+    ng-class：
+    ng-style：
+    ng-class-odd：
+    ng-class-even：
+    事件指令如：ng-click
+    布尔选择指令如：ng-checked
+
+	    ng-show、ng-hide：避免与ng-repeat、表分段问题和冲突,
+	                      即使ng-if可以解决，但是ng-if和ng-repeat不要放在一起使用
+	                      	&lt;tr ng-repeat="item in todos" ng-if="!item.complete"&gt;
+	                      	解决方法：使用filter
+	    ng-class、ng-style
+    	应用odd、even class
+    处理事件：ng-blur：
+              ng-change：
+              ng-click：
+              ng-copy：
+              ng-cut：
+              ng-paste：
+              ng-dbclick：
+              ng-focus：
+              ng-keydown：
+              ng-keypress：
+              ng-keyup：
+              ng-mousedown：
+              ng-mouseenter：
+              ng-mouseleave：
+              ng-mousemove：
+              ng-mouseover：
+              ng-mouseup：
+              ng-submit：
+    管理特殊的属性：
+    		  ng-checked：
+    		  ng-disabled：
+    		  ng-open：Manages the open attribute (used on details elements)
+    		  ng-readonly：
+    		  ng-selected：
+
+    		  ng-open：ng-open="true"时，&lt;p&gt;内容才会显示出来
+	    		  &lt;details ng-open="showDetails"&gt;
+					  &lt;summary&gt;学的不仅是技术，更是梦想！&lt;/summary&gt;
+					  &lt;p&gt; - 菜鸟教程&lt;/p&gt;
+				  &lt;/details&gt;
+
+&lt;p&gt;&lt;b&gt;注意：&lt;/b&gt; 目前只有 Opera, Chrome, 和 Safari 浏览器支持 details 标签。&lt;/p&gt;
+
+    其他的属性：
+    		  ng-href：Sets the href attribute on a elements.
+    		  ng-src：Sets the src attribute on img elements.
+    		  ng-srcset：Sets the srcset attribute on img elements. 
+
+Chapter 12
+    表单
+    angular.isDefined验证是否存在
+    表单验证：required(必填项)novalidate(告诉浏览器不要验证)name属性很重要
+	              &lt;form name="myForm" novalidate ng-submit="addUser(newUser)"&gt;
+	                 &lt;input name="userName" type="text" class="form-control" required ng-model="newUser.name"&gt;
+	    		  &lt;/form&gt;
+              input元素的type:checkbox、email、number、radio、text、url
+              监控表单的有效性：$pristine:如果用户未操作返回true
+					            $dirty:如果用户操作返回true
+					            $valid:如果表单有效返回true
+					            $invalid:如果表单无效返回true
+					            $error:提供表单错误信息
+			  提供表单验证反馈：
+			        ·使用css提供反馈：ng-pristine、ng-dirty、ng-valid 、ng-invalid 
+			                            &lt;style&gt;
+											form .ng-invalid.ng-dirty { background-color: lightpink; }
+											form .ng-valid.ng-dirty { background-color: lightgreen; }
+											span.summary.ng-invalid { color: red; font-weight: bold; }
+											span.summary.ng-valid { color: green; }
+										&lt;/style&gt;
+			  为特定的验证约束提供反馈：
+			        ·使用特殊变量提供反馈：
+			                        &lt;style&gt;div.error {color: red; font-weight: bold;}&lt;/style&gt;
+                                    ...
+                                    &lt;input name="userEmail" type="email" class="form-control"
+									required ng-model="newUser.email"&gt;
+									&lt;div class="error" ng-show="myForm.userEmail.$invalid && myForm.userEmail.$dirty"&gt;
+										&lt;span ng-show="myForm.userEmail.$error.email"&gt;
+											Please enter a valid email address
+										&lt;/span&gt;
+										&lt;span ng-show="myForm.userEmail.$error.required"&gt;
+											Please enter a value
+										&lt;/span&gt;
+									&lt;/div&gt;
+									...
+			 减少反馈元素的数量:用controller判断并返回错误内容
+			 推迟验证：在点击时再去验证
+			 使用表单指令属性：在input元素中，没有type属性或者type属性是text、url、email、number，
+			                   以下属性才可以有效果：
+			                   ng-model 
+			                   ng-change
+			                   ng-minlength 
+			                   ng-maxlength 
+			                   ng-pattern：设置正则表达式，当input的type属性是url、email、number，angular会自动             验证ng-pattern，无需添加
+			                   ng-required 
+
+
+Chapter 20
+    Ajax和Promises服务
+    一章概要：$http进行ajax请求
+              success, error, or then，$http的回调方法，获取返回的数据
+              $httpProvider设置默认的ajax请求
+              获取未来不确定时间完成的数据使用promise，它由一个deferredr和一个promise对象组成
+              $q服务获取deferred对象
+              由一个deferred对象获取promise对象
+              结合promises：then方法返回另一个回调，当回调执行时则它resolved
+              $q.all：针对复杂的promises，等所有promise完成，它会返回一个promise
+
+        ajax请求：get(url, config) 
+                  post(url, data, config) 
+                  delete(url, config) 
+                  put(url, data, config) 
+                  head(url, config) 
+                  jsonp(url, config)
+			        获取ajax返回：success(fn)
+			                      error(fn) 
+			                      then(fn, fn) 
+			        获取更多response细节： data、status、headers、config
+			                               $http.get("productData.json").then(function (response) {
+												console.log("Status: " + response.status);
+												console.log("Type: " + response.headers("content-type"));
+												console.log("Length: " + response.headers("content-length"));
+												$scope.products = response.data;
+											});
+			        处理其他数据类型:xml
+			                         $scope.products = [];
+				                    var productElems = angular.element(response.data.trim()).find("product");
+				                    for (var i = 0; i &lt; productElems.length; i++) {
+				                        var product = productElems.eq(i);
+				                        $scope.products.push({
+				                            name: product.attr("name"),
+				                            category: product.attr("category"),
+				                            price: product.attr("price")
+				                        });
+				                    }
+			        配置ajax请求：data 
+			                      headers
+			                      method 
+			                      params
+			                      timeout 
+			                      transformRequest 
+			                      transformResponse 
+			                      url
+			                      withCredentials
+			                      xsrfHeaderNamexsrfCookieName
+			            改造response：根据headers可以知道Content-Type，判断xml还是json
+			            改造request：
+			        将ajax设置成默认：通过$httpProvider定义属性
+			                          defaults.headers.common 
+			                          defaults.headers.post 
+			                          defaults.headers.put
+			                          defaults.transformResponse 
+			                          defaults.transformRequest
+			                          interceptors 
+			                          withCredentials：允许跨域请求
+			        使用ajax拦截：$httpProvider.interceptor 是一个数组，插入factory方法返回以下方法，有机会改变request和response
+			                      request
+			                      requestError
+			                      response
+			                      responseError
+
+        处理Promises：$q服务
+                      all(promises)
+                      defer()
+                      reject(reason)
+                      when(value)
+             获取和使用deferred对象：通过$q.defer获取一个延迟对象
+                                     resolve(result)
+                                     reject(reason) 
+                                     notify(result)
+                                     promise
+
+Chapter 21
+    Services for REST
+    REST是处理http请求的
+    $resource:（引入ngResource模块）,当同支持RESTful的数据模型一起工作时，以用它非常方便地同支持RESTful的服务端数据源进行交互。$scope.productsResource = $resource(baseUrl + ":id", { id: "@id" });
+    响应会被一个原型类所包装，并在实例上添加一些有用的方法$save/$remove/$delete
+	$resource 实例是异步的:
+	        $save()
+		  $remove()
+		  $delete()
+	$resource 集合和实例有两个特殊的属性用来同底层的数据定义进行交互:
+              $promise （promise）这个属性是特别用来同 $routeProvider.when() 在resolve时进行连接的
+              $resolved 属性在服务器首次响应时会被设置为 true （无论请求是否成功）。
+              自定义 $resource 方法:
+                       需要向包含修改过的 $http 设置对象的资源类传入第三个参数
+                       var User = $resource('/api/users/:userId.json', {
+							userId: '@id'
+							sendEmail: {
+							method: 'POST'
+						    },
+							allInboxes: {
+								method: 'JSONP',
+								isArray: true
+							}
+						});
+			 $resource 设置对象:
+			     对象中的值，也就是动作，是资源对象中某个方法的名字。它可以包含以下键:
+			              method:‘GET’、‘DELETE’、‘JSONP’、‘POST’、‘PUT’
+			              url
+			              params
+			              isArray:如果 isArray 被设置为 true ，那么这个动作返回的对象会以数组的形式返回
+
+Chapter 22
+    路由 angular-route
+    响应Route变化：$route服务（current、reload() 、routes）
+                   定义的事件：$routeChangeStart
+                               $routeChangeSuccess
+                               $routeUpdate
+                               $routeChangeError
+
+Chapter 23
+    animate和touch服务
+    $animate服务：注入ngAnimation模块
+    ngTouch模块
+
+    	</pre>
+    </div>

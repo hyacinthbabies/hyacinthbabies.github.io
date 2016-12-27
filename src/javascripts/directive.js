@@ -481,7 +481,7 @@ myApp.directive('ckeditor', function() {
         link : function(scope, element, attrs, ngModel) {
             var ckeditor = CKEDITOR.replace(element[0], {
                 //配置样式
-                skin: 'kama',
+                // skin: 'kama',
                 language: 'zh-cn'
             });
             if (!ngModel) {
