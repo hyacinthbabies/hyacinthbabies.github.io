@@ -188,15 +188,29 @@ myApp.controller('loginControl', function($rootScope, $scope, $state, $http, $co
     $scope.getDataFromApi = function() {
         var content_1 = $scope.getTextAreaValue();
         var article = {
-            articlename: 'mongodb的探究', //用户账号
-            authorname: 'hyacinthbaby', //密码
-            articlecontent: content_1, //年龄
+            articlename: 'mongodb的探究', 
+            authorname: 'hyacinthbaby', 
+            articlecontent: content_1, 
             articledate: '2016-11-30'
         }
         var promise_1 = CkContentService.postArtical(article);
         promise_1.then(function(success) {
             alert('成功');
         });
+    }
+    $scope.getArticleContent = function() {
+        var id = '58590124ebe8930448d1391a';
+        var promise_2 = CkContentService.getArtical(id);
+        promise_2.then(function(success) {
+            
+        }); 
+    }
+    $scope.putArticleContent = function() {
+        var content = {
+            id:'586b3acbeecdf633d0640f0b',
+            articlecontent:'sssssssssssss2017'
+        }
+        CkContentService.putArtical(content);
     }
 });
 //------------------------------angular配置界面------------------------------------------

@@ -22,10 +22,24 @@ myApp.factory('CkContentService', function($http, $q) {
             });
             return deferred.promise;
         },
-        updateArtical:function(userId){
-            // var url = "http://localhost:8080/api/user";
+        getArtical:function(userId){
+            var url = "http://localhost:8080/api/queryContent/"+userId;
             var deferred = $q.defer();
-            $http.get(url,userId).then(function success(respData){
+            $http.get(url).then(function success(respData){
+                console.log(respData);
+                var contents = respData.data;
+                deferred.resolve(contents);
+            },function error(reason){
+                deferred.reject(reason);
+            });
+            return deferred.promise;
+        },
+        putArtical:function(content){
+            console.log(content);
+            var url = "http://localhost:8080/api/updateContent";
+            var deferred = $q.defer();
+            $http.put(url,content).then(function success(respData){
+                console.log(respData);
                 var contents = respData.data;
                 deferred.resolve(contents);
             },function error(reason){

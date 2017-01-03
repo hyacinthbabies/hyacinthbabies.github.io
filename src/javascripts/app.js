@@ -74,6 +74,10 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             url: "/typeset",
             templateUrl: "/src/bootstrap/typeset.html"
         })
+        .state("bootstrap.plugin", {
+            url: "/plugin",
+            templateUrl: "/src/bootstrap/plugin.html"
+        })
         .state("backend", {
             url: "/backend",
             templateUrl: "/src/adminsys/login.html",
