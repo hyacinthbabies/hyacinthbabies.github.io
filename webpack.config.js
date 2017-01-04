@@ -2,6 +2,7 @@
 var path = require('path');
 var fs = require('fs');
 var cheerio = require('cheerio');
+var webpack = require('webpack');
 // var HtmlwebpackPlugin = require('html-webpack-plugin');
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
@@ -9,11 +10,14 @@ var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 var INDEX_FILE = './index.html';
 var MAIN_PATH = path.join(__dirname, './src/main.js');
+var CONTRL = path.join(__dirname, './src/javascripts/contrl.js')
 
 module.exports = {
     //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
-    entry: MAIN_PATH,
-    //输出的文件名 合并以后的js会命名为bundle.js
+    entry: {
+        main: MAIN_PATH
+        // control: CONTRL
+    },
     output: {
         path: BUILD_PATH,
         filename: '[name].[hash].js'
@@ -27,6 +31,7 @@ module.exports = {
     },
     //webpack使用loader的方式来处理各种各样的资源，比如说样式文件.
     module: {
+        // Webpack 本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换
         loaders: [{
             test: /\.css$/,
             loaders: ['style', 'css'],
@@ -69,13 +74,14 @@ module.exports = {
             //     });
             // });
             // 插件执行完毕
-            this.plugin('done', function(stats){
+            this.plugin('done', function(stats) {
                 // 读取 首页 html
-                fs.readFile(INDEX_FILE, function(err, data){
+                fs.readFile(INDEX_FILE, function(err, data) {
                     // 获得 html 文本
                     var $ = cheerio.load(data.toString());
                     // 替换 bundle.hash.js 文本
                     $('script[src*=main]').attr('src', 'build/main.' + stats.hash + '.js');
+                    // $('script[src*=contrl]').attr('src', 'src/javascripts/contrl.' + stats.hash + '.js');
                     // 将新值，重写入首页
                     fs.writeFile(INDEX_FILE, $.html(), function(err) {
                         !err && console.log('Set has success: ' + stats.hash);

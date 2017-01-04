@@ -10,7 +10,7 @@
                 <button type="button" class="btn btn-raised pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">代码</button>
             </div>
             <div class="panel-body">
-                <span ng-repeat="list in listBtn" style="margin-right:5px;"><button type="button" class="btn {{list.type}}">{{list.name}}</button></span>
+                <span ng-repeat="list in listBtn" style="margin-right:5px;"><button type="button" class="btn {{list.type}}" style="margin:0;">{{list.name}}</button></span>
             </div>
             <div id="collapseOne" class="panel-collapse collapse" style="border-top: 1px solid #E0D8D8;">
                 <pre style="margin-bottom: 0"><div ng-repeat="list in listBtn"><div>&lt;button type="button" class="<code style="color: #c7254e;background-color: #f9f2f4;">btn {{list.type}}</code>">Default&lt;/button&gt;</div></div></pre>

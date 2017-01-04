@@ -23,6 +23,7 @@ myApp.controller('RouteCtl', function($scope, $rootScope, $location, $http) {
         SyntaxHighlighter.defaults['quick-code'] = 'false';
         SyntaxHighlighter.defaults['html-script'] = 'true';
         SyntaxHighlighter.defaults['toolbar'] = 'false';
+        SyntaxHighlighter.defaults['gutter'] = 'false';
         SyntaxHighlighter.highlight('codes');
         $.material.init();
     });

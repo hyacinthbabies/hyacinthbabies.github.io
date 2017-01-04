@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="src/javascripts/framefork/material/css/ripples.min.css">
     <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="src/javascripts/framefork/ckeditor/ckeditor.js"></script>
-    <script src="build/main.0225a91fdd5c284638cb.js"></script>
+    <script src="build/main.1c2c60fd4d1adccf74b9.js"></script>
     <script src="src/javascripts/framefork/angular.min.js"></script>
     <script src="src/javascripts/framefork/angular-route.min.js"></script>
     <script src="src/javascripts/framefork/angular-css.min.js"></script>
@@ -34,9 +34,19 @@
 
 <body style="background-color: #e5e4db;" ng-controller="RouteCtl">
     <!-- HEADER -->
-    <div data-ui-view="" id="uiContent"></div>
+    <div class="col-lg-9" data-ui-view="" id="uiContent"></div>
     <!--右侧菜单-->
-    <div class="menu-espanso" id="menu_div" onmousedown="holdDown()" onmouseup="holdUp()">
+    <div class="navbox col-lg-2">
+        <ul class="nav index-nav">
+            <li role="presentation" ui-sref=".bootstrap.column"><a class="active" href="">bootstrap</a></li>
+            <li role="presentation" ui-sref=".mongodb"><a href="">mongodb</a></li>
+            <li role="presentation" ui-sref=".webpack"><a href="">webpack</a></li>
+            <li role="presentation" ui-sref=".angular.config"><a href="">angular</a></li>
+            <li role="presentation" ui-sref=".javas"><a href="">javascript</a></li>
+            <li role="presentation" ui-sref=".backend"><a href="">&#x7BA1;&#x7406;&#x540E;&#x53F0;</a></li>
+        </ul>
+    </div>
+    <!-- <div class="menu-espanso" id="menu_div" onmousedown="holdDown()" onmouseup="holdUp()">
         <div id="menu" class="menu"></div>
         <span class="linee linea1"></span>
         <span class="linee linea2"></span>
@@ -51,7 +61,7 @@
                 <li role="presentation" ui-sref=".backend"><a href="">&#x7BA1;&#x7406;&#x540E;&#x53F0;</a></li>
             </ul>
         </div>
-    </div>
+    </div> -->
     <!-- <hui></hui> -->
     <script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script>
     <!-- <script src="src/javascripts/framefork/BootSideMenu.js"></script> -->
@@ -66,90 +76,90 @@
     //     autoClose: true // auto close when page loads
     // });
     // 切换
-    $('#indexNav li').click(function(e) {
-        $(this).tab('show');
-    });
+    // $('#indexNav li').click(function(e) {
+    //     $(this).tab('show');
+    // });
     // 侧边栏
-    $(function() {
-        $('.menu , .linee').on('click', function() {
-            $('.menu').toggleClass('over')
-            $('.linea1').toggleClass('overL1')
-            $('.linea2').toggleClass('overL2')
-            $('.linea3').toggleClass('overL3')
-            $('.voci-menu').toggleClass('overvoci')
-        });
-    });
-    //实现菜单拖拽
-    //http://www.qdfuns.com/notes/35840/3defe0b72326a6694f7216122eae655b.html
-    var timeStart, timeEnd, time; //申明全局变量  
+    // $(function() {
+    //     $('.menu , .linee').on('click', function() {
+    //         $('.menu').toggleClass('over')
+    //         $('.linea1').toggleClass('overL1')
+    //         $('.linea2').toggleClass('overL2')
+    //         $('.linea3').toggleClass('overL3')
+    //         $('.voci-menu').toggleClass('overvoci')
+    //     });
+    // });
+    // //实现菜单拖拽
+    // //http://www.qdfuns.com/notes/35840/3defe0b72326a6694f7216122eae655b.html
+    // var timeStart, timeEnd, time; //申明全局变量  
 
-    function getTimeNow() { //获取此刻时间  
-        var now = new Date();
-        return now.getTime();
-    }
+    // function getTimeNow() { //获取此刻时间  
+    //     var now = new Date();
+    //     return now.getTime();
+    // }
 
-    function holdDown() { //鼠标按下时触发 
-        timeStart = getTimeNow(); //获取鼠标按下时的时间  
-        time = setInterval(function() {//setInterval会每100毫秒执行一次
-                timeEnd = getTimeNow(); //也就是每100毫秒获取一次时间  
-                if (timeEnd - timeStart > 1000) {//如果此时检测到的时间与第一次获取的时间差有1000毫秒  
-                    clearInterval(time); //便不再继续重复此函数 （clearInterval取消周期性执行）  
-                    var oDiv = document.getElementById("menu_div");
-                    //元素可以移动的最大宽高
-                    var maxWidth = window.innerWidth;
-                    var maxHeight = window.innerHeight;
-                    oDiv.onmousedown = function(e) {
-                        var e = e || window.event;
-                        //获取鼠标拖拽开始的位置
-                        var mx_div = e.clientX;
-                        var my_div = e.clientY;
-                        //拖拽开始时 元素距离父级的位置
-                        var divLeft = oDiv.offsetLeft;
-                        var divTop = oDiv.offsetTop;
-                        document.onmousemove = function(e) {
-                                var e = e || window.event;
+    // function holdDown() { //鼠标按下时触发 
+    //     timeStart = getTimeNow(); //获取鼠标按下时的时间  
+    //     time = setInterval(function() {//setInterval会每100毫秒执行一次
+    //             timeEnd = getTimeNow(); //也就是每100毫秒获取一次时间  
+    //             if (timeEnd - timeStart > 1000) {//如果此时检测到的时间与第一次获取的时间差有1000毫秒  
+    //                 clearInterval(time); //便不再继续重复此函数 （clearInterval取消周期性执行）  
+    //                 var oDiv = document.getElementById("menu_div");
+    //                 //元素可以移动的最大宽高
+    //                 var maxWidth = window.innerWidth;
+    //                 var maxHeight = window.innerHeight;
+    //                 oDiv.onmousedown = function(e) {
+    //                     var e = e || window.event;
+    //                     //获取鼠标拖拽开始的位置
+    //                     var mx_div = e.clientX;
+    //                     var my_div = e.clientY;
+    //                     //拖拽开始时 元素距离父级的位置
+    //                     var divLeft = oDiv.offsetLeft;
+    //                     var divTop = oDiv.offsetTop;
+    //                     document.onmousemove = function(e) {
+    //                             var e = e || window.event;
 
-                                //获取拖拽移动时 鼠标的位置
-                                var mx = e.clientX;
-                                var my = e.clientY;
+    //                             //获取拖拽移动时 鼠标的位置
+    //                             var mx = e.clientX;
+    //                             var my = e.clientY;
 
-                                //计算 鼠标间的距离
-                                var lessX = mx - mx_div;
-                                var lessY = my - my_div;
+    //                             //计算 鼠标间的距离
+    //                             var lessX = mx - mx_div;
+    //                             var lessY = my - my_div;
 
-                                var positionLeft = lessX + divLeft;
-                                var positionTop = lessY + divTop;
+    //                             var positionLeft = lessX + divLeft;
+    //                             var positionTop = lessY + divTop;
 
-                                //右边边框临界值
-                                if (positionLeft >= maxWidth) {
-                                    positionLeft = maxWidth;
-                                } else if (positionLeft <= 0) {
-                                    //左边边框临界值
-                                    positionLeft = 0;
-                                }
-                                //下边边框临界值
-                                if (positionTop >= maxHeight) {
-                                    positionTop = maxHeight;
-                                } else if (positionTop <= 0) {
-                                    //上边边框临界值
-                                    positionTop = 0;
-                                }
+    //                             //右边边框临界值
+    //                             if (positionLeft >= maxWidth) {
+    //                                 positionLeft = maxWidth;
+    //                             } else if (positionLeft <= 0) {
+    //                                 //左边边框临界值
+    //                                 positionLeft = 0;
+    //                             }
+    //                             //下边边框临界值
+    //                             if (positionTop >= maxHeight) {
+    //                                 positionTop = maxHeight;
+    //                             } else if (positionTop <= 0) {
+    //                                 //上边边框临界值
+    //                                 positionTop = 0;
+    //                             }
 
-                                oDiv.style.top = positionTop + "px";
-                                oDiv.style.left = positionLeft + "px";
-                            }
-                            //鼠标抬起时不响应document.onmousemove时间
-                        document.onmouseup = function() {
-                            document.onmousemove = null;  
-                        }
-                    }　　　
-                }
-            }, 100);
-    }
+    //                             oDiv.style.top = positionTop + "px";
+    //                             oDiv.style.left = positionLeft + "px";
+    //                         }
+    //                         //鼠标抬起时不响应document.onmousemove时间
+    //                     document.onmouseup = function() {
+    //                         document.onmousemove = null;  
+    //                     }
+    //                 }　　　
+    //             }
+    //         }, 100);
+    // }
 
-    function holdUp() {
-        clearInterval(time); //如果按下时间不到1000毫秒便弹起，  
-    }
+    // function holdUp() {
+    //     clearInterval(time); //如果按下时间不到1000毫秒便弹起，  
+    // }
     </script>
 </body>
 

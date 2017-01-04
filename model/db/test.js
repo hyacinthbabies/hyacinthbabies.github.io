@@ -5,7 +5,7 @@ var Article = require("../article.js");
  * 插入
  */
 module.exports = {
-    // nodejs操作数据库，直接阅读moongose操作APIhttp://mongoosejs.com/docs/guide.html
+    // nodejs操作数据库，直接阅读mongoose操作APIhttp://mongoosejs.com/docs/guide.html
     // http://blog.csdn.net/u014267351/article/details/51212107
     insert: function(req) {
         var article = new Article(req.body);
