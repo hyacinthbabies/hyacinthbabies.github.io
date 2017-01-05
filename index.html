@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="src/javascripts/framefork/material/css/ripples.min.css">
     <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="src/javascripts/framefork/ckeditor/ckeditor.js"></script>
-    <script src="build/main.1c2c60fd4d1adccf74b9.js"></script>
+    <script src="build/main.0225a91fdd5c284638cb.js"></script>
     <script src="src/javascripts/framefork/angular.min.js"></script>
     <script src="src/javascripts/framefork/angular-route.min.js"></script>
     <script src="src/javascripts/framefork/angular-css.min.js"></script>
@@ -32,27 +32,23 @@
     <script src="src/javascripts/directive.js"></script>
 </head>
 
-<body style="background-color: #e5e4db;" ng-controller="RouteCtl">
-    <!-- HEADER -->
-    <div class="col-lg-9" data-ui-view="" id="uiContent"></div>
-    <!--右侧菜单-->
-    <div class="navbox col-lg-2">
-        <ul class="nav index-nav">
-            <li role="presentation" ui-sref=".bootstrap.column"><a class="active" href="">bootstrap</a></li>
-            <li role="presentation" ui-sref=".mongodb"><a href="">mongodb</a></li>
-            <li role="presentation" ui-sref=".webpack"><a href="">webpack</a></li>
-            <li role="presentation" ui-sref=".angular.config"><a href="">angular</a></li>
-            <li role="presentation" ui-sref=".javas"><a href="">javascript</a></li>
-            <li role="presentation" ui-sref=".backend"><a href="">&#x7BA1;&#x7406;&#x540E;&#x53F0;</a></li>
-        </ul>
+<body class="" ng-controller="RouteCtl">
+    <div class="mask-layer">
+        <div class="mask-content">
+            <div class="circle-image">
+            </div>
+            <div class="circle-title">
+                <p class="text-center">我知道你们会来，所以我在等，哈哈哈哈哈</p>
+            </div>
+        </div>
     </div>
-    <!-- <div class="menu-espanso" id="menu_div" onmousedown="holdDown()" onmouseup="holdUp()">
-        <div id="menu" class="menu"></div>
-        <span class="linee linea1"></span>
-        <span class="linee linea2"></span>
-        <span class="linee linea3"></span>
-        <div class="voci-menu">
-            <ul class="nav nav-pills nav-stacked" role="tablist" id="indexNav">
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class=" col-lg-10" style="padding-right: 34px;padding-top:10px;" data-ui-view="" id="uiContent"></div>
+        <!--右侧菜单-->
+        <div class="navbox col-lg-1" style="padding-left: 0;">
+            <ul class="nav index-nav">
                 <li role="presentation" ui-sref=".bootstrap.column"><a class="active" href="">bootstrap</a></li>
                 <li role="presentation" ui-sref=".mongodb"><a href="">mongodb</a></li>
                 <li role="presentation" ui-sref=".webpack"><a href="">webpack</a></li>
@@ -61,7 +57,7 @@
                 <li role="presentation" ui-sref=".backend"><a href="">&#x7BA1;&#x7406;&#x540E;&#x53F0;</a></li>
             </ul>
         </div>
-    </div> -->
+    </div>
     <!-- <hui></hui> -->
     <script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script>
     <!-- <script src="src/javascripts/framefork/BootSideMenu.js"></script> -->
@@ -71,23 +67,12 @@
     <script src="src/javascripts/framefork/material/js/material.js"></script>
     <script src="src/javascripts/framefork/material/js/ripples.js"></script>
     <script type="text/javascript">
-    // $('#demo').BootSideMenu({
-    //     side: "right", // left or right
-    //     autoClose: true // auto close when page loads
-    // });
+    $('.mask-layer').click(function(e){
+         $(this).css({'opacity':'0','z-index':'-1'});
+    });
     // 切换
     // $('#indexNav li').click(function(e) {
     //     $(this).tab('show');
-    // });
-    // 侧边栏
-    // $(function() {
-    //     $('.menu , .linee').on('click', function() {
-    //         $('.menu').toggleClass('over')
-    //         $('.linea1').toggleClass('overL1')
-    //         $('.linea2').toggleClass('overL2')
-    //         $('.linea3').toggleClass('overL3')
-    //         $('.voci-menu').toggleClass('overvoci')
-    //     });
     // });
     // //实现菜单拖拽
     // //http://www.qdfuns.com/notes/35840/3defe0b72326a6694f7216122eae655b.html

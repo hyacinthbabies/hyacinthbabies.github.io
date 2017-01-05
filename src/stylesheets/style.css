@@ -1294,15 +1294,17 @@ pre code {
 /* Let's get this party started */
 
 
-/*::-webkit-scrollbar {
-    width: 4px;
-}*/
+
+::-webkit-scrollbar {
+    width: 0;
+}
 
 
 /* Track */
 
 
-/*::-webkit-scrollbar-track {
+/*
+::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -1327,212 +1329,51 @@ pre code {
     font-family: 'MyNewFont';
     /*字体名称*/
     /*src: url('../font/HYHanShiTiJ.ttf');*/
-    src:url('../font/新蒂小丸子小学版.ttf');
+    src: url('../font/新蒂小丸子小学版.ttf');
     /*字体源文件*/
 }
 
-
-/*侧边栏*/
-
-
-/*@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
-.cont-txt {
-    border: 0;
-    overflow: hidden;
-    background: 0 0!important;
-    max-width: 600px;
-    margin: auto;
+.backgorund-style {
+    border: 3px dashed rgba(152, 142, 142, 0.85);
+    box-shadow: 0px 0px 14px #000;
+    font-family: 'MyNewFont';
+    font-size: 18px;
+    /*background-color: #f6f4ec;*/
+    white-space: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+    box-shadow: 6px 6px 8px #7B7979;
+    margin-left: 20px;
     margin-bottom: 20px;
-    margin-top: 60px;
+    background-color: #f4f39e;
+    /*-moz-border-radius-bottomleft: 20px 500px;
+    -moz-border-radius-bottomright: 500px 30px;
+    -moz-border-radius-topright: 5px 100px;
+    -webkit-border-bottom-left-radius: 20px 500px;
+    -webkit-border-bottom-right-radius: 500px 30px;
+    -webkit-border-top-right-radius: 5px 100px;
+    border-bottom-left-radius: 20px 500px;
+    border-bottom-right-radius: 500px 30px;
+    border-top-right-radius: 5px 100px;*/
+    background: -moz-repeating-linear-gradient( top, #fcf59b, #fcf59b 29px, #0c0c0c 30px);
+    background: -webkit-gradient( linear, left top, left bottom, from(#0c0c0c), color-stop(2%, #fcf59b));
+    background: repeating-linear-gradient( top, #fcf59b, #fcf59b 29px, #0c0c0c 30px);
+    -webkit-background-size: 100% 30px;
+    -moz-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 0 #F6EF97;
 }
 
-h1 {
-    font-size: 55px;
-    font-family: 'Roboto Slab', serif;
-    color: #999;
-}
 
-.cont-txt p {
-    margin-top: 20px;
-}
+/*代码插件样式*/
 
-.cont-txt span {
-    background: #CECECE;
-    font-family: arial, sans-serif;
-    font-size: 10px;
-    line-height: 20px;
-    height: auto;
-    color: transparent!important;
-    margin-top: 55px;
+.syntaxhighlighter table td.code .container {
+    padding: 10px !important;
+    line-height: 1.4em !important;
+    font-size: 14px !important;
+    text-shadow: none !important;
 }
-
-hr {
-    margin-top: 10px;
-    border: none;
-    border-top: 1px solid #EE283D;
-}
-
-.wrapper {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    background-color: #F2F2F2;
-    margin: auto;
-}
-
-.bar {
-    position: fixed;
-    height: 40px;
-    width: 100%;
-    background: #44B6EC;
-    z-index: 4;
-    top: 0;
-}
-
-.menu-espanso {
-    background-color: transparent;
-    position: fixed;
-    width: 140px;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    overflow: hidden !important;
-    z-index: 5;
-}
-
-.menu,
-.linee {
-    cursor: pointer;
-}
-
-.menu {
-    float: right;
-    margin: 15px 15px 0 0;
-    height: 49px;
-    width: 49px;
-    border-radius: 50%;
-    background-color: #000;
-    border: none;
-    transition: all 0.40s ease-out;
-}
-
-.over {
-    transform: scale(100);
-    transition: all 0.350s ease-in;
-    cursor: default;
-}
-
-.linea1 {
-    background: #fff;
-    height: 2px;
-    width: 15px;
-    position: absolute;
-    right: 33px;
-    top: 33px;
-    transition: all 0.3s;
-}
-
-.linea2 {
-    background: #fff;
-    height: 2px;
-    width: 15px;
-    position: absolute;
-    right: 33px;
-    top: 38px;
-    opacity: 1;
-    transition: opacity 0.5s;
-}
-
-.linea3 {
-    background: #fff;
-    height: 2px;
-    width: 15px;
-    position: absolute;
-    right: 33px;
-    top: 43px;
-}
-
-.overL1 {
-    animation: closetop 1s forwards;
-    animation-direction: alternate;
-    cursor: pointer;
-}
-
-.overL2 {
-    opacity: 0;
-    transition: opacity 0.5s;
-    cursor: pointer;
-}
-
-.overL3 {
-    animation: closebottom 1s forwards;
-    animation-direction: alternate;
-    cursor: pointer;
-}
-
-@keyframes closetop {
-    0% {
-        transform: translateY(5px) rotate(0deg);
-    }
-    25% {
-        transform: translateY(5px) rotate(0deg);
-    }
-    75% {
-        transform: translateY(5px) rotate(-45deg);
-    }
-    100% {
-        transform: translateY(5px) rotate(-45deg);
-    }
-}
-
-@keyframes closebottom {
-    0% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-5px) rotate(0deg);
-    }
-    75% {
-        transform: translateY(-5px) rotate(45deg);
-    }
-    100% {
-        transform: translateY(-5px) rotate(45deg);
-    }
-}
-.voci-menu {
-  visibility: hidden;
-  position: absolute;
-  right: 50px;
-  top: 160px;
-  opacity: 0;
-  transition: all 0.200s;
-  transition-delay: 0s;
-}
-.overvoci {
-  visibility: visible;
-  opacity: 1;
-  transition: all 0.300s;
-  transition-delay: 0.170s;
-}
-
-.voci-menu ul {
-  list-style-type: none;
-}
-
-.voci-menu ul li {
-  margin: 20px 0px;
-}
-
-.voci-menu ul li a {
-  text-decoration: none;
-  color: transparent;
-  background-color: #DB0024;
-  margin-top: 20px;
-}
-
-.voci-menu ul li a:hover {
-  opacity: 0.7;
-}*/
 
 
 /*新的侧边栏*/
@@ -1543,8 +1384,8 @@ ul.index-nav {
     padding: 60px 0 60px 0;
     background: url(../images/shad2.png) no-repeat;
     background-size: 50% 100%;
-    width:100px;
-    height:500px;
+    width: 100px;
+    height: 600px;
 }
 
 .index-nav > li {
@@ -1569,4 +1410,37 @@ ul.index-nav li a:hover {
     width: 110px;
     color: #67a5cd;
     padding: 7px 15px 7px 30px;
+}
+
+
+/*首页遮罩*/
+
+.mask-layer {
+    transition: all 1s ease-in-out; 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(242, 243, 240);
+    z-index: 999;
+}
+
+.mask-content {
+    margin: 100px;
+}
+
+.circle-image {
+    transition: all 1s ease-in-out;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 1px solid #000;
+    background: url('../images/Lighthouse.jpg') no-repeat;
+    /*background-size: 100% 100%;*/
+    margin-bottom: 40px;
+}
+.circle-title{
+    transition: all .8s ease-in-out;
+    font-size:20px;
+    font-family: 'MyNewFont';
 }
