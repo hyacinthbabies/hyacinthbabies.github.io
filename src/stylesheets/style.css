@@ -1278,6 +1278,23 @@ textarea.form-control {
         width: 220px !important;
         left: inherit;
     }
+    .container{
+        padding:0;
+    }
+    /*/遮罩样式*/
+    .mask-content{
+        margin:100px 20px 20px!important;
+    }
+    .circle-image{
+        width:100px !important;
+        height:100px !important;
+        border-radius:50px !important;
+        background-repeat: no-repeat !important;
+        background-position: 10% 10% !important;
+    }
+    .circle-title{
+        font-size:16px !important;
+    }
 }
 
 pre code {
